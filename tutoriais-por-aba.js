@@ -1,4 +1,4 @@
-<script>
+// <script>
 (function() {
   const wId = 'tw-' + Math.random().toString(36).substr(2, 6);
   let popup = null, dragging = false, dragStart = {x: 0, y: 0};
@@ -188,4 +188,4 @@
   // Limpa o intervalo após 10 segundos
   setTimeout(() => clearInterval(interval), 10000);
 })();
-</script>
+// </script>
