@@ -1,5 +1,25 @@
 <!-- Support Booking - Topbar | cria iFrame só no 1º clique, depois persiste oculto (sem scroll + auto-zoom) -->
 (function () {
+
+  // =========================
+  // ✅ NOVO: Subcontas onde o botão NÃO deve aparecer
+  // =========================
+  const HIDE_SUPPORT_BTN_LOCATION_IDS = new Set([
+    "IjD5WRD5XeL0KnS2GyfR",
+  ]);
+
+  // ✅ NOVO: pega o locationId da URL (/v2/location/XXXX/)
+  function getLocationIdFromUrl() {
+    const m = location.pathname.match(/\/v2\/location\/([^/]+)/i);
+    return m ? m[1] : null;
+  }
+
+  // ✅ NOVO: decide se deve ocultar o botão nesta subconta
+  function shouldHideSupportButtonHere() {
+    const locationId = getLocationIdFromUrl();
+    return !!locationId && HIDE_SUPPORT_BTN_LOCATION_IDS.has(locationId);
+  }
+
   // IDs fixos do nosso botão/popup e do "estacionamento" do iFrame
   const BTN_ID        = "ff-support-topbar-btn";
   const POPUP_ID      = "ff-support-popup";
@@ -160,13 +180,12 @@
             h = parseInt(d.height || d.newHeight || d.iframeHeight || "", 10);
           }
           
-          if (Number.isFinite(h) && h > 100) { // ⭐ MELHORADO: Altura mínima mais realista
+          if (Number.isFinite(h) && h > 100) {
             console.log("Altura detectada via postMessage:", h);
             
             naturalH = h;
             iframe.style.height = h + "px";
             
-            // ⭐ NOVO: Cancela timeout se altura foi detectada
             if (heightDetectionTimeout) {
               clearTimeout(heightDetectionTimeout);
               heightDetectionTimeout = null;
@@ -187,10 +206,10 @@
 
     // MutationObserver como fallback
     if (moIframe) moIframe.disconnect();
-    moIframe = new MutationObserver((mutations) => {
+    moIframe = new MutationObserver(() => {
       try {
         const h = readNaturalHeight();
-        if (h > 100 && h !== naturalH) { // ⭐ MELHORADO: Evita loops desnecessários
+        if (h > 100 && h !== naturalH) {
           console.log("Altura detectada via MutationObserver:", h);
           
           naturalH = h;
@@ -210,25 +229,18 @@
         console.warn("Erro no MutationObserver:", e);
       }
     });
-    moIframe.observe(iframe, { 
-      attributes: true, 
-      attributeFilter: ["style", "height"] 
-    });
+    moIframe.observe(iframe, { attributes: true, attributeFilter: ["style", "height"] });
   }
 
-  // ---------- ajuste de tamanho (sem scroll + zoom) ----------
+  // ---------- ajuste de tamanho ----------
   function fitToHeight(h) {
     if (!popup || !iframe || h <= 0) return;
-    
     try {
       const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
       const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
       const headH = Math.round(head?.getBoundingClientRect().height || HEAD_FALL);
 
-      // ⭐ MELHORADO: Largura mais responsiva
       let popupW = Math.min(1200, Math.floor(vw * 0.95));
-      
-      // ⭐ MELHORADO: Condições de posicionamento mais claras
       const isSmallScreen = vw < 1200 || vh < 820;
       
       if (isSmallScreen) {
@@ -245,18 +257,14 @@
       
       popup.style.width = popupW + "px";
 
-      // ⭐ MELHORADO: Cálculo de altura mais seguro
       const maxContentH = Math.max(300, Math.floor(vh * 0.92) - headH);
-      
       let scale = Math.min(1, maxContentH / h);
-      scale = Math.max(scale, MIN_SCALE); // ⭐ Garante escala mínima
+      scale = Math.max(scale, MIN_SCALE);
       
       const finalContentH = Math.round(h * scale);
       popup.style.height = (finalContentH + headH) + "px";
 
-      // ⭐ MELHORADO: Aplicação de escala mais robusta
       iframe.style.transformOrigin = "top left";
-      
       if (scale < 0.999) {
         iframe.style.transform = `scale(${scale})`;
         iframe.style.width = Math.round(popupW / scale) + "px";
@@ -266,12 +274,8 @@
         iframe.style.width = "100%";
         iframe.style.height = h + "px";
       }
-      
-      console.log(`Iframe ajustado: ${popupW}x${finalContentH}, escala: ${scale.toFixed(3)}`);
-      
     } catch (e) {
       console.warn("Erro no fitToHeight:", e);
-      // ⭐ NOVO: Fallback em caso de erro
       iframe.style.width = "100%";
       iframe.style.height = h + "px";
       iframe.style.transform = "none";
@@ -280,34 +284,23 @@
 
   // ---------- popup ----------
   function openPopup() {
-    if (popup) return; // ⭐ MELHORADO: Evita abertura dupla
-    
+    if (popup) return;
     ensureEmbedScript(() => {
       createPersistentIframe();
       buildPopup();
-
-      // Move o iframe do stash para o popup
       content.appendChild(iframe);
 
-      // ⭐ MELHORADO: Verifica altura e força exibição se necessário
       if (naturalH <= 0) naturalH = readNaturalHeight();
-      
       if (naturalH > 100) {
-        console.log("Usando altura já detectada:", naturalH);
-        
         if (heightDetectionTimeout) {
           clearTimeout(heightDetectionTimeout);
           heightDetectionTimeout = null;
         }
-        
         spinner && spinner.remove();
         iframe.style.visibility = "visible";
         fitToHeight(naturalH);
       } else {
-        console.log("Aguardando detecção de altura...");
         iframe.style.visibility = "hidden";
-        
-        // ⭐ NOVO: Timeout específico para este popup
         if (!heightDetectionTimeout) {
           heightDetectionTimeout = setTimeout(forceDisplay, MAX_WAIT_TIME);
         }
@@ -349,13 +342,13 @@
     content = document.createElement("div");
     content.style.cssText = `
       position:relative; width:100%; flex:0 0 auto; overflow:hidden; 
-      background:#fff; min-height:300px;`; // ⭐ NOVO: Altura mínima
+      background:#fff; min-height:300px;`;
 
     spinner = document.createElement("div");
     spinner.style.cssText = `
       position:absolute; inset:0; display:flex; align-items:center; 
       justify-content:center; font-size:13px; color:#64748b; 
-      background:#fff; z-index:1;`; // ⭐ NOVO: z-index para ficar sobre iframe
+      background:#fff; z-index:1;`;
     spinner.textContent = "Carregando calendário…";
     content.appendChild(spinner);
 
@@ -364,7 +357,6 @@
     popup.appendChild(head);
     popup.appendChild(content);
 
-    // Tamanho inicial
     const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     popup.style.width = Math.min(INIT_W, Math.floor(vw * 0.90)) + "px";
@@ -373,21 +365,18 @@
     popup.style.top = "50%";
     popup.style.transform = "translate(-50%, -50%)";
 
-    // Listeners de redimensionamento
     window.addEventListener("resize", onResize);
     window.addEventListener("orientationchange", onResize, { passive: true });
   }
 
   function closePopup() {
     if (!popup) return;
-    
-    // ⭐ MELHORADO: Limpa timeouts
+
     if (heightDetectionTimeout) {
       clearTimeout(heightDetectionTimeout);
       heightDetectionTimeout = null;
     }
     
-    // Devolve iframe ao stash
     const stash = ensureStash();
     if (iframe && stash) {
       stash.appendChild(iframe);
@@ -408,8 +397,6 @@
 
   function onResize() {
     if (!popup || !iframe) return;
-    
-    // ⭐ MELHORADO: Debounce do resize
     clearTimeout(onResize.timeout);
     onResize.timeout = setTimeout(() => {
       const h = naturalH || readNaturalHeight();
@@ -460,31 +447,21 @@
     return btn;
   }
 
-  // ⭐ NOVA função para verificar se está em subconta
   function isInSubAccount() {
-    const url = location.href;
-    const pathname = location.pathname;
-    
-    console.log("🔍 Verificando URL:", url);
-    console.log("🔍 Pathname:", pathname);
-    
-    // ✅ SUBCONTA: domínio/v2/location/ID/página
-    // ❌ AGÊNCIA: domínio/página (sem v2/location)
-    const isSubAccount = pathname.includes('/v2/location/');
-    
-    console.log("🎯 É subconta?", isSubAccount);
-    return isSubAccount;
+    return location.pathname.includes('/v2/location/');
   }
 
   function addButton() {
-    // ⭐ VERIFICAÇÃO mais específica para subconta
-    if (!isInSubAccount()) {
-      console.log("❌ Não está em subconta - botão não será adicionado");
+    // ✅ NOVO: se esta subconta estiver bloqueada, remove e não adiciona
+    if (shouldHideSupportButtonHere()) {
+      console.log("🚫 Botão de suporte oculto para esta subconta:", getLocationIdFromUrl());
+      removeBtn();
       return false;
     }
-    
-    console.log("✅ Está em subconta - adicionando botão");
-    
+
+    // (se não estiver em subconta, não adiciona)
+    if (!isInSubAccount()) return false;
+
     const header = findHeader();
     if (!header) return false;
     if (document.getElementById(BTN_ID)) return true;
@@ -512,16 +489,18 @@
   setInterval(() => {
     if (location.href !== lastUrl) {
       lastUrl = location.href;
-      console.log("🔄 Mudança de URL detectada:", location.href);
-      
+
       if (popup) closePopup();
-      
-      // ⭐ MELHORADO: Remove o botão se não estiver mais em uma subconta
+
+      // ✅ NOVO: garante remoção se entrar numa subconta bloqueada
+      if (shouldHideSupportButtonHere()) {
+        removeBtn();
+        return;
+      }
+
       if (!isInSubAccount()) {
-        console.log("🗑️ Removendo botão - não está mais em subconta");
         removeBtn();
       } else {
-        console.log("🔄 Recarregando botão - ainda em subconta");
         removeBtn(); 
         addButton();
       }
@@ -529,35 +508,33 @@
   }, 500);
 
   const mo = new MutationObserver(() => { 
-    // ⭐ MELHORADO: Só tenta adicionar o botão se estiver em subconta
+    // ✅ NOVO: se bloqueado, remove sempre
+    if (shouldHideSupportButtonHere()) {
+      if (document.getElementById(BTN_ID)) removeBtn();
+      return;
+    }
+
     if (isInSubAccount() && !document.getElementById(BTN_ID)) {
-      console.log("🔧 MutationObserver: tentando adicionar botão");
       addButton();
     } else if (!isInSubAccount() && document.getElementById(BTN_ID)) {
-      console.log("🔧 MutationObserver: removendo botão - não está em subconta");
       removeBtn();
     }
   });
-  mo.observe(document.documentElement, { 
-    childList: true, 
-    subtree: true 
-  });
+  mo.observe(document.documentElement, { childList: true, subtree: true });
 
-  // ⭐ MELHORADO: Inicialização mais robusta - só se estiver em subconta
+  // init
   if (isInSubAccount()) {
-    console.log("🚀 Iniciando em subconta - adicionando botão");
+    // ✅ NOVO: se bloqueado, remove e não inicia loop de add
+    if (shouldHideSupportButtonHere()) {
+      removeBtn();
+      return;
+    }
+
     const startIv = setInterval(() => { 
-      if (addButton()) {
-        clearInterval(startIv);
-        console.log("✅ Botão de suporte adicionado com sucesso na subconta");
-      }
+      if (addButton()) clearInterval(startIv);
     }, 100);
     
-    setTimeout(() => {
-      clearInterval(startIv);
-      console.log("⏰ Timeout de inicialização do botão atingido");
-    }, 15000);
-  } else {
-    console.log("🏢 Não está em subconta - botão não será adicionado");
+    setTimeout(() => clearInterval(startIv), 15000);
   }
+
 })();
