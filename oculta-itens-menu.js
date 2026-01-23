@@ -1,5 +1,5 @@
 /* ===== MENUS OCULTOS PARA SUBCONTAS BLOQUEADAS ===== */
-<script>
+// <script>
 (function () {
 
   // ==========================================================
@@ -109,4 +109,4 @@
   }, 400);
 
 })();
-</script>
+// </script>
