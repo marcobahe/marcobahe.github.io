@@ -1,4 +1,3 @@
-```javascript
 /* ===== MENUS OCULTOS PARA SUBCONTAS BLOQUEADAS ===== */
 // <script>
 (function () {
@@ -112,4 +111,3 @@
 
 })();
 // </script>
-```
