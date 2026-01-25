@@ -1,3 +1,4 @@
+```javascript
 /* ===== MENUS OCULTOS PARA SUBCONTAS BLOQUEADAS ===== */
 // <script>
 (function () {
@@ -8,6 +9,7 @@
   const blockedLocationIds = new Set([
     "IjD5WRD5XeL0KnS2GyfR",
     "kD5YsAQ7fTGu8eGzcWYX",
+    "XOV7xZeFNwblOCOX7qMO",
     // adicione outros locationIds aqui, se quiser
   ]);
 
@@ -110,3 +112,4 @@
 
 })();
 // </script>
+```
