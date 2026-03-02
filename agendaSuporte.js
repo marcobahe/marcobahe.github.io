@@ -6,6 +6,9 @@
   // =========================
   const HIDE_SUPPORT_BTN_LOCATION_IDS = new Set([
     "IjD5WRD5XeL0KnS2GyfR",
+    "kD5YsAQ7fTGu8eGzcWYX",
+    "XOV7xZeFNwblOCOX7qMO",
+    "dVAfTHjtki7pfozbuEcN", // Termas Pacu
   ]);
 
   // ✅ NOVO: pega o locationId da URL (/v2/location/XXXX/)
