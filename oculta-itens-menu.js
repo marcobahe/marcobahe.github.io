@@ -15,12 +15,9 @@
   // ==========================================================
   // 2) OCULTAR POR ID (quando o ID é realmente estável/único)
   // ==========================================================
-  const menuIdsToHide = [
-    "897ed222-3f68-45c5-bf71-d326a7a1f70b", // Full Tasks (ID ok)
-    "8b3a2e3c-2966-4e58-9730-7557dcdf5edc", // Full Academy (às vezes aparece)
-    // REMOVIDO: 466807e5... — ID era reaproveitado pelo GHL e escondia o Whatsapp | QR Code
-    // Obs: NÃO use o id d7d89ce5... porque ele é reaproveitado (ex: Full Webinar / Whatsapp)
-  ];
+  // IDs DESATIVADOS — GHL reusa IDs entre subcontas, causando ocultação acidental
+  // do "Whatsapp | QR Code". Confiamos apenas no match por LABEL (seção 3).
+  const menuIdsToHide = [];
 
   // ==========================================================
   // 3) OCULTAR POR TEXTO (fallback à prova de SPA/IDs repetidos)
