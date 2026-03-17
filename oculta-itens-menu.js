@@ -18,7 +18,7 @@
   const menuIdsToHide = [
     "897ed222-3f68-45c5-bf71-d326a7a1f70b", // Full Tasks (ID ok)
     "8b3a2e3c-2966-4e58-9730-7557dcdf5edc", // Full Academy (às vezes aparece)
-    "466807e5-8e64-4236-a4b1-98403020f7be", // (aparece em alguns renders)
+    // REMOVIDO: 466807e5... — ID era reaproveitado pelo GHL e escondia o Whatsapp | QR Code
     // Obs: NÃO use o id d7d89ce5... porque ele é reaproveitado (ex: Full Webinar / Whatsapp)
   ];
 
