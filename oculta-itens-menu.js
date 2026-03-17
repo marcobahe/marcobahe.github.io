@@ -29,7 +29,6 @@
     "Full Academy",
     "Full Tasks",
     "Full Webinar",
-    "Whatsapp | QR Code",
     "Turbine sua conta"
   ];
 
