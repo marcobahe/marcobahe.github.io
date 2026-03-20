@@ -275,14 +275,6 @@
 <section class="slide mesh-3" id="s2">
   <div class="max-w-4xl mx-auto text-center">
     <img src="roosters.png" alt="Galo branco vs galo preto" class="mx-auto rounded-2xl mb-10" style="max-height: 50vh; max-height: 50dvh; box-shadow: 0 25px 80px rgba(0,0,0,0.6), 0 0 60px rgba(34,197,94,0.08); border: 1px solid rgba(255,255,255,0.06);">
-    <div class="reveal-item">
-      <p class="heading-md mb-2" style="color: #94a3b8; font-weight: 400; font-style: italic;">
-        "O bom é o branco..."
-      </p>
-      <p class="heading-lg">
-        <span class="grad-green">"...mas o marvado é o preto."</span> 🐓
-      </p>
-    </div>
   </div>
 </section>
 
@@ -297,14 +289,14 @@
         <div class="text-4xl mb-4">🤖</div>
         <h3 class="heading-md mb-1">Claude Code</h3>
         <p class="pill pill-blue mb-4" style="font-size: 0.65rem;">O bom</p>
-        <p class="body-md">Executa tarefas pontuais. Morre quando fecha o terminal. Sem memória, sem autonomia.</p>
+        <p class="body-md">Poderoso no código. Mas morre quando fecha o terminal. Preso a um modelo. Sem multi-canal.</p>
       </div>
       <!-- Coworking -->
       <div class="glass reveal-item">
         <div class="text-4xl mb-4">💻</div>
         <h3 class="heading-md mb-1">Coworking</h3>
         <p class="pill pill-purple mb-4" style="font-size: 0.65rem;">O bom também</p>
-        <p class="body-md">Cron jobs, colaboração. Mas preso ao desktop. Sem multi-canal, sem skills.</p>
+        <p class="body-md">Cron jobs, colaboração. Mas preso ao desktop. Um modelo só. Sem browser, sem devices.</p>
       </div>
       <!-- OpenClaw -->
       <div class="glass border-animate reveal-item" style="border: 1px solid rgba(34,197,94,0.3);">
@@ -329,14 +321,14 @@
         <div class="check">Coworking</div>
         <div class="check" style="color: #22c55e;">OpenClaw</div>
       </div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Funciona 24/7 sem supervisão</div><div class="check">❌</div><div class="check">⚠️</div><div class="check">✅</div></div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Memória entre sessões</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Telegram / WhatsApp / Discord</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Cron jobs & heartbeats</div><div class="check">❌</div><div class="check">✅</div><div class="check">✅</div></div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Navega na web / faz login</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Sub-agentes especializados</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Skills instaláveis (plugins)</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Open source / personalizável</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
+      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Multi-canal (Telegram, WhatsApp, Discord...)</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
+      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Múltiplos modelos (Claude, GPT, Gemini, DeepSeek)</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
+      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Funciona 24/7 sem terminal aberto</div><div class="check">❌</div><div class="check">⚠️</div><div class="check">✅</div></div>
+      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Browser automation (login, navegação)</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
+      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Controle de dispositivos (desktop, mobile)</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
+      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Memória avançada (QMD + Mem0 + Cognee)</div><div class="check">⚠️</div><div class="check">⚠️</div><div class="check">✅</div></div>
+      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Data sovereignty (100% self-hosted)</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
+      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">5.700+ skills no ClawHub</div><div class="check">⚠️</div><div class="check">❌</div><div class="check">✅</div></div>
     </div>
   </div>
 </section>
@@ -361,35 +353,58 @@
     <div class="w-0.5 h-8 mx-auto" style="background: linear-gradient(to bottom, rgba(0,212,255,0.3), rgba(168,85,247,0.3));"></div>
 
     <!-- Agents grid -->
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 grid-responsive" style="grid-template-columns: repeat(5, 1fr);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 grid-responsive" style="grid-template-columns: repeat(4, 1fr);">
       <div class="org-node reveal-item">
         <div class="text-3xl mb-2">💬</div>
         <p class="text-sm font-bold" style="color: #e2e8f0;">Full Bot</p>
-        <p class="text-xs" style="color: #64748b;">Suporte</p>
+        <p class="text-xs" style="color: #64748b;">Suporte 24/7</p>
+        <p class="text-xs" style="color: #475569;">GLM-5 · VPS</p>
       </div>
       <div class="org-node reveal-item">
         <div class="text-3xl mb-2">👨‍💻</div>
-        <p class="text-sm font-bold" style="color: #e2e8f0;">Dev Agent</p>
-        <p class="text-xs" style="color: #64748b;">Código</p>
+        <p class="text-sm font-bold" style="color: #e2e8f0;">Steven</p>
+        <p class="text-xs" style="color: #64748b;">Copywriter</p>
+        <p class="text-xs" style="color: #475569;">Sonnet · Slack</p>
       </div>
       <div class="org-node reveal-item">
         <div class="text-3xl mb-2">🎨</div>
-        <p class="text-sm font-bold" style="color: #e2e8f0;">Jony</p>
-        <p class="text-xs" style="color: #64748b;">Design</p>
+        <p class="text-sm font-bold" style="color: #e2e8f0;">Olivetto</p>
+        <p class="text-xs" style="color: #64748b;">Diretor Criativo</p>
+        <p class="text-xs" style="color: #475569;">Opus · Slack</p>
       </div>
       <div class="org-node reveal-item">
         <div class="text-3xl mb-2">📚</div>
         <p class="text-sm font-bold" style="color: #e2e8f0;">Aprendiz</p>
-        <p class="text-xs" style="color: #64748b;">Pesquisa & KB</p>
+        <p class="text-xs" style="color: #64748b;">KB & Changelog</p>
+        <p class="text-xs" style="color: #475569;">GLM-5 · Cron</p>
+      </div>
+      <div class="org-node reveal-item">
+        <div class="text-3xl mb-2">🔧</div>
+        <p class="text-sm font-bold" style="color: #e2e8f0;">Dev Agents</p>
+        <p class="text-xs" style="color: #64748b;">Código & Deploy</p>
+        <p class="text-xs" style="color: #475569;">Claude Code · Sub</p>
+      </div>
+      <div class="org-node reveal-item">
+        <div class="text-3xl mb-2">👁️</div>
+        <p class="text-sm font-bold" style="color: #e2e8f0;">David</p>
+        <p class="text-xs" style="color: #64748b;">Desktop Control</p>
+        <p class="text-xs" style="color: #475569;">Vision · Mac</p>
       </div>
       <div class="org-node reveal-item">
         <div class="text-3xl mb-2">🔍</div>
-        <p class="text-sm font-bold" style="color: #e2e8f0;">Researcher</p>
-        <p class="text-xs" style="color: #64748b;">Mercado</p>
+        <p class="text-sm font-bold" style="color: #e2e8f0;">Dexter</p>
+        <p class="text-xs" style="color: #64748b;">Pesquisa & Análise</p>
+        <p class="text-xs" style="color: #475569;">Opus · Web</p>
+      </div>
+      <div class="org-node reveal-item">
+        <div class="text-3xl mb-2">🐙</div>
+        <p class="text-sm font-bold" style="color: #e2e8f0;">GitHub</p>
+        <p class="text-xs" style="color: #64748b;">CI/CD & PRs</p>
+        <p class="text-xs" style="color: #475569;">Automático</p>
       </div>
     </div>
 
-    <p class="body-md mt-8 reveal-item">Cada agente tem <strong style="color:#e2e8f0;">personalidade</strong>, <strong style="color:#e2e8f0;">especialidade</strong> e <strong style="color:#e2e8f0;">escopo definido</strong>.</p>
+    <p class="body-md mt-6 reveal-item">Cada agente: <strong style="color:#e2e8f0;">modelo próprio</strong> · <strong style="color:#e2e8f0;">canal próprio</strong> · <strong style="color:#e2e8f0;">personalidade definida</strong></p>
   </div>
 </section>
 
@@ -397,7 +412,7 @@
 <section class="slide mesh-2" id="s6">
   <div class="max-w-5xl mx-auto">
     <p class="pill pill-blue mb-4">Caso de uso #1</p>
-    <h2 class="heading-lg mb-8">Construí um app <span class="grad-blue">pelo Telegram</span></h2>
+    <h2 class="heading-lg mb-8">Do celular ao <span class="grad-blue">deploy</span></h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 grid-responsive">
       <!-- Timeline -->
       <div class="timeline-line">
@@ -469,24 +484,32 @@
   </div>
 </section>
 
-<!-- ==================== SLIDE 8: CASO 3 — PESQUISA ==================== -->
+<!-- ==================== SLIDE 8: MEMÓRIA AVANÇADA ==================== -->
 <section class="slide mesh-1" id="s8">
   <div class="max-w-4xl mx-auto">
-    <p class="pill pill-purple mb-4">Caso de uso #3</p>
-    <h2 class="heading-lg mb-10">Pesquisa de mercado <span class="grad-purple">enquanto durmo</span></h2>
-    <div class="space-y-5">
-      <div class="glass accent-purple reveal-item">
-        <p class="body-lg"><span style="color: #a855f7; font-weight: 600;">🌙 23h —</span> Pedi pro agente pesquisar concorrentes do meu produto.</p>
+    <p class="pill pill-purple mb-4">O segredo</p>
+    <h2 class="heading-lg mb-8">Stack de <span class="grad-purple">memória</span> em 4 camadas</h2>
+    <p class="body-md mb-6">Claude Code tem CLAUDE.md. Coworking tem arquivos. Nós construímos algo <strong style="color: #e2e8f0;">muito maior</strong>.</p>
+    <div class="space-y-4">
+      <div class="glass accent-blue reveal-item flex items-start gap-4">
+        <span class="text-2xl flex-shrink-0">📝</span>
+        <div><p class="font-semibold text-sm mb-1" style="color: #00d4ff;">MEMORY.md + Daily Notes</p><p class="body-md">Memória curada de longo prazo + diário de atividades. O agente acorda e sabe exatamente onde parou.</p></div>
       </div>
-      <div class="glass accent-blue reveal-item">
-        <p class="body-lg"><span style="color: #00d4ff; font-weight: 600;">☀️ Manhã seguinte —</span> Benchmark completo de 8 concorrentes. Preços, features, pontos fracos. Tudo documentado.</p>
+      <div class="glass accent-green reveal-item flex items-start gap-4">
+        <span class="text-2xl flex-shrink-0">🧠</span>
+        <div><p class="font-semibold text-sm mb-1" style="color: #22c55e;">Mem0 — Memória persistente</p><p class="body-md">Extrai fatos automaticamente e armazena fora do contexto. Sobrevive compactação, restarts, sessões novas. Nunca esquece.</p></div>
       </div>
-      <div class="glass accent-green reveal-item">
-        <p class="body-lg"><span style="color: #22c55e; font-weight: 600;">🎯 Resultado —</span> Descobri o diferencial matador: BYOK. Nenhum concorrente grande oferece. <strong style="color: #e2e8f0;">Nós oferecemos.</strong></p>
+      <div class="glass accent-purple reveal-item flex items-start gap-4">
+        <span class="text-2xl flex-shrink-0">🔍</span>
+        <div><p class="font-semibold text-sm mb-1" style="color: #a855f7;">QMD — Busca semântica local</p><p class="body-md">160+ arquivos indexados. Busca por significado, não por palavra-chave. Roda local, sem custo de API.</p></div>
+      </div>
+      <div class="glass accent-orange reveal-item flex items-start gap-4">
+        <span class="text-2xl flex-shrink-0">🕸️</span>
+        <div><p class="font-semibold text-sm mb-1" style="color: #f97316;">Cognee — Grafo de conhecimento</p><p class="body-md">Conecta entidades por relacionamentos. 636 artigos de KB indexados. Entende relações, não só similaridade.</p></div>
       </div>
     </div>
-    <div class="mt-10 reveal-item" style="border-left: 3px solid #a855f7; padding-left: 1.5rem;">
-      <p class="heading-md" style="color: #94a3b8; font-style: italic; font-weight: 400;">"Eu acordei e a pesquisa que levaria um dia inteiro já estava pronta."</p>
+    <div class="mt-6 reveal-item" style="border-left: 3px solid #a855f7; padding-left: 1.5rem;">
+      <p class="heading-md" style="color: #94a3b8; font-style: italic; font-weight: 400;">"Resolvemos o problema #1 de agentes de IA: a amnésia."</p>
     </div>
   </div>
 </section>
@@ -550,6 +573,18 @@
     <div class="mt-14 reveal-item">
       <p class="heading-md" style="color: #e2e8f0;">Tudo operado por <span class="grad-green">uma pessoa</span>.</p>
       <p class="body-md mt-2">Com um time de IA que nunca dorme.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 10b: TIME EM AÇÃO ==================== -->
+<section class="slide mesh-3" id="s10b">
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="pill pill-green mb-4">Na prática</p>
+    <h2 class="heading-lg mb-6">O time <span class="grad-green">trabalhando</span></h2>
+    <p class="body-md mb-8">Slack real. Agentes colaborando em tempo real. Cada um no seu papel.</p>
+    <div class="reveal-item">
+      <img src="slack-team.png" alt="Time de agentes no Slack" class="mx-auto rounded-2xl" style="max-height: 55vh; max-height: 55dvh; box-shadow: 0 25px 80px rgba(0,0,0,0.6), 0 0 40px rgba(34,197,94,0.08); border: 1px solid rgba(255,255,255,0.08);">
     </div>
   </div>
 </section>
