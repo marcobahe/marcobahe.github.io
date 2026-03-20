@@ -340,149 +340,118 @@
     <h2 class="heading-lg mb-3">Estruture como uma <span class="grad-blue">empresa</span></h2>
     <p class="body-md mb-10 max-w-xl mx-auto">Você não contrata uma pessoa pra fazer tudo.<br>Por que faria isso com IA?</p>
 
-    <!-- CEO -->
-    <div class="glass border-animate inline-flex items-center gap-3 mb-2 reveal-item" style="padding: 0.75rem 1.5rem;">
-      <span class="text-2xl">🧠</span>
-      <div class="text-left">
-        <p class="font-bold text-sm" style="color: #e2e8f0;">Fully — Orquestrador</p>
-        <p class="text-xs" style="color: #64748b;">Coordena, delega, acompanha</p>
+    <!-- CEO + COO -->
+    <div class="flex flex-col items-center gap-1 mb-2">
+      <div class="glass reveal-item inline-flex items-center gap-3" style="padding: 0.6rem 1.5rem; border: 1px solid rgba(249,115,22,0.3);">
+        <span class="text-xl">👔</span>
+        <div class="text-left">
+          <p class="font-bold text-sm" style="color: #f97316;">Marco — CEO</p>
+          <p class="text-xs" style="color: #64748b;">Visão, decisões, negócio</p>
+        </div>
+      </div>
+      <div class="w-0.5 h-5" style="background: rgba(255,255,255,0.15);"></div>
+      <div class="glass border-animate reveal-item inline-flex items-center gap-3" style="padding: 0.6rem 1.5rem;">
+        <span class="text-xl">🧠</span>
+        <div class="text-left">
+          <p class="font-bold text-sm" style="color: #00d4ff;">Fully — COO / Orquestrador</p>
+          <p class="text-xs" style="color: #64748b;">Coordena tudo, delega, acompanha</p>
+        </div>
       </div>
     </div>
 
-    <!-- Line -->
-    <div class="w-0.5 h-8 mx-auto" style="background: linear-gradient(to bottom, rgba(0,212,255,0.3), rgba(168,85,247,0.3));"></div>
+    <!-- Lines to departments -->
+    <div class="w-0.5 h-4 mx-auto" style="background: rgba(255,255,255,0.1);"></div>
+    <div class="mx-auto mb-2" style="width: 70%; height: 1px; background: rgba(255,255,255,0.1);"></div>
 
-    <!-- Agents grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 grid-responsive" style="grid-template-columns: repeat(4, 1fr);">
-      <div class="org-node reveal-item">
-        <div class="text-3xl mb-2">💬</div>
-        <p class="text-sm font-bold" style="color: #e2e8f0;">Full Bot</p>
-        <p class="text-xs" style="color: #64748b;">Suporte 24/7</p>
-        <p class="text-xs" style="color: #475569;">GLM-5 · VPS</p>
+    <!-- Departments -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 grid-responsive">
+      <!-- Dept Desenvolvimento -->
+      <div class="glass reveal-item" style="border-top: 3px solid #00d4ff;">
+        <p class="font-bold text-xs uppercase tracking-wider mb-3" style="color: #00d4ff;">⚙️ Desenvolvimento</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(0,212,255,0.05);">
+            <span>🔍</span>
+            <div><p class="text-xs font-bold" style="color: #e2e8f0;">Dexter <span style="color: #64748b; font-weight: 400;">· Head</span></p><p class="text-xs" style="color: #64748b;">Arquitetura, pesquisa, análise</p></div>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(255,255,255,0.02);">
+            <span>🔧</span>
+            <div><p class="text-xs font-bold" style="color: #94a3b8;">Sub-agentes</p><p class="text-xs" style="color: #64748b;">Claude Code, Codex, sob demanda</p></div>
+          </div>
+        </div>
       </div>
-      <div class="org-node reveal-item">
-        <div class="text-3xl mb-2">👨‍💻</div>
-        <p class="text-sm font-bold" style="color: #e2e8f0;">Steven</p>
-        <p class="text-xs" style="color: #64748b;">Copywriter</p>
-        <p class="text-xs" style="color: #475569;">Sonnet · Slack</p>
+
+      <!-- Dept Marketing -->
+      <div class="glass reveal-item" style="border-top: 3px solid #a855f7;">
+        <p class="font-bold text-xs uppercase tracking-wider mb-3" style="color: #a855f7;">🎨 Marketing & Criativo</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(168,85,247,0.05);">
+            <span>🎨</span>
+            <div><p class="text-xs font-bold" style="color: #e2e8f0;">Olivetto <span style="color: #64748b; font-weight: 400;">· Dir. Criativo</span></p></div>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(255,255,255,0.02);">
+            <span>✍️</span>
+            <div><p class="text-xs font-bold" style="color: #e2e8f0;">Steven <span style="color: #64748b; font-weight: 400;">· Copywriter</span></p></div>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(255,255,255,0.02);">
+            <span>👁️</span>
+            <div><p class="text-xs font-bold" style="color: #e2e8f0;">David <span style="color: #64748b; font-weight: 400;">· Visual/Desktop</span></p></div>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(255,255,255,0.02);">
+            <span>🖌️</span>
+            <div><p class="text-xs font-bold" style="color: #e2e8f0;">Jony <span style="color: #64748b; font-weight: 400;">· Designer</span></p></div>
+          </div>
+        </div>
       </div>
-      <div class="org-node reveal-item">
-        <div class="text-3xl mb-2">🎨</div>
-        <p class="text-sm font-bold" style="color: #e2e8f0;">Olivetto</p>
-        <p class="text-xs" style="color: #64748b;">Diretor Criativo</p>
-        <p class="text-xs" style="color: #475569;">Opus · Slack</p>
-      </div>
-      <div class="org-node reveal-item">
-        <div class="text-3xl mb-2">📚</div>
-        <p class="text-sm font-bold" style="color: #e2e8f0;">Aprendiz</p>
-        <p class="text-xs" style="color: #64748b;">KB & Changelog</p>
-        <p class="text-xs" style="color: #475569;">GLM-5 · Cron</p>
-      </div>
-      <div class="org-node reveal-item">
-        <div class="text-3xl mb-2">🔧</div>
-        <p class="text-sm font-bold" style="color: #e2e8f0;">Dev Agents</p>
-        <p class="text-xs" style="color: #64748b;">Código & Deploy</p>
-        <p class="text-xs" style="color: #475569;">Claude Code · Sub</p>
-      </div>
-      <div class="org-node reveal-item">
-        <div class="text-3xl mb-2">👁️</div>
-        <p class="text-sm font-bold" style="color: #e2e8f0;">David</p>
-        <p class="text-xs" style="color: #64748b;">Desktop Control</p>
-        <p class="text-xs" style="color: #475569;">Vision · Mac</p>
-      </div>
-      <div class="org-node reveal-item">
-        <div class="text-3xl mb-2">🔍</div>
-        <p class="text-sm font-bold" style="color: #e2e8f0;">Dexter</p>
-        <p class="text-xs" style="color: #64748b;">Pesquisa & Análise</p>
-        <p class="text-xs" style="color: #475569;">Opus · Web</p>
-      </div>
-      <div class="org-node reveal-item">
-        <div class="text-3xl mb-2">🐙</div>
-        <p class="text-sm font-bold" style="color: #e2e8f0;">GitHub</p>
-        <p class="text-xs" style="color: #64748b;">CI/CD & PRs</p>
-        <p class="text-xs" style="color: #475569;">Automático</p>
+
+      <!-- Dept Suporte -->
+      <div class="glass reveal-item" style="border-top: 3px solid #22c55e;">
+        <p class="font-bold text-xs uppercase tracking-wider mb-3" style="color: #22c55e;">💬 Suporte</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(34,197,94,0.05);">
+            <span>🤖</span>
+            <div><p class="text-xs font-bold" style="color: #e2e8f0;">Full Bot <span style="color: #64748b; font-weight: 400;">· Atendimento 24/7</span></p><p class="text-xs" style="color: #64748b;">1.040+ clientes, &lt;1min resposta</p></div>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(255,255,255,0.02);">
+            <span>📚</span>
+            <div><p class="text-xs font-bold" style="color: #e2e8f0;">Aprendiz <span style="color: #64748b; font-weight: 400;">· KB & Treinamento</span></p><p class="text-xs" style="color: #64748b;">636 artigos, atualiza sozinho</p></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <p class="body-md mt-6 reveal-item">Cada agente: <strong style="color:#e2e8f0;">modelo próprio</strong> · <strong style="color:#e2e8f0;">canal próprio</strong> · <strong style="color:#e2e8f0;">personalidade definida</strong></p>
+    <p class="body-md mt-6 reveal-item text-center">Cada agente permanente pode mobilizar <strong style="color:#e2e8f0;">seus próprios sub-agentes</strong> conforme a demanda.</p>
   </div>
 </section>
 
-<!-- ==================== SLIDE 6: CASO 1 — PRODUTO ==================== -->
+<!-- ==================== SLIDE 6: CASO 1 — SUPORTE REAL ==================== -->
 <section class="slide mesh-2" id="s6">
   <div class="max-w-5xl mx-auto">
-    <p class="pill pill-blue mb-4">Caso de uso #1</p>
-    <h2 class="heading-lg mb-8">Do celular ao <span class="grad-blue">deploy</span></h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 grid-responsive">
-      <!-- Timeline -->
-      <div class="timeline-line">
-        <div class="mb-8 reveal-item" style="position: relative;">
-          <div class="timeline-dot" style="border-color: #00d4ff; background: rgba(0,212,255,0.2); top: 0.25rem;"></div>
-          <h3 class="heading-md mb-1" style="color: #00d4ff;">Dia 1 — MVP</h3>
-          <p class="body-md">Gravação, transcrição, cola automática.<br>8 versões em um dia.</p>
-        </div>
-        <div class="mb-8 reveal-item" style="position: relative;">
-          <div class="timeline-dot" style="border-color: #a855f7; background: rgba(168,85,247,0.2); top: 0.25rem;"></div>
-          <h3 class="heading-md mb-1" style="color: #a855f7;">Dia 2 — Produto completo</h3>
-          <p class="body-md">API, licenciamento, multi-provider,<br>multilingual 3 idiomas, ícone.</p>
-        </div>
-        <div class="reveal-item" style="position: relative;">
-          <div class="timeline-dot" style="border-color: #22c55e; background: rgba(34,197,94,0.2); top: 0.25rem;"></div>
-          <h3 class="heading-md mb-1" style="color: #22c55e;">Dia 2 (noite) — Go to market</h3>
-          <p class="body-md">Benchmark de 8 concorrentes,<br>roadmap completo, estratégia AppSumo.</p>
-        </div>
+    <p class="pill pill-green mb-4">Caso de uso #1</p>
+    <h2 class="heading-lg mb-6">Suporte <span class="grad-green">em ação</span></h2>
+    <p class="body-md mb-6">Full Bot atendendo uma cliente real da Full Funnel. Sem intervenção humana.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 grid-responsive">
+      <div class="reveal-item">
+        <img src="fullbot-action.png" alt="Full Bot atendendo cliente" class="rounded-2xl w-full" style="box-shadow: 0 20px 60px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.06);">
       </div>
-      <!-- Stats -->
-      <div class="glass glow-blue reveal-item" style="display: flex; flex-direction: column; justify-content: center; gap: 1.5rem;">
-        <div>
-          <p class="stat-number grad-blue">v2.4</p>
-          <p class="text-xs uppercase tracking-widest" style="color: #64748b;">24 builds em 2 dias</p>
+      <div class="flex flex-col justify-center gap-4">
+        <div class="glass accent-green reveal-item">
+          <p class="font-semibold text-sm mb-1" style="color: #22c55e;">🤖 Autônomo</p>
+          <p class="body-md">Responde dúvidas técnicas consultando base de 636 artigos. Sem humano.</p>
         </div>
-        <div>
-          <p class="stat-number grad-purple">5</p>
-          <p class="text-xs uppercase tracking-widest" style="color: #64748b;">Providers de IA integrados</p>
+        <div class="glass accent-blue reveal-item">
+          <p class="font-semibold text-sm mb-1" style="color: #00d4ff;">📚 Auto-aprendizado</p>
+          <p class="body-md">Aprendiz analisa conversas passadas e melhora as respostas continuamente.</p>
         </div>
-        <div>
-          <p class="stat-number grad-green">3</p>
-          <p class="text-xs uppercase tracking-widest" style="color: #64748b;">Idiomas suportados</p>
-        </div>
-        <div class="mt-2" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem;">
-          <p class="text-sm" style="color: #64748b;">⏱️ Tempo estimado manual: <strong style="color: #f97316;">1 mês+</strong></p>
+        <div class="glass accent-purple reveal-item">
+          <p class="font-semibold text-sm mb-1" style="color: #a855f7;">⚡ Escalação inteligente</p>
+          <p class="body-md">Quando não sabe, escala para humano com contexto completo da conversa.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== SLIDE 7: CASO 2 — SUPORTE ==================== -->
-<section class="slide mesh-4" id="s7">
-  <div class="max-w-5xl mx-auto">
-    <p class="pill pill-green mb-4">Caso de uso #2</p>
-    <h2 class="heading-lg mb-8">Suporte <span class="grad-green">100% automatizado</span></h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 grid-responsive">
-      <div class="glass accent-green reveal-item">
-        <div class="text-2xl mb-3">💬</div>
-        <h3 class="heading-md mb-2">Atendimento</h3>
-        <p class="body-md">Responde dúvidas, consulta KB, agenda calls, escala pra humano quando precisa.</p>
-      </div>
-      <div class="glass accent-purple reveal-item">
-        <div class="text-2xl mb-3">📚</div>
-        <h3 class="heading-md mb-2">636 artigos</h3>
-        <p class="body-md">Base de conhecimento indexada automaticamente. Atualiza sozinha toda madrugada.</p>
-      </div>
-      <div class="glass accent-blue reveal-item">
-        <div class="text-2xl mb-3">🧠</div>
-        <h3 class="heading-md mb-2">Auto-aprendizado</h3>
-        <p class="body-md">Aprendiz analisa conversas passadas, identifica gaps e melhora respostas.</p>
-      </div>
-    </div>
-    <div class="grid grid-cols-3 gap-5 mt-8 text-center grid-responsive">
-      <div class="reveal-item"><p class="stat-number grad-green">24/7</p><p class="text-xs uppercase tracking-widest mt-1" style="color: #64748b;">Nunca tira férias</p></div>
-      <div class="reveal-item"><p class="stat-number grad-blue">1.040+</p><p class="text-xs uppercase tracking-widest mt-1" style="color: #64748b;">Clientes atendidos</p></div>
-      <div class="reveal-item"><p class="stat-number grad-purple">&lt; 1 min</p><p class="text-xs uppercase tracking-widest mt-1" style="color: #64748b;">Tempo de resposta</p></div>
-    </div>
-  </div>
-</section>
+<!-- Slide 7 removido - suporte já coberto no slide 6 -->
 
 <!-- ==================== SLIDE 8: MEMÓRIA AVANÇADA ==================== -->
 <section class="slide mesh-1" id="s8">
@@ -548,34 +517,7 @@
   </div>
 </section>
 
-<!-- ==================== SLIDE 10: NÚMEROS ==================== -->
-<section class="slide mesh-3" id="s10">
-  <div class="max-w-4xl mx-auto text-center">
-    <h2 class="heading-lg mb-12">Os números <span class="grad-blue">não mentem</span></h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 grid-responsive" style="grid-template-columns: repeat(4, 1fr);">
-      <div class="reveal-item">
-        <p class="stat-number grad-blue">48h</p>
-        <p class="text-xs uppercase tracking-widest mt-2" style="color: #64748b;">App completo</p>
-      </div>
-      <div class="reveal-item">
-        <p class="stat-number grad-green">636</p>
-        <p class="text-xs uppercase tracking-widest mt-2" style="color: #64748b;">Artigos de KB</p>
-      </div>
-      <div class="reveal-item">
-        <p class="stat-number grad-purple">24/7</p>
-        <p class="text-xs uppercase tracking-widest mt-2" style="color: #64748b;">Suporte auto</p>
-      </div>
-      <div class="reveal-item">
-        <p class="stat-number grad-orange">5+</p>
-        <p class="text-xs uppercase tracking-widest mt-2" style="color: #64748b;">Agentes</p>
-      </div>
-    </div>
-    <div class="mt-14 reveal-item">
-      <p class="heading-md" style="color: #e2e8f0;">Tudo operado por <span class="grad-green">uma pessoa</span>.</p>
-      <p class="body-md mt-2">Com um time de IA que nunca dorme.</p>
-    </div>
-  </div>
-</section>
+<!-- Slide 10 removido - números genéricos -->
 
 <!-- ==================== SLIDE 10b: TIME EM AÇÃO ==================== -->
 <section class="slide mesh-3" id="s10b">
