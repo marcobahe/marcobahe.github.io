@@ -274,7 +274,7 @@
 <!-- ==================== SLIDE 2: A PIADA ==================== -->
 <section class="slide mesh-3" id="s2">
   <div class="max-w-4xl mx-auto text-center">
-    <img src="roosters.png" alt="Galo branco vs galo preto" class="mx-auto rounded-2xl mb-10" style="max-height: 50vh; max-height: 50dvh; box-shadow: 0 25px 80px rgba(0,0,0,0.6), 0 0 60px rgba(34,197,94,0.08); border: 1px solid rgba(255,255,255,0.06);">
+    <img src="roosters-v2.png" alt="Galo branco vs galo preto" class="mx-auto mb-10" style="max-height: 60vh; max-height: 60dvh; max-width: 100%; border: none; border-radius: 0;">
   </div>
 </section>
 
@@ -286,21 +286,27 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 grid-responsive">
       <!-- Claude Code -->
       <div class="glass reveal-item">
-        <div class="text-4xl mb-4">🤖</div>
+        <div class="mb-4" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(0,212,255,0.1); display: flex; align-items: center; justify-content: center;">
+          <i data-lucide="terminal" style="width: 24px; height: 24px; color: #00d4ff;"></i>
+        </div>
         <h3 class="heading-md mb-1">Claude Code</h3>
         <p class="pill pill-blue mb-4" style="font-size: 0.65rem;">O bom</p>
         <p class="body-md">Poderoso no código. Mas morre quando fecha o terminal. Preso a um modelo. Sem multi-canal.</p>
       </div>
       <!-- Coworking -->
       <div class="glass reveal-item">
-        <div class="text-4xl mb-4">💻</div>
+        <div class="mb-4" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(168,85,247,0.1); display: flex; align-items: center; justify-content: center;">
+          <i data-lucide="monitor" style="width: 24px; height: 24px; color: #a855f7;"></i>
+        </div>
         <h3 class="heading-md mb-1">Coworking</h3>
         <p class="pill pill-purple mb-4" style="font-size: 0.65rem;">O bom também</p>
         <p class="body-md">Cron jobs, colaboração. Mas preso ao desktop. Um modelo só. Sem browser, sem devices.</p>
       </div>
       <!-- OpenClaw -->
       <div class="glass border-animate reveal-item" style="border: 1px solid rgba(34,197,94,0.3);">
-        <div class="text-4xl mb-4">🐾</div>
+        <div class="mb-4" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center;">
+          <i data-lucide="zap" style="width: 24px; height: 24px; color: #22c55e;"></i>
+        </div>
         <h3 class="heading-md mb-1" style="color: #22c55e;">OpenClaw</h3>
         <p class="pill pill-green mb-4" style="font-size: 0.65rem;">O marvado</p>
         <p class="body-md">24/7. Memória persistente. Telegram, Discord, WhatsApp. Sub-agentes. Skills. <strong style="color: #e2e8f0;">Sem limites.</strong></p>
@@ -476,6 +482,10 @@
         <span class="text-2xl flex-shrink-0">🕸️</span>
         <div><p class="font-semibold text-sm mb-1" style="color: #f97316;">Cognee — Grafo de conhecimento</p><p class="body-md">Conecta entidades por relacionamentos. 636 artigos de KB indexados. Entende relações, não só similaridade.</p></div>
       </div>
+      <div class="glass reveal-item flex items-start gap-4" style="border-left: 3px solid #ec4899;">
+        <span class="text-2xl flex-shrink-0">📂</span>
+        <div><p class="font-semibold text-sm mb-1" style="color: #ec4899;">Organização por projetos</p><p class="body-md">Cada projeto tem sua pasta com memoria.md próprio. Decisões, status, pendências. Agente nunca mistura contextos.</p></div>
+      </div>
     </div>
     <div class="mt-6 reveal-item" style="border-left: 3px solid #a855f7; padding-left: 1.5rem;">
       <p class="heading-md" style="color: #94a3b8; font-style: italic; font-weight: 400;">"Resolvemos o problema #1 de agentes de IA: a amnésia."</p>
@@ -615,23 +625,21 @@
 <section class="slide mesh-3" id="s13">
   <div class="max-w-3xl mx-auto text-center flex flex-col justify-center" style="min-height: 70vh;">
     <div class="reveal-item">
-      <p class="heading-md mb-6" style="color: #64748b;">A visão</p>
-      <div style="border-left: 3px solid #22c55e; padding-left: 1.5rem; display: inline-block; text-align: left;">
-        <p class="heading-lg" style="color: #94a3b8; font-weight: 400;">
-          "Isso não é o futuro.<br>
-          <span class="grad-green" style="font-weight: 700;">Já está acontecendo."</span>
-        </p>
-      </div>
-    </div>
-    <div class="mt-14 reveal-item">
-      <p class="heading-md" style="color: #e2e8f0;">
-        Quem montar seu agente <strong>agora</strong><br>
-        vai ter vantagem competitiva absurda em
+      <p class="heading-lg mb-8" style="color: #e2e8f0; line-height: 1.4;">
+        Enquanto você digita comandos,<br>
+        <span class="grad-green">o marvado já entregou.</span>
       </p>
-      <p class="stat-number grad-green mt-4" style="font-size: 4rem;">6 meses</p>
+    </div>
+    <div class="mt-8 reveal-item">
+      <p class="body-lg" style="font-size: 1.2em; color: #94a3b8; line-height: 1.8;">
+        O galo bom executa tarefas.<br>
+        O <strong style="color: #22c55e;">marvado</strong> ganha a briga.
+      </p>
     </div>
     <div class="mt-10 reveal-item">
-      <p class="body-lg">O galo bom te ajuda no dia a dia.<br>O <strong style="color: #22c55e;">marvado</strong> transforma seu negócio.</p>
+      <div class="glass" style="display: inline-block; padding: 1rem 2rem; border: 1px solid rgba(34,197,94,0.2);">
+        <p class="body-md" style="color: #e2e8f0;">A pergunta não é <em>"se"</em> você vai ter um agente.<br>É <strong style="color: #22c55e;">quanto tempo vai demorar pra montar o seu.</strong></p>
+      </div>
     </div>
   </div>
 </section>
@@ -639,21 +647,29 @@
 <!-- ==================== SLIDE 14: CTA ==================== -->
 <section class="slide mesh-2" id="s14">
   <div class="max-w-4xl mx-auto text-center">
-    <span class="text-6xl block mb-6">🐾</span>
-    <h2 class="heading-xl mb-10"><span class="grad-blue">Comece agora</span></h2>
+    <div class="mb-6" style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(168,85,247,0.15)); display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+      <i data-lucide="rocket" style="width: 40px; height: 40px; color: #00d4ff;"></i>
+    </div>
+    <h2 class="heading-xl mb-10"><span class="grad-blue">Monte o seu time</span></h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 grid-responsive mb-12">
       <div class="glass reveal-item text-center">
-        <span class="text-3xl block mb-3">📦</span>
+        <div class="mb-3 mx-auto" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(0,212,255,0.1); display: flex; align-items: center; justify-content: center;">
+          <i data-lucide="download" style="width: 24px; height: 24px; color: #00d4ff;"></i>
+        </div>
         <p class="font-bold text-sm mb-1" style="color: #e2e8f0;">1. Instale</p>
         <p class="body-md">openclaw.ai<br>5 minutos de setup</p>
       </div>
       <div class="glass reveal-item text-center">
-        <span class="text-3xl block mb-3">📝</span>
+        <div class="mb-3 mx-auto" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(168,85,247,0.1); display: flex; align-items: center; justify-content: center;">
+          <i data-lucide="settings" style="width: 24px; height: 24px; color: #a855f7;"></i>
+        </div>
         <p class="font-bold text-sm mb-1" style="color: #e2e8f0;">2. Configure</p>
         <p class="body-md">SOUL.md + MEMORY.md<br>Defina a personalidade</p>
       </div>
       <div class="glass reveal-item text-center">
-        <span class="text-3xl block mb-3">🚀</span>
+        <div class="mb-3 mx-auto" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center;">
+          <i data-lucide="send" style="width: 24px; height: 24px; color: #22c55e;"></i>
+        </div>
         <p class="font-bold text-sm mb-1" style="color: #e2e8f0;">3. Conecte</p>
         <p class="body-md">Telegram, Discord, Slack<br>Converse de qualquer lugar</p>
       </div>
