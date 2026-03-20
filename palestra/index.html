@@ -166,7 +166,7 @@
 </div>
 </div>
 </nav>
-<div class="snap-container" id="main-scroll">
+<div class="snap-container" id="main-scroll" tabindex="0" style="outline: none;">
 <!-- 1. Hero Section -->
 <section class="snap-section active" id="hero">
 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
@@ -620,7 +620,36 @@ github.com/openclaw/openclaw →
     };
 
     container.addEventListener('scroll', updateActiveState);
-    window.addEventListener('load', updateActiveState);
+    window.addEventListener('load', () => {
+        updateActiveState();
+        container.focus();
+    });
+
+    // Auto-focus container on click anywhere
+    document.addEventListener('click', () => container.focus());
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            const sectionsArr = Array.from(sections);
+            let currentIdx = 0;
+            sectionsArr.forEach((s, i) => {
+                if (container.scrollTop >= s.offsetTop - s.clientHeight / 3) currentIdx = i;
+            });
+            const next = sectionsArr[currentIdx + 1];
+            if (next) container.scrollTo({ top: next.offsetTop, behavior: 'smooth' });
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            const sectionsArr = Array.from(sections);
+            let currentIdx = 0;
+            sectionsArr.forEach((s, i) => {
+                if (container.scrollTop >= s.offsetTop - s.clientHeight / 3) currentIdx = i;
+            });
+            const prev = sectionsArr[currentIdx - 1];
+            if (prev) container.scrollTo({ top: prev.offsetTop, behavior: 'smooth' });
+        }
+    });
 
     dots.forEach(dot => {
         dot.addEventListener('click', (e) => {
