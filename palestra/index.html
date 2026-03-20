@@ -33,6 +33,33 @@
 
     .reveal .slides section {
       padding: 40px 60px;
+      box-sizing: border-box;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .reveal .slides section {
+        padding: 20px 24px;
+      }
+      .reveal h1 { font-size: 1.8em; }
+      .reveal h2 { font-size: 1.4em; }
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr !important;
+      }
+      .org-agents {
+        flex-direction: column;
+        align-items: center;
+      }
+      .big-number { font-size: 2em !important; }
+      .compare-feature { flex: 1.5; font-size: 0.7em; }
+      .compare-check { font-size: 1em; }
+      .quote { font-size: 1em; }
+    }
+
+    @media (max-width: 480px) {
+      .reveal h1 { font-size: 1.4em; }
+      .reveal h2 { font-size: 1.1em; }
+      .card { padding: 16px 18px; }
     }
 
     .reveal h1, .reveal h2, .reveal h3 {
@@ -399,7 +426,7 @@
 
       <!-- ============ SLIDE 1: CAPA ============ -->
       <section class="centered" data-background-gradient="radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 70%)">
-        <span class="icon-big">🐔</span>
+        <div style="font-size: 5em; filter: drop-shadow(0 0 20px rgba(34,197,94,0.6)) drop-shadow(0 0 40px rgba(34,197,94,0.3)); margin-bottom: 10px;">🐓</div>
         <h1>O Marvado</h1>
         <p class="subtitle">Como eu construí uma equipe de IA que trabalha 24/7<br>usando <span class="neon">OpenClaw</span></p>
         <br>
@@ -408,37 +435,12 @@
         </p>
       </section>
 
-      <!-- ============ SLIDE 2: A PIADA ============ -->
-      <section data-background-gradient="radial-gradient(ellipse at bottom, #1a1a2e 0%, #0a0a0f 70%)">
-        <h2>🐔 A Rinha</h2>
-        <br>
+      <!-- ============ SLIDE 2: A PIADA (só imagem — Marco conta) ============ -->
+      <section class="centered" data-background-gradient="radial-gradient(ellipse at bottom, #1a1a2e 0%, #0a0a0f 70%)">
+        <img src="roosters.png" alt="Galo branco vs galo preto" style="max-height: 55vh; border-radius: 16px; box-shadow: 0 0 40px rgba(0,0,0,0.8), 0 0 80px rgba(34,197,94,0.15); border: 2px solid rgba(255,255,255,0.08);">
+        <br><br>
         <div class="fragment fade-up">
-          <p style="font-size: 1em; color: var(--text-primary);">
-            Um cara da capital chega no interior e vê uma rinha de galo.<br>
-            Pensa: <em>"Vou ganhar um dinheiro em cima desses matutos."</em>
-          </p>
-        </div>
-        <br>
-        <div class="fragment fade-up">
-          <p style="font-size: 1em; color: var(--text-primary);">
-            Pergunta pro local: <em>"Qual é o galo bom?"</em><br>
-            <strong>"O bom é o branco."</strong>
-          </p>
-        </div>
-        <br>
-        <div class="fragment fade-up">
-          <p style="font-size: 1em; color: var(--text-primary);">
-            Aposta R$ 1.000 no branco. 💸<br>
-            O galo preto dá uma <strong>surra</strong>. O branco sai corrido.
-          </p>
-        </div>
-        <br>
-        <div class="fragment fade-up">
-          <p style="font-size: 1.1em; color: var(--text-primary);">
-            <em>"Mas você não disse que o bom era o branco?!"</em>
-          </p>
-          <br>
-          <p style="font-size: 1.4em; font-weight: 900;">
+          <p style="font-size: 1.5em; font-weight: 900;">
             <span class="neon-purple">"O bom é o branco...</span><br>
             <span class="neon">mas o marvado é o preto."</span> 🐓
           </p>
@@ -908,10 +910,13 @@
       center: false,
       width: 1280,
       height: 720,
-      margin: 0.04,
+      margin: 0.08,
+      minScale: 0.2,
+      maxScale: 2.0,
       controlsTutorial: false,
       progress: true,
       fragments: true,
+      touch: true,
     });
   </script>
 </body>
