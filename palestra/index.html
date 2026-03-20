@@ -1,776 +1,637 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>O Marvado — OpenClaw</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
-            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#2c0051",
+              "error": "#ffb4ab",
+              "surface-container-highest": "#333539",
+              "on-surface": "#e2e2e8",
+              "outline": "#859398",
+              "on-primary-fixed-variant": "#004e5f",
+              "error-container": "#93000a",
+              "tertiary-container": "#45dd73",
+              "tertiary-fixed": "#6bff8f",
+              "secondary-container": "#6f00be",
+              "inverse-surface": "#e2e2e8",
+              "inverse-on-surface": "#2e3035",
+              "tertiary-fixed-dim": "#4ae176",
+              "on-tertiary": "#003915",
+              "on-primary-container": "#00586b",
+              "on-background": "#e2e2e8",
+              "on-tertiary-fixed": "#002109",
+              "on-tertiary-fixed-variant": "#005321",
+              "surface": "#0a0a0a",
+              "surface-variant": "#1a1a1a",
+              "on-error-container": "#ffdad6",
+              "outline-variant": "#3c494e",
+              "primary-fixed": "#b4ebff",
+              "on-error": "#690005",
+              "primary-fixed-dim": "#3cd7ff",
+              "surface-dim": "#0a0a0a",
+              "tertiary": "#66fa8c",
+              "secondary": "#ddb7ff",
+              "surface-container": "#121212",
+              "on-primary-fixed": "#001f27",
+              "on-secondary-container": "#d6a9ff",
+              "surface-container-low": "#0f0f0f",
+              "surface-container-lowest": "#050505",
+              "secondary-fixed-dim": "#ddb7ff",
+              "on-secondary-fixed-variant": "#6900b3",
+              "surface-container-high": "#181818",
+              "surface-bright": "#222222",
+              "on-tertiary-container": "#005d27",
+              "inverse-primary": "#00677e",
+              "secondary-fixed": "#f0dbff",
+              "on-primary": "#003642",
+              "primary": "#00ffcc",
+              "surface-tint": "#00ffcc",
+              "on-secondary": "#490080",
+              "primary-container": "#00d4ff",
+              "background": "#0a0a0a",
+              "on-surface-variant": "#bbc9cf"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
           },
-          colors: {
-            surface: { 50: '#f8fafc', 100: '#0d0f12', 200: '#131620', 300: '#1a1e2e', 400: '#242938' },
-            neon: { blue: '#00d4ff', purple: '#a855f7', green: '#22c55e', orange: '#f97316', pink: '#ec4899' },
-          }
-        }
+        },
       }
-    }
-  </script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-x: hidden; }
-    body { background: #080a0e; color: #e2e8f0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+            background-color: #0a0a0a;
+        }
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
 
-    /* Slides */
-    .slide {
-      min-height: 100vh;
-      min-height: 100dvh;
-      scroll-snap-align: start;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 3rem 2rem;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
+        .snap-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        .snap-section {
+            height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
 
-    @media (min-width: 768px) { .slide { padding: 4rem 6rem; } }
-    @media (min-width: 1280px) { .slide { padding: 4rem 10rem; } }
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal-up { opacity: 0; }
+        .snap-section.active .reveal-up {
+            animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
 
-    /* Gradient mesh backgrounds */
-    .mesh-1 { background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,212,255,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 80%, rgba(168,85,247,0.08) 0%, transparent 60%), #080a0e; }
-    .mesh-2 { background: radial-gradient(ellipse 70% 50% at 20% 90%, rgba(34,197,94,0.1) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 80% 10%, rgba(0,212,255,0.08) 0%, transparent 60%), #080a0e; }
-    .mesh-3 { background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(168,85,247,0.08) 0%, transparent 60%), #080a0e; }
-    .mesh-4 { background: radial-gradient(ellipse 80% 60% at 30% 20%, rgba(249,115,22,0.08) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 70% 80%, rgba(34,197,94,0.06) 0%, transparent 60%), #080a0e; }
-
-    /* Noise overlay */
-    .slide::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .slide > * { position: relative; z-index: 2; }
-
-    /* Typography */
-    .heading-xl { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1.05; letter-spacing: -0.03em; }
-    .heading-lg { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(1.8rem, 4.5vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; }
-    .heading-md { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(1.2rem, 2.5vw, 1.6rem); line-height: 1.2; letter-spacing: -0.01em; }
-    .body-lg { font-size: clamp(1rem, 1.8vw, 1.25rem); line-height: 1.6; color: #94a3b8; }
-    .body-md { font-size: clamp(0.875rem, 1.4vw, 1rem); line-height: 1.6; color: #94a3b8; }
-
-    /* Gradient text */
-    .grad-blue { background: linear-gradient(135deg, #00d4ff, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .grad-green { background: linear-gradient(135deg, #22c55e, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .grad-purple { background: linear-gradient(135deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .grad-orange { background: linear-gradient(135deg, #f97316, #eab308); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-    /* Glass card */
-    .glass {
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .glass:hover {
-      border-color: rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.05);
-      transform: translateY(-2px);
-    }
-
-    /* Accent borders */
-    .accent-blue { border-left: 3px solid #00d4ff; }
-    .accent-green { border-left: 3px solid #22c55e; }
-    .accent-purple { border-left: 3px solid #a855f7; }
-    .accent-orange { border-left: 3px solid #f97316; }
-
-    /* Glow effects */
-    .glow-green { filter: drop-shadow(0 0 30px rgba(34,197,94,0.4)) drop-shadow(0 0 60px rgba(34,197,94,0.15)); }
-    .glow-blue { box-shadow: 0 0 30px rgba(0,212,255,0.15), inset 0 0 30px rgba(0,212,255,0.05); }
-
-    /* Comparison table */
-    .compare-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 0;
-      font-size: clamp(0.7rem, 1.3vw, 0.85rem);
-    }
-    .compare-grid > div {
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      display: flex;
-      align-items: center;
-    }
-    .compare-grid .check { justify-content: center; text-align: center; }
-
-    /* Org chart */
-    .org-node {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 0.75rem;
-      padding: 1rem;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-    .org-node:hover { border-color: rgba(0,212,255,0.3); transform: scale(1.03); }
-
-    /* Pill badge */
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.375rem;
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .pill-blue { background: rgba(0,212,255,0.1); color: #00d4ff; border: 1px solid rgba(0,212,255,0.2); }
-    .pill-green { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
-    .pill-purple { background: rgba(168,85,247,0.1); color: #a855f7; border: 1px solid rgba(168,85,247,0.2); }
-    .pill-orange { background: rgba(249,115,22,0.1); color: #f97316; border: 1px solid rgba(249,115,22,0.2); }
-
-    /* Animated border */
-    @keyframes border-glow {
-      0%, 100% { border-color: rgba(0,212,255,0.3); }
-      50% { border-color: rgba(168,85,247,0.3); }
-    }
-    .border-animate { animation: border-glow 4s ease-in-out infinite; }
-
-    /* Number counter */
-    .stat-number { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; }
-
-    /* Timeline connector */
-    .timeline-line { position: relative; padding-left: 2rem; }
-    .timeline-line::before { content: ''; position: absolute; left: 0.5rem; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #00d4ff, #a855f7, #22c55e); opacity: 0.3; }
-    .timeline-dot { position: absolute; left: 0.125rem; width: 1rem; height: 1rem; border-radius: 50%; border: 2px solid; }
-
-    /* Slide indicator */
-    #slide-indicator {
-      position: fixed;
-      right: 1.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .indicator-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.15);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .indicator-dot.active {
-      background: #00d4ff;
-      box-shadow: 0 0 10px rgba(0,212,255,0.5);
-      transform: scale(1.4);
-    }
-
-    /* Keyboard nav hint */
-    .nav-hint {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      padding: 0.5rem 1rem;
-      background: rgba(255,255,255,0.05);
-      border-radius: 9999px;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 0.7rem;
-      color: #64748b;
-      transition: opacity 0.5s;
-    }
-    .nav-hint kbd {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.125rem 0.375rem;
-      background: rgba(255,255,255,0.1);
-      border-radius: 4px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-    }
-
-    /* Reveal animations (GSAP driven) */
-    .reveal-item { opacity: 0; transform: translateY(30px); }
-
-    /* Floating particles */
-    .particle {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      opacity: 0;
-    }
-
-    /* Mobile grid fix */
-    @media (max-width: 768px) {
-      .grid-responsive { grid-template-columns: 1fr !important; }
-      .hide-mobile { display: none !important; }
-      #slide-indicator { right: 0.5rem; }
-      .indicator-dot { width: 6px; height: 6px; }
-    }
-  </style>
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .nav-dot.active {
+            background: #00ffcc;
+            transform: scale(1.5);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+        
+        .custom-table th, .custom-table td {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 1rem;
+            text-align: center;
+        }
+        .custom-table th:first-child, .custom-table td:first-child { text-align: left; }
+    </style>
 </head>
-<body>
-
-<!-- Slide indicator -->
-<nav id="slide-indicator"></nav>
-
-<!-- Nav hint -->
-<div class="nav-hint" id="nav-hint">
-  <kbd>↑</kbd><kbd>↓</kbd> ou swipe · <span id="slide-counter">1 / 15</span>
+<body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary">
+<div class="nav-dots">
+<a class="nav-dot active" href="#hero"></a>
+<a class="nav-dot" href="#levels"></a>
+<a class="nav-dot" href="#comparison"></a>
+<a class="nav-dot" href="#structure"></a>
+<a class="nav-dot" href="#action"></a>
+<a class="nav-dot" href="#support"></a>
+<a class="nav-dot" href="#memory"></a>
+<a class="nav-dot" href="#practices"></a>
+<a class="nav-dot" href="#infra"></a>
+<a class="nav-dot" href="#cta"></a>
 </div>
-
-<!-- ==================== SLIDE 1: HERO ==================== -->
-<section class="slide mesh-1" id="s1">
-  <div class="max-w-5xl mx-auto text-center">
-    <div class="mb-8">
-      <img src="black-rooster.png" alt="O Marvado" class="glow-green mx-auto" style="max-height: 30vh; max-height: 30dvh;">
-    </div>
-    <h1 class="heading-xl mb-6">
-      <span class="grad-green">O Marvado</span>
-    </h1>
-    <p class="body-lg max-w-2xl mx-auto mb-10" style="color: #64748b;">
-      Como eu construí uma equipe de IA que trabalha 24/7<br class="hide-mobile"> usando <span style="color: #00d4ff; font-weight: 600;">OpenClaw</span>
-    </p>
-    <div class="flex items-center justify-center gap-3 text-sm" style="color: #475569;">
-      <span class="font-semibold" style="color: #94a3b8;">Marco Bahe</span>
-      <span>·</span>
-      <span>Full Funnel</span>
-      <span>·</span>
-      <span>Março 2026</span>
-    </div>
-  </div>
-  <!-- Floating particles -->
-  <div class="particle" style="width: 300px; height: 300px; background: radial-gradient(circle, rgba(34,197,94,0.08), transparent 70%); top: 20%; left: -5%;"></div>
-  <div class="particle" style="width: 200px; height: 200px; background: radial-gradient(circle, rgba(0,212,255,0.06), transparent 70%); bottom: 10%; right: 5%;"></div>
+<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-primary">OpenClaw</div>
+<div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-400">
+<span>Marco Bahe</span>
+<span class="w-1 h-1 rounded-full bg-slate-600"></span>
+<span>Full Funnel</span>
+<span class="w-1 h-1 rounded-full bg-slate-600"></span>
+<span>Março 2026</span>
+</div>
+</div>
+</nav>
+<div class="snap-container" id="main-scroll">
+<!-- 1. Hero Section -->
+<section class="snap-section active" id="hero">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+<div class="reveal-up">
+<div class="w-20 h-20 bg-primary/10 rounded-xl flex items-center justify-center mb-8 border border-primary/20">
+<img alt="Rooster" class="w-12 h-12" src="black-rooster.png"/>
+</div>
+<h1 class="text-7xl md:text-9xl font-bold tracking-tighter leading-none text-white mb-6">
+                    O <span class="text-primary">Marvado</span>
+</h1>
+<p class="text-2xl text-on-surface-variant font-light max-w-xl leading-snug mb-8">
+                    Como eu construí uma equipe de IA que trabalha 24/7 usando OpenClaw.
+                </p>
+<div class="flex items-center gap-4 text-slate-500 font-medium">
+<span>Marco Bahe</span>
+<span>•</span>
+<span>Full Funnel</span>
+<span>•</span>
+<span>Março 2026</span>
+</div>
+</div>
+<div class="relative reveal-up delay-1">
+<div class="aspect-square rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,255,204,0.1)] border border-white/5">
+<img alt="Cinematic Rooster" class="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000" src="black-rooster.png"/>
+</div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/10 blur-3xl rounded-full"></div>
+</div>
+</div>
 </section>
-
-<!-- ==================== SLIDE 2: A PIADA ==================== -->
-<section class="slide mesh-3" id="s2">
-  <div class="max-w-4xl mx-auto text-center">
-    <img src="roosters-v2.png" alt="Galo branco vs galo preto" class="mx-auto mb-10" style="max-height: 60vh; max-height: 60dvh; max-width: 100%; border: none; border-radius: 0;">
-  </div>
+<!-- 2. Three Roosters Section -->
+<section class="snap-section bg-surface-container-low" id="levels">
+<div class="max-w-7xl mx-auto w-full">
+<div class="mb-12 reveal-up">
+<span class="text-primary font-bold tracking-widest uppercase text-xs">O ANALÓGICO</span>
+<h2 class="text-5xl font-bold text-white mt-2">Três galos, três níveis</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-up delay-1">
+<div class="p-8 bg-surface-container rounded-2xl border border-white/5 hover:border-primary/30 transition-all group">
+<span class="material-symbols-outlined text-4xl text-blue-400 mb-6">terminal</span>
+<h3 class="text-2xl font-bold text-white mb-4">Claude Code</h3>
+<div class="inline-block px-2 py-1 bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase rounded mb-4">LÍDER</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Um agente, um modelo, um terminal. Se a Anthropic muda as regras, você é o refém.</p>
+</div>
+<div class="p-8 bg-surface-container rounded-2xl border border-white/5 hover:border-primary/30 transition-all group">
+<span class="material-symbols-outlined text-4xl text-purple-400 mb-6">psychology</span>
+<h3 class="text-2xl font-bold text-white mb-4">Coworking</h3>
+<div class="inline-block px-2 py-1 bg-purple-500/10 text-purple-400 text-[10px] font-bold uppercase rounded mb-4">O QUE TEMOS</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">App desktop da Anthropic. Um agente, um modelo. Depende de infra deles. Muita preça? Muita feature? Você é o refém.</p>
+</div>
+<div class="p-8 bg-surface-container rounded-2xl border border-primary/20 bg-primary/5 hover:border-primary/50 transition-all group">
+<span class="material-symbols-outlined text-4xl text-primary mb-6">hub</span>
+<h3 class="text-2xl font-bold text-white mb-4">OpenClaw</h3>
+<div class="inline-block px-2 py-1 bg-primary text-black text-[10px] font-bold uppercase rounded mb-4">O MARVADO</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Multi-modelo com fallback. Multi-agente nativo. Sua infra, seus dados. Agnóstico — troque modelo editando um JSON.</p>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ==================== SLIDE 3: ANALOGIA ==================== -->
-<section class="slide mesh-2" id="s3">
-  <div class="max-w-5xl mx-auto">
-    <p class="pill pill-green mb-4">A Analogia</p>
-    <h2 class="heading-lg mb-10">Três galos, três níveis</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 grid-responsive">
-      <!-- Claude Code -->
-      <div class="glass reveal-item">
-        <div class="mb-4" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(0,212,255,0.1); display: flex; align-items: center; justify-content: center;">
-          <i data-lucide="terminal" style="width: 24px; height: 24px; color: #00d4ff;"></i>
-        </div>
-        <h3 class="heading-md mb-1">Claude Code</h3>
-        <p class="pill pill-blue mb-4" style="font-size: 0.65rem;">O bom</p>
-        <p class="body-md">Um agente, um modelo, um terminal. Se a Anthropic muda regras, você é refém.</p>
-      </div>
-      <!-- Coworking -->
-      <div class="glass reveal-item">
-        <div class="mb-4" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(168,85,247,0.1); display: flex; align-items: center; justify-content: center;">
-          <i data-lucide="monitor" style="width: 24px; height: 24px; color: #a855f7;"></i>
-        </div>
-        <h3 class="heading-md mb-1">Coworking</h3>
-        <p class="pill pill-purple mb-4" style="font-size: 0.65rem;">O bom também</p>
-        <p class="body-md">App desktop da Anthropic. Um agente, um modelo. Depende da infra deles. Muda preço? Muda feature? Você é refém.</p>
-      </div>
-      <!-- OpenClaw -->
-      <div class="glass border-animate reveal-item" style="border: 1px solid rgba(34,197,94,0.3);">
-        <div class="mb-4" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center;">
-          <i data-lucide="zap" style="width: 24px; height: 24px; color: #22c55e;"></i>
-        </div>
-        <h3 class="heading-md mb-1" style="color: #22c55e;">OpenClaw</h3>
-        <p class="pill pill-green mb-4" style="font-size: 0.65rem;">O marvado</p>
-        <p class="body-md">Multi-modelo com fallback. Multi-agente nativo. Sua infra, seus dados. Agnóstico — troca modelo editando um JSON.</p>
-      </div>
-    </div>
-  </div>
+<!-- 3. Comparison Section -->
+<section class="snap-section" id="comparison">
+<div class="max-w-7xl mx-auto w-full">
+<div class="mb-12 reveal-up text-center">
+<span class="text-primary font-bold tracking-widest uppercase text-xs">COMPARATIVO</span>
+<h2 class="text-5xl font-bold text-white mt-2">Por que o OpenClaw é o <span class="text-primary">marvado</span>?</h2>
+</div>
+<div class="reveal-up delay-1 overflow-x-auto">
+<table class="w-full custom-table text-sm text-on-surface-variant">
+<thead>
+<tr class="text-white border-b border-white/10">
+<th class="py-6">Feature</th>
+<th>Claude Code</th>
+<th>Coworking</th>
+<th class="text-primary">OpenClaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multi-modelo com fallback (Claude, GPT, Gemini, Grok)</td>
+<td class="text-red-500">✘</td>
+<td class="text-red-500">✘</td>
+<td class="text-primary">✔</td>
+</tr>
+<tr>
+<td>Multi-agente nativo (Ex: agentes na mesma conversa)</td>
+<td class="text-red-500">✘</td>
+<td class="text-red-500">✘</td>
+<td class="text-primary">✔</td>
+</tr>
+<tr>
+<td>Infraestrutura sua (dados, conversas, memórias)</td>
+<td class="text-red-500">✘</td>
+<td class="text-red-500">✘</td>
+<td class="text-primary">✔</td>
+</tr>
+<tr>
+<td>Interface flexível (Telegram, Slack, Discord, qualquer frontend)</td>
+<td class="text-red-500">✘</td>
+<td class="text-red-500">✘</td>
+<td class="text-primary">✔</td>
+</tr>
+<tr>
+<td>Ecossistema de plugins (Mem0, Cognee, Agent Browser...)</td>
+<td class="text-yellow-500">▲</td>
+<td class="text-red-500">✘</td>
+<td class="text-primary">✔</td>
+</tr>
+<tr>
+<td>Portabilidade (troca de modelo sem reescrever nada)</td>
+<td class="text-red-500">✘</td>
+<td class="text-red-500">✘</td>
+<td class="text-primary">✔</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-
-<!-- ==================== SLIDE 4: COMPARATIVO ==================== -->
-<section class="slide mesh-1" id="s4">
-  <div class="max-w-4xl mx-auto">
-    <p class="pill pill-blue mb-4">Comparativo</p>
-    <h2 class="heading-lg mb-8">Por que o OpenClaw é o <span class="grad-green">marvado</span>?</h2>
-    <div class="glass" style="padding: 0; overflow: hidden;">
-      <div class="compare-grid" style="font-weight: 600; color: #e2e8f0; background: rgba(255,255,255,0.03);">
-        <div style="padding: 1rem;">Feature</div>
-        <div class="check">Claude Code</div>
-        <div class="check">Coworking</div>
-        <div class="check" style="color: #22c55e;">OpenClaw</div>
-      </div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Multi-modelo com fallback (Claude, GPT, Gemini, Grok)</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Multi-agente nativo (8+ agentes no mesmo gateway)</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Infraestrutura sua (dados, conversas, memórias)</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Interface flexível (Telegram, Slack, Discord, qualquer frontend)</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Ecossistema de plugins (Mem0, Cognee, Agent Browser...)</div><div class="check">⚠️</div><div class="check">❌</div><div class="check">✅</div></div>
-      <div class="compare-grid reveal-item"><div style="color: #94a3b8;">Portabilidade (migra de modelo sem reescrever nada)</div><div class="check">❌</div><div class="check">❌</div><div class="check">✅</div></div>
-    </div>
-  </div>
+<!-- 4. Structure Section -->
+<section class="snap-section bg-surface-container-low" id="structure">
+<div class="max-w-7xl mx-auto w-full">
+<div class="mb-16 reveal-up text-center">
+<span class="text-primary font-bold tracking-widest uppercase text-xs">O CONCEITO</span>
+<h2 class="text-5xl font-bold text-white mt-2">Estruture como uma <span class="text-primary">empresa</span></h2>
+<p class="text-on-surface-variant mt-4">Você não contrata uma pessoa para fazer tudo. Por que faria isso com IA?</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 reveal-up delay-1">
+<div class="p-6 bg-surface-container rounded-xl border border-white/5">
+<div class="text-blue-400 font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">code</span> DESENVOLVIMENTO
+                    </div>
+<ul class="space-y-3 text-xs text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> <b>Dexter:</b> Head Dev, Arquitetura, Análise</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> <b>Sub-agentes:</b> Claude Code, Coders on-demand</li>
+</ul>
+</div>
+<div class="p-6 bg-surface-container rounded-xl border border-white/5">
+<div class="text-purple-400 font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">palette</span> MARKETING &amp; CRIATIVO
+                    </div>
+<ul class="space-y-3 text-xs text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> <b>Olivetto:</b> Dir. Criativo</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> <b>Steven:</b> Roteirista</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> <b>David:</b> Copywriter</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> <b>Jony:</b> Designer</li>
+</ul>
+</div>
+<div class="p-6 bg-surface-container rounded-xl border border-white/5">
+<div class="text-green-400 font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">support_agent</span> SUPORTE
+                    </div>
+<ul class="space-y-3 text-xs text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> <b>Full Bot:</b> Atendimento 24/7</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> <b>Aprendiz:</b> KB & Treinamento, changelog GHL</li>
+</ul>
+</div>
+<div class="p-6 bg-primary/10 rounded-xl border border-primary/20 flex flex-col justify-center items-center text-center">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black font-bold mb-4">MB</div>
+<div class="font-bold text-white">Marco — CEO</div>
+<p class="text-[10px] text-on-surface-variant mt-2 uppercase">Visão, decisão, negócios</p>
+<div class="w-full h-px bg-white/10 my-4"></div>
+<div class="text-[10px] text-primary font-bold uppercase">Fully — COO / Orquestrador</div>
+</div>
+</div>
+<p class="text-center text-xs text-on-surface-variant mt-8 italic">Cada agente permanente pode mobilizar <b>seus próprios sub-agentes</b> conforme a demanda.</p>
+</div>
 </section>
-
-<!-- ==================== SLIDE 5: EMPRESA ==================== -->
-<section class="slide mesh-3" id="s5">
-  <div class="max-w-5xl mx-auto text-center">
-    <p class="pill pill-purple mb-4">Mindset</p>
-    <h2 class="heading-lg mb-3">Estruture como uma <span class="grad-blue">empresa</span></h2>
-    <p class="body-md mb-10 max-w-xl mx-auto">Você não contrata uma pessoa pra fazer tudo.<br>Por que faria isso com IA?</p>
-
-    <!-- CEO + COO -->
-    <div class="flex flex-col items-center gap-1 mb-2">
-      <div class="glass reveal-item inline-flex items-center gap-3" style="padding: 0.6rem 1.5rem; border: 1px solid rgba(249,115,22,0.3);">
-        <span class="text-xl">👔</span>
-        <div class="text-left">
-          <p class="font-bold text-sm" style="color: #f97316;">Marco — CEO</p>
-          <p class="text-xs" style="color: #64748b;">Visão, decisões, negócio</p>
-        </div>
-      </div>
-      <div class="w-0.5 h-5" style="background: rgba(255,255,255,0.15);"></div>
-      <div class="glass border-animate reveal-item inline-flex items-center gap-3" style="padding: 0.6rem 1.5rem;">
-        <span class="text-xl">🧠</span>
-        <div class="text-left">
-          <p class="font-bold text-sm" style="color: #00d4ff;">Fully — COO / Orquestrador</p>
-          <p class="text-xs" style="color: #64748b;">Coordena tudo, delega, acompanha</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Lines to departments -->
-    <div class="w-0.5 h-4 mx-auto" style="background: rgba(255,255,255,0.1);"></div>
-    <div class="mx-auto mb-2" style="width: 70%; height: 1px; background: rgba(255,255,255,0.1);"></div>
-
-    <!-- Departments -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 grid-responsive">
-      <!-- Dept Desenvolvimento -->
-      <div class="glass reveal-item" style="border-top: 3px solid #00d4ff;">
-        <p class="font-bold text-xs uppercase tracking-wider mb-3" style="color: #00d4ff;">⚙️ Desenvolvimento</p>
-        <div class="space-y-2">
-          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(0,212,255,0.05);">
-            <span>🔍</span>
-            <div><p class="text-xs font-bold" style="color: #e2e8f0;">Dexter <span style="color: #64748b; font-weight: 400;">· Head</span></p><p class="text-xs" style="color: #64748b;">Arquitetura, pesquisa, análise</p></div>
-          </div>
-          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(255,255,255,0.02);">
-            <span>🔧</span>
-            <div><p class="text-xs font-bold" style="color: #94a3b8;">Sub-agentes</p><p class="text-xs" style="color: #64748b;">Claude Code, Codex, sob demanda</p></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dept Marketing -->
-      <div class="glass reveal-item" style="border-top: 3px solid #a855f7;">
-        <p class="font-bold text-xs uppercase tracking-wider mb-3" style="color: #a855f7;">🎨 Marketing & Criativo</p>
-        <div class="space-y-2">
-          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(168,85,247,0.05);">
-            <span>🎨</span>
-            <div><p class="text-xs font-bold" style="color: #e2e8f0;">Olivetto <span style="color: #64748b; font-weight: 400;">· Dir. Criativo</span></p></div>
-          </div>
-          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(255,255,255,0.02);">
-            <span>🎬</span>
-            <div><p class="text-xs font-bold" style="color: #e2e8f0;">Steven <span style="color: #64748b; font-weight: 400;">· Roteirista</span></p></div>
-          </div>
-          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(255,255,255,0.02);">
-            <span>✍️</span>
-            <div><p class="text-xs font-bold" style="color: #e2e8f0;">David <span style="color: #64748b; font-weight: 400;">· Copywriter</span></p></div>
-          </div>
-          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(255,255,255,0.02);">
-            <span>🖌️</span>
-            <div><p class="text-xs font-bold" style="color: #e2e8f0;">Jony <span style="color: #64748b; font-weight: 400;">· Designer</span></p></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dept Suporte -->
-      <div class="glass reveal-item" style="border-top: 3px solid #22c55e;">
-        <p class="font-bold text-xs uppercase tracking-wider mb-3" style="color: #22c55e;">💬 Suporte</p>
-        <div class="space-y-2">
-          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(34,197,94,0.05);">
-            <span>🤖</span>
-            <div><p class="text-xs font-bold" style="color: #e2e8f0;">Full Bot <span style="color: #64748b; font-weight: 400;">· Atendimento 24/7</span></p><p class="text-xs" style="color: #64748b;">1.040+ clientes, &lt;1min resposta</p></div>
-          </div>
-          <div class="flex items-center gap-2 p-2 rounded-lg" style="background: rgba(255,255,255,0.02);">
-            <span>📚</span>
-            <div><p class="text-xs font-bold" style="color: #e2e8f0;">Aprendiz <span style="color: #64748b; font-weight: 400;">· KB & Treinamento</span></p><p class="text-xs" style="color: #64748b;">636 artigos, atualiza sozinho</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p class="body-md mt-6 reveal-item text-center">Cada agente permanente pode mobilizar <strong style="color:#e2e8f0;">seus próprios sub-agentes</strong> conforme a demanda.</p>
-  </div>
+<!-- 5. Team in Action Section -->
+<section class="snap-section" id="action">
+<div class="max-w-7xl mx-auto w-full text-center">
+<div class="mb-12 reveal-up">
+<span class="text-primary font-bold tracking-widest uppercase text-xs">NA PRÁTICA</span>
+<h2 class="text-5xl font-bold text-white mt-2">O time <span class="text-primary">trabalhando</span></h2>
+<p class="text-on-surface-variant mt-4">Slack real. Agentes colaborando em tempo real. Cada um no seu papel.</p>
+</div>
+<div class="reveal-up delay-1 relative group">
+<div class="bg-[#1a1d21] rounded-xl overflow-hidden shadow-2xl border border-white/10 aspect-video max-w-4xl mx-auto">
+<img alt="Slack Collaboration Interface" class="w-full h-full object-cover opacity-50 grayscale" src="slack-team.png"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center p-12 text-left">
+<div class="w-full max-w-md space-y-4">
+<div class="bg-black/40 backdrop-blur p-4 rounded-lg border border-white/5 reveal-up">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-6 h-6 bg-purple-500 rounded text-[10px] flex items-center justify-center font-bold">O</div>
+<span class="text-xs font-bold text-white">Olivetto (IA)</span>
+<span class="text-[8px] text-slate-500">14:02</span>
+</div>
+<p class="text-xs text-slate-300">David, analisei o briefing do cliente. O tom precisa ser mais agressivo na conversão.</p>
+</div>
+<div class="bg-black/40 backdrop-blur p-4 rounded-lg border border-white/5 ml-8 reveal-up delay-1">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-6 h-6 bg-blue-500 rounded text-[10px] flex items-center justify-center font-bold">D</div>
+<span class="text-xs font-bold text-white">David (IA)</span>
+<span class="text-[8px] text-slate-500">14:03</span>
+</div>
+<p class="text-xs text-slate-300">Entendido. Reajustando a copy da landing page agora mesmo. @Fully, avise o Marco.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ==================== SLIDE 5b: TIME EM AÇÃO (SLACK) ==================== -->
-<section class="slide mesh-3" id="s5b">
-  <div class="max-w-5xl mx-auto text-center">
-    <p class="pill pill-green mb-4">Na prática</p>
-    <h2 class="heading-lg mb-6">O time <span class="grad-green">trabalhando</span></h2>
-    <p class="body-md mb-8">Slack real. Agentes colaborando em tempo real. Cada um no seu papel.</p>
-    <div class="reveal-item">
-      <img src="slack-team.png" alt="Time de agentes no Slack" class="mx-auto rounded-2xl" style="max-height: 55vh; max-height: 55dvh; box-shadow: 0 25px 80px rgba(0,0,0,0.6), 0 0 40px rgba(34,197,94,0.08); border: 1px solid rgba(255,255,255,0.08);">
-    </div>
-  </div>
+<!-- 6. Support in Action -->
+<section class="snap-section bg-surface-container-low" id="support">
+<div class="max-w-7xl mx-auto w-full">
+<div class="mb-12 reveal-up">
+<span class="text-primary font-bold tracking-widest uppercase text-xs">CASO DE USO #1</span>
+<h2 class="text-5xl font-bold text-white mt-2">Suporte <span class="text-primary">em ação</span></h2>
+<p class="text-on-surface-variant mt-4">Full Bot atendendo uma cliente real da Full Funnel. Sem intervenção humana.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="reveal-up delay-1 bg-black/30 rounded-xl p-4 border border-white/5">
+<img alt="Support Dashboard" class="w-full rounded-lg shadow-lg opacity-80" src="fullbot-action.png"/>
+</div>
+<div class="space-y-6 reveal-up delay-2">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-green-400">auto_awesome</span>
+<div>
+<h4 class="font-bold text-white">Autônomo</h4>
+<p class="text-sm text-on-surface-variant">Responde dúvidas técnicas consultando base de 636 artigos. Sem humano.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-blue-400">psychology_alt</span>
+<div>
+<h4 class="font-bold text-white">Auto-aprendizado</h4>
+<p class="text-sm text-on-surface-variant">Aprendiz analisa conversas passadas e melhora as respostas continuamente.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-yellow-400">bolt</span>
+<div>
+<h4 class="font-bold text-white">Escalação Inteligente</h4>
+<p class="text-sm text-on-surface-variant">Quando não sabe, escala para humano com o contexto completo da conversa.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ==================== SLIDE 6: CASO 1 — SUPORTE REAL ==================== -->
-<section class="slide mesh-2" id="s6">
-  <div class="max-w-5xl mx-auto">
-    <p class="pill pill-green mb-4">Caso de uso #1</p>
-    <h2 class="heading-lg mb-6">Suporte <span class="grad-green">em ação</span></h2>
-    <p class="body-md mb-6">Full Bot atendendo uma cliente real da Full Funnel. Sem intervenção humana.</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 grid-responsive">
-      <div class="reveal-item">
-        <img src="fullbot-action.png" alt="Full Bot atendendo cliente" class="rounded-2xl w-full" style="box-shadow: 0 20px 60px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.06);">
-      </div>
-      <div class="flex flex-col justify-center gap-4">
-        <div class="glass accent-green reveal-item">
-          <p class="font-semibold text-sm mb-1" style="color: #22c55e;">🤖 Autônomo</p>
-          <p class="body-md">Responde dúvidas técnicas consultando base de 636 artigos. Sem humano.</p>
-        </div>
-        <div class="glass accent-blue reveal-item">
-          <p class="font-semibold text-sm mb-1" style="color: #00d4ff;">📚 Auto-aprendizado</p>
-          <p class="body-md">Aprendiz analisa conversas passadas e melhora as respostas continuamente.</p>
-        </div>
-        <div class="glass accent-purple reveal-item">
-          <p class="font-semibold text-sm mb-1" style="color: #a855f7;">⚡ Escalação inteligente</p>
-          <p class="body-md">Quando não sabe, escala para humano com contexto completo da conversa.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- 7. Memory Stack -->
+<section class="snap-section" id="memory">
+<div class="max-w-7xl mx-auto w-full">
+<div class="mb-16 reveal-up text-center">
+<span class="text-primary font-bold tracking-widest uppercase text-xs">O SEGREDO</span>
+<h2 class="text-5xl font-bold text-white mt-2">Stack de <span class="text-primary">memória</span> em 5 camadas</h2>
+<p class="text-on-surface-variant mt-4">Claude Code tem CLAUDE.md. Coworking tem arquivos. Nós construímos algo <span class="text-white italic">muito maior</span>.</p>
+</div>
+<div class="space-y-4 max-w-3xl mx-auto reveal-up delay-1">
+<div class="p-5 bg-surface-container rounded-lg border-l-4 border-blue-500 flex items-center gap-6">
+<span class="material-symbols-outlined text-blue-500">description</span>
+<div>
+<h4 class="font-bold text-white">MEMORY.md + Daily Notes</h4>
+<p class="text-xs text-on-surface-variant">Memória a curto de longo prazo + diário de atividades. Acorda sabendo onde parou.</p>
+</div>
+</div>
+<div class="p-5 bg-surface-container rounded-lg border-l-4 border-green-500 flex items-center gap-6">
+<span class="material-symbols-outlined text-green-500">history</span>
+<div>
+<h4 class="font-bold text-white">Mem0 – Memória persistente</h4>
+<p class="text-xs text-on-surface-variant">Gera fatos automaticamente. Sobrevive compactação, restarts, sessões novas.</p>
+</div>
+</div>
+<div class="p-5 bg-surface-container rounded-lg border-l-4 border-purple-500 flex items-center gap-6">
+<span class="material-symbols-outlined text-purple-500">search</span>
+<div>
+<h4 class="font-bold text-white">QMD — Busca semântica local</h4>
+<p class="text-xs text-on-surface-variant">160+ arquivos indexados. Busca por significado, local, sem custo de API.</p>
+</div>
+</div>
+<div class="p-5 bg-surface-container rounded-lg border-l-4 border-yellow-500 flex items-center gap-6">
+<span class="material-symbols-outlined text-yellow-500">hub</span>
+<div>
+<h4 class="font-bold text-white">Cognee – Grafo de conhecimento</h4>
+<p class="text-xs text-on-surface-variant">636 artigos em grafo. Entende relações entre entidades, não só similaridade.</p>
+</div>
+</div>
+<div class="p-5 bg-surface-container rounded-lg border-l-4 border-primary flex items-center gap-6">
+<span class="material-symbols-outlined text-primary">folder_shared</span>
+<div>
+<h4 class="font-bold text-white">Organização por projetos</h4>
+<p class="text-xs text-on-surface-variant">Cada projeto pasta + memória .md próprio. Contextos isolados.</p>
+</div>
+</div>
+</div>
+<p class="text-center mt-8 text-on-surface-variant italic">"Resolvemos o problema #1 de agentes de IA: a amnésia."</p>
+</div>
 </section>
-
-<!-- Slide 7 removido - suporte já coberto no slide 6 -->
-
-<!-- ==================== SLIDE 8: MEMÓRIA AVANÇADA ==================== -->
-<section class="slide mesh-1" id="s8">
-  <div class="max-w-4xl mx-auto">
-    <p class="pill pill-purple mb-4">O segredo</p>
-    <h2 class="heading-lg mb-4">Stack de <span class="grad-purple">memória</span> em 5 camadas</h2>
-    <p class="body-md mb-6">Claude Code tem CLAUDE.md. Coworking tem arquivos. Nós construímos algo <strong style="color: #e2e8f0;">muito maior</strong>.</p>
-    <div class="space-y-4">
-      <div class="glass accent-blue reveal-item flex items-start gap-4">
-        <div class="flex-shrink-0" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0,212,255,0.1); display: flex; align-items: center; justify-content: center;"><i data-lucide="file-text" style="width: 20px; height: 20px; color: #00d4ff;"></i></div>
-        <div><p class="font-semibold text-sm mb-1" style="color: #00d4ff;">MEMORY.md + Daily Notes</p><p class="body-md">Memória curada de longo prazo + diário de atividades. Acorda sabendo onde parou.</p></div>
-      </div>
-      <div class="glass accent-green reveal-item flex items-start gap-4">
-        <div class="flex-shrink-0" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center;"><i data-lucide="brain" style="width: 20px; height: 20px; color: #22c55e;"></i></div>
-        <div><p class="font-semibold text-sm mb-1" style="color: #22c55e;">Mem0 — Memória persistente</p><p class="body-md">Extrai fatos automaticamente. Sobrevive compactação, restarts, sessões novas.</p></div>
-      </div>
-      <div class="glass accent-purple reveal-item flex items-start gap-4">
-        <div class="flex-shrink-0" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(168,85,247,0.1); display: flex; align-items: center; justify-content: center;"><i data-lucide="search" style="width: 20px; height: 20px; color: #a855f7;"></i></div>
-        <div><p class="font-semibold text-sm mb-1" style="color: #a855f7;">QMD — Busca semântica local</p><p class="body-md">160+ arquivos indexados. Busca por significado, local, sem custo de API.</p></div>
-      </div>
-      <div class="glass accent-orange reveal-item flex items-start gap-4">
-        <div class="flex-shrink-0" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(249,115,22,0.1); display: flex; align-items: center; justify-content: center;"><i data-lucide="network" style="width: 20px; height: 20px; color: #f97316;"></i></div>
-        <div><p class="font-semibold text-sm mb-1" style="color: #f97316;">Cognee — Grafo de conhecimento</p><p class="body-md">636 artigos em grafo. Entende relações entre entidades, não só similaridade.</p></div>
-      </div>
-      <div class="glass reveal-item flex items-start gap-4" style="border-left: 3px solid #ec4899;">
-        <div class="flex-shrink-0" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(236,72,153,0.1); display: flex; align-items: center; justify-content: center;"><i data-lucide="folder-tree" style="width: 20px; height: 20px; color: #ec4899;"></i></div>
-        <div><p class="font-semibold text-sm mb-1" style="color: #ec4899;">Organização por projetos</p><p class="body-md">Cada projeto: pasta + memoria.md próprio. Contextos isolados.</p></div>
-      </div>
-    </div>
-    <div class="mt-6 reveal-item" style="border-left: 3px solid #a855f7; padding-left: 1.5rem;">
-      <p class="heading-md" style="color: #94a3b8; font-style: italic; font-weight: 400;">"Resolvemos o problema #1 de agentes de IA: a amnésia."</p>
-    </div>
-  </div>
+<!-- 8. Best Practices -->
+<section class="snap-section bg-surface-container-low" id="practices">
+<div class="max-w-7xl mx-auto w-full">
+<div class="mb-12 reveal-up">
+<span class="text-primary font-bold tracking-widest uppercase text-xs">LIÇÕES</span>
+<h2 class="text-5xl font-bold text-white mt-2">Boas práticas <span class="text-primary-container">(aprendidas errando)</span></h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-up delay-1">
+<div class="p-6 bg-surface-container rounded-xl border border-white/5 space-y-4">
+<span class="material-symbols-outlined text-primary">save</span>
+<h4 class="font-bold text-white">Invista em memória</h4>
+<p class="text-sm text-on-surface-variant">Sem memória o agente acorda zerado. MEMORY.md, daily notes, Mem0 = continuidade real.</p>
+</div>
+<div class="p-6 bg-surface-container rounded-xl border border-white/5 space-y-4">
+<span class="material-symbols-outlined text-blue-400">group_work</span>
+<h4 class="font-bold text-white">Especialize seus agentes</h4>
+<p class="text-sm text-on-surface-variant">Generalista é medíocre. Especialistas em suporte, código, pesquisa — cada um excelente no seu escopo.</p>
+</div>
+<div class="p-6 bg-surface-container rounded-xl border border-white/5 space-y-4">
+<span class="material-symbols-outlined text-purple-400">fingerprint</span>
+<h4 class="font-bold text-white">SOUL.md é tudo</h4>
+<p class="text-sm text-on-surface-variant">Personalidade, regras, limites. Sem isso, robô genérico. Com isso, parceiro de verdade.</p>
+</div>
+<div class="p-6 bg-surface-container rounded-xl border border-white/5 space-y-4">
+<span class="material-symbols-outlined text-yellow-400">bolt</span>
+<h4 class="font-bold text-white">Dê superpoderes</h4>
+<p class="text-sm text-on-surface-variant">ClawHub: Github, Browser, design, busca semântica. Cada skill = capacidade nova.</p>
+</div>
+<div class="p-6 bg-surface-container rounded-xl border border-white/5 space-y-4">
+<span class="material-symbols-outlined text-red-400">cached</span>
+<h4 class="font-bold text-white">Monitore o contexto</h4>
+<p class="text-sm text-on-surface-variant">Sessões longas corrompem. Alertas em 85% — restart preventivo = zero downtime.</p>
+</div>
+</div>
+</div>
 </section>
-
-<!-- Slide 9 removido - cron/heartbeats não é diferencial (Coworking tem) -->
-
-<!-- Slide 10 removido - números genéricos -->
-
-<!-- ==================== SLIDE 11: BOAS PRÁTICAS ==================== -->
-<section class="slide mesh-2" id="s11">
-  <div class="max-w-4xl mx-auto">
-    <p class="pill pill-blue mb-4">Lições</p>
-    <h2 class="heading-lg mb-8">Boas práticas <span class="grad-blue">(aprendidas errando)</span></h2>
-    <div class="space-y-4">
-      <div class="glass reveal-item flex items-start gap-4">
-        <div class="flex-shrink-0" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0,212,255,0.1); display: flex; align-items: center; justify-content: center;"><i data-lucide="brain" style="width: 20px; height: 20px; color: #00d4ff;"></i></div>
-        <div><p class="font-semibold text-sm mb-1" style="color: #e2e8f0;">Invista em memória</p><p class="body-md">Sem memória o agente acorda zerado. MEMORY.md, daily notes, Mem0 = continuidade real.</p></div>
-      </div>
-      <div class="glass reveal-item flex items-start gap-4">
-        <div class="flex-shrink-0" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center;"><i data-lucide="users" style="width: 20px; height: 20px; color: #22c55e;"></i></div>
-        <div><p class="font-semibold text-sm mb-1" style="color: #e2e8f0;">Especialize os sub-agentes</p><p class="body-md">Um generalista é medíocre. Especialistas em suporte, código, pesquisa — cada um excelente no escopo.</p></div>
-      </div>
-      <div class="glass reveal-item flex items-start gap-4">
-        <div class="flex-shrink-0" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(168,85,247,0.1); display: flex; align-items: center; justify-content: center;"><i data-lucide="file-heart" style="width: 20px; height: 20px; color: #a855f7;"></i></div>
-        <div><p class="font-semibold text-sm mb-1" style="color: #e2e8f0;">SOUL.md é tudo</p><p class="body-md">Personalidade, regras, limites. Sem isso, robô genérico. Com isso, parceiro de verdade.</p></div>
-      </div>
-      <div class="glass reveal-item flex items-start gap-4">
-        <div class="flex-shrink-0" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(249,115,22,0.1); display: flex; align-items: center; justify-content: center;"><i data-lucide="puzzle" style="width: 20px; height: 20px; color: #f97316;"></i></div>
-        <div><p class="font-semibold text-sm mb-1" style="color: #e2e8f0;">Skills são superpoderes</p><p class="body-md">ClawHub: GitHub, browser, design, busca semântica. Cada skill = capacidade nova.</p></div>
-      </div>
-      <div class="glass reveal-item flex items-start gap-4">
-        <div class="flex-shrink-0" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(236,72,153,0.1); display: flex; align-items: center; justify-content: center;"><i data-lucide="shield-alert" style="width: 20px; height: 20px; color: #ec4899;"></i></div>
-        <div><p class="font-semibold text-sm mb-1" style="color: #e2e8f0;">Monitore o contexto</p><p class="body-md">Sessões longas corrompem. Alertas em 85% + restart preventivo = zero downtime.</p></div>
-      </div>
-    </div>
-  </div>
+<!-- 9. Infrastructure -->
+<section class="snap-section" id="infra">
+<div class="max-w-7xl mx-auto w-full">
+<div class="mb-12 reveal-up">
+<span class="text-primary font-bold tracking-widest uppercase text-xs">INFRAESTRUTURA</span>
+<h2 class="text-5xl font-bold text-white mt-2">O caminho <span class="text-primary">real</span></h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch reveal-up delay-1">
+<div class="space-y-4">
+<div class="p-6 bg-surface-container rounded-xl border border-white/5">
+<div class="flex justify-between mb-4">
+<span class="font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined text-blue-400">computer</span> Mac Mini</span>
+<span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 text-[10px] rounded">LOCAL</span>
+</div>
+<p class="text-xs text-on-surface-variant">Orquestrador Desktop, navegador, terminal. Conectado via Telegram.</p>
+</div>
+<div class="p-6 bg-surface-container rounded-xl border border-white/5">
+<div class="flex justify-between mb-4">
+<span class="font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined text-purple-400">cloud</span> VPS Hostinger</span>
+<span class="px-2 py-0.5 bg-purple-500/10 text-purple-400 text-[10px] rounded">PRODUÇÃO</span>
+</div>
+<p class="text-xs text-on-surface-variant">Bot de suporte 24/7. Containers isolados. Mais barato que qualquer funcionário.</p>
+</div>
+<div class="p-6 bg-surface-container rounded-xl border border-white/5 opacity-50">
+<div class="flex justify-between mb-4">
+<span class="font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined text-slate-400">settings_input_component</span> Futuro</span>
+<span class="px-2 py-0.5 bg-slate-500/10 text-slate-400 text-[10px] rounded">ROTEIRO</span>
+</div>
+<p class="text-xs text-on-surface-variant">VPS dedicada como principal. Mac Mini como auxiliar. Escalável.</p>
+</div>
+</div>
+<div class="bg-primary/5 rounded-2xl border border-primary/20 p-10 flex flex-col justify-between">
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500">cloud_done</span>
+<span class="text-sm text-on-surface-variant"><b>Começou:</b> VPS Hostinger</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-blue-400">devices</span>
+<span class="text-sm text-on-surface-variant"><b>Evoluiu:</b> Mac Mini dedicado</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">rocket_launch</span>
+<span class="text-sm text-on-surface-variant"><b>Agora:</b> VPS (produção) + Mac Mini (auxiliar)</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500">fast_forward</span>
+<span class="text-sm text-on-surface-variant"><b>Próximo:</b> VPS dedicada + multi-servidor</span>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-primary/10">
+<div class="text-4xl font-bold text-primary">~$250/mês</div>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-2">Pelos quatro principais agentes. Preço por mês.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ==================== SLIDE 12: INFRA ==================== -->
-<section class="slide mesh-1" id="s12">
-  <div class="max-w-5xl mx-auto">
-    <p class="pill pill-orange mb-4">Infraestrutura</p>
-    <h2 class="heading-lg mb-8">O caminho <span class="grad-orange">real</span></h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 grid-responsive">
-      <div class="space-y-4">
-        <div class="glass accent-blue reveal-item">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xl">🖥️</span>
-            <h3 class="heading-md">Mac Mini</h3>
-            <span class="pill pill-blue" style="font-size: 0.6rem;">Principal</span>
-          </div>
-          <p class="body-md">Orquestrador. Desktop, navegador, terminal. Conectado via Telegram.</p>
-        </div>
-        <div class="glass accent-purple reveal-item">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xl">☁️</span>
-            <h3 class="heading-md">VPS Hostinger</h3>
-            <span class="pill pill-purple" style="font-size: 0.6rem;">Produção</span>
-          </div>
-          <p class="body-md">Bot de suporte 24/7. Containers isolados. Mais barato que qualquer funcionário.</p>
-        </div>
-        <div class="glass accent-green reveal-item">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xl">🔮</span>
-            <h3 class="heading-md">Futuro</h3>
-            <span class="pill pill-green" style="font-size: 0.6rem;">Roadmap</span>
-          </div>
-          <p class="body-md">VPS dedicada como principal. Mac Mini como auxiliar. Escala real.</p>
-        </div>
-      </div>
-      <div class="flex flex-col justify-center reveal-item">
-        <div class="glass" style="background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(168,85,247,0.05));">
-          <p class="body-lg mb-4" style="line-height: 2.2;">
-            ☁️ <strong style="color:#e2e8f0;">Começou:</strong> VPS Hostinger<br>
-            🖥️ <strong style="color:#e2e8f0;">Evoluiu:</strong> Mac Mini dedicado<br>
-            🔀 <strong style="color:#e2e8f0;">Agora:</strong> VPS (produção) + Mac Mini (auxiliar)<br>
-            🚀 <strong style="color:#e2e8f0;">Próximo:</strong> VPS dedicada + multi-servidor
-          </p>
-          <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; margin-top: 0.5rem;">
-            <p class="stat-number grad-green" style="font-size: 2rem;">~$250/mês</p>
-            <p class="text-xs mt-1" style="color: #64748b;">Menos que um estagiário. Mais que um time.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- 10. Closing/CTA -->
+<section class="snap-section" id="cta">
+<div class="max-w-5xl mx-auto w-full text-center">
+<div class="reveal-up mb-16">
+<h3 class="text-3xl text-on-surface-variant font-light mb-4">Quem você queria ter ao seu lado numa briga?</h3>
+<h2 class="text-5xl md:text-7xl font-bold text-white tracking-tighter">O galo bom ou o <span class="text-primary italic uppercase">Marvado</span>?</h2>
+<p class="text-on-surface-variant mt-8 text-xl">Crie sua equipe de agentes <br/> e <span class="text-primary font-bold">parta pra cima do mercado.</span></p>
+</div>
+<div class="reveal-up delay-1 bg-surface-container rounded-2xl p-12 border border-primary/20 relative overflow-hidden">
+<span class="material-symbols-outlined text-6xl text-primary mb-8">rocket</span>
+<h2 class="text-4xl font-bold text-white mb-8">Monte o seu time</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="space-y-2">
+<div class="text-primary font-bold">1. Instale</div>
+<p class="text-xs text-on-surface-variant">Openclaw.ai 5 minutos de setup</p>
+</div>
+<div class="space-y-2">
+<div class="text-primary font-bold">2. Configure</div>
+<p class="text-xs text-on-surface-variant">SOUL.md + MEMORY.md Defina a personalidade</p>
+</div>
+<div class="space-y-2">
+<div class="text-primary font-bold">3. Conecte</div>
+<p class="text-xs text-on-surface-variant">Telegram, Discord, Slack Converse de qualquer lugar</p>
+</div>
+</div>
+<div class="flex flex-wrap justify-center gap-4">
+<a class="bg-primary text-black px-8 py-3 rounded-lg font-bold flex items-center gap-2 hover:scale-105 transition-transform" href="https://github.com/openclaw/openclaw">
+                        github.com/openclaw/openclaw
+                    </a>
+</div>
+</div>
+<div class="mt-20 reveal-up delay-2">
+<h2 class="text-6xl font-bold text-white mb-4">Obrigado! 👋</h2>
+<div class="text-2xl font-bold text-primary">Marco Bahe</div>
+<div class="text-sm text-on-surface-variant mt-2">Full Funnel • @Marcobahe</div>
+</div>
+<div class="absolute bottom-8 left-0 w-full px-8 flex justify-center text-[10px] text-slate-600">
+<p>Esta apresentação foi criada pelo <b>Fully</b>, meu agente OpenClaw. Em tempo real. Pelo Telegram. 📞</p>
+</div>
+</div>
 </section>
-
-<!-- ==================== SLIDE 13: VISÃO ==================== -->
-<section class="slide mesh-3" id="s13">
-  <div class="max-w-3xl mx-auto text-center flex flex-col justify-center" style="min-height: 70vh;">
-    <div class="reveal-item">
-      <p class="heading-lg mb-10" style="color: #e2e8f0; line-height: 1.4;">
-        Quem você queria ter ao seu lado numa briga?<br>
-        O galo bom ou o <span class="grad-green">MARVADO</span>?
-      </p>
-    </div>
-    <div class="reveal-item">
-      <p class="heading-md" style="color: #94a3b8; line-height: 1.8;">
-        Crie sua equipe de agentes<br>
-        e <strong style="color: #22c55e;">parta pra cima do mercado.</strong>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== SLIDE 14: CTA ==================== -->
-<section class="slide mesh-2" id="s14">
-  <div class="max-w-4xl mx-auto text-center">
-    <div class="mb-6" style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(168,85,247,0.15)); display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-      <i data-lucide="rocket" style="width: 40px; height: 40px; color: #00d4ff;"></i>
-    </div>
-    <h2 class="heading-xl mb-10"><span class="grad-blue">Monte o seu time</span></h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 grid-responsive mb-12">
-      <div class="glass reveal-item text-center">
-        <div class="mb-3 mx-auto" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(0,212,255,0.1); display: flex; align-items: center; justify-content: center;">
-          <i data-lucide="download" style="width: 24px; height: 24px; color: #00d4ff;"></i>
-        </div>
-        <p class="font-bold text-sm mb-1" style="color: #e2e8f0;">1. Instale</p>
-        <p class="body-md">openclaw.ai<br>5 minutos de setup</p>
-      </div>
-      <div class="glass reveal-item text-center">
-        <div class="mb-3 mx-auto" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(168,85,247,0.1); display: flex; align-items: center; justify-content: center;">
-          <i data-lucide="settings" style="width: 24px; height: 24px; color: #a855f7;"></i>
-        </div>
-        <p class="font-bold text-sm mb-1" style="color: #e2e8f0;">2. Configure</p>
-        <p class="body-md">SOUL.md + MEMORY.md<br>Defina a personalidade</p>
-      </div>
-      <div class="glass reveal-item text-center">
-        <div class="mb-3 mx-auto" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center;">
-          <i data-lucide="send" style="width: 24px; height: 24px; color: #22c55e;"></i>
-        </div>
-        <p class="font-bold text-sm mb-1" style="color: #e2e8f0;">3. Conecte</p>
-        <p class="body-md">Telegram, Discord, Slack<br>Converse de qualquer lugar</p>
-      </div>
-    </div>
-    <div class="reveal-item">
-      <a href="https://github.com/openclaw/openclaw" target="_blank" class="inline-block px-8 py-4 rounded-xl font-bold text-white text-sm" style="background: linear-gradient(135deg, #00d4ff, #a855f7); transition: transform 0.2s; box-shadow: 0 0 30px rgba(0,212,255,0.2);">
-        ⭐ github.com/openclaw/openclaw
-      </a>
-      <p class="body-md mt-6">
-        <a href="https://discord.com/invite/clawd" style="color: #00d4ff;">discord.com/invite/clawd</a> ·
-        <a href="https://clawhub.com" style="color: #a855f7;">clawhub.com</a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== SLIDE 15: OBRIGADO ==================== -->
-<section class="slide mesh-1" id="s15">
-  <div class="max-w-3xl mx-auto text-center flex flex-col justify-center" style="min-height: 70vh;">
-    <h1 class="heading-xl mb-6">Obrigado! 🤙</h1>
-    <p class="heading-md mb-2" style="color: #00d4ff;">Marco Bahe</p>
-    <p class="body-md">Full Funnel · @MarcoBahe</p>
-    <div class="mt-12 glass inline-block mx-auto reveal-item" style="padding: 1rem 2rem;">
-      <p class="body-md" style="font-style: italic;">
-        Esta apresentação foi criada pelo <span style="color: #00d4ff; font-weight: 600;">Fully</span>,<br>
-        meu agente OpenClaw. Em tempo real. Pelo Telegram. 🐾
-      </p>
-    </div>
-  </div>
-</section>
-
+</div>
 <script>
-  // Initialize Lucide icons
-  lucide.createIcons();
+    const sections = document.querySelectorAll('.snap-section');
+    const dots = document.querySelectorAll('.nav-dot');
+    const container = document.getElementById('main-scroll');
 
-  // Slide navigation
-  const slides = document.querySelectorAll('.slide');
-  const indicator = document.getElementById('slide-indicator');
-  const counter = document.getElementById('slide-counter');
-  const navHint = document.getElementById('nav-hint');
-  let currentSlide = 0;
-  let isScrolling = false;
+    const updateActiveState = () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (container.scrollTop >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute('id');
+            }
+        });
 
-  // Build indicator dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'indicator-dot' + (i === 0 ? ' active' : '');
-    dot.onclick = () => scrollToSlide(i);
-    indicator.appendChild(dot);
-  });
+        sections.forEach(section => {
+            section.classList.remove('active');
+            if (section.getAttribute('id') === current) {
+                section.classList.add('active');
+            }
+        });
 
-  function scrollToSlide(index) {
-    if (index < 0 || index >= slides.length) return;
-    currentSlide = index;
-    slides[index].scrollIntoView({ behavior: 'smooth' });
-    updateIndicator();
-  }
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+            if (dot.getAttribute('href').slice(1) === current) {
+                dot.classList.add('active');
+            }
+        });
+    };
 
-  function updateIndicator() {
-    document.querySelectorAll('.indicator-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === currentSlide);
+    container.addEventListener('scroll', updateActiveState);
+    window.addEventListener('load', updateActiveState);
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = dot.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            container.scrollTo({
+                top: targetSection.offsetTop,
+                behavior: 'smooth'
+            });
+        });
     });
-    counter.textContent = `${currentSlide + 1} / ${slides.length}`;
-  }
-
-  // Keyboard navigation with intra-slide scroll
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
-      e.preventDefault();
-      const slide = slides[currentSlide];
-      const scrollable = slide.scrollHeight > slide.clientHeight + 20;
-      const atBottom = slide.scrollTop + slide.clientHeight >= slide.scrollHeight - 20;
-      if (scrollable && !atBottom) {
-        slide.scrollBy({ top: slide.clientHeight * 0.6, behavior: 'smooth' });
-      } else {
-        scrollToSlide(currentSlide + 1);
-      }
-    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-      e.preventDefault();
-      const slide = slides[currentSlide];
-      if (slide.scrollTop > 20) {
-        slide.scrollBy({ top: -slide.clientHeight * 0.6, behavior: 'smooth' });
-      } else {
-        scrollToSlide(currentSlide - 1);
-      }
-    }
-  });
-
-  // Detect current slide on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const index = Array.from(slides).indexOf(entry.target);
-        if (index !== -1) {
-          currentSlide = index;
-          updateIndicator();
-        }
-      }
-    });
-  }, { threshold: 0.5 });
-
-  slides.forEach(s => observer.observe(s));
-
-  // GSAP reveal animations
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.querySelectorAll('.reveal-item').forEach(item => {
-    gsap.fromTo(item,
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1, y: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        }
-      }
-    );
-  });
-
-  // Animate particles
-  document.querySelectorAll('.particle').forEach(p => {
-    gsap.to(p, {
-      opacity: 1,
-      scale: 1.2,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: 'sine.inOut',
-    });
-  });
-
-  // Hide nav hint after 5 seconds
-  setTimeout(() => {
-    navHint.style.opacity = '0';
-    setTimeout(() => navHint.style.display = 'none', 500);
-  }, 8000);
 </script>
-</body>
-</html>
+</body></html>
