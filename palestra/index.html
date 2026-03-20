@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw — O Marvado 🐔</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue: #00d4ff;
+      --neon-purple: #a855f7;
+      --neon-green: #22c55e;
+      --neon-orange: #f97316;
+      --neon-pink: #ec4899;
+      --neon-yellow: #eab308;
+      --bg-dark: #0a0a0f;
+      --bg-card: rgba(255,255,255,0.04);
+      --text-primary: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+
+    .reveal {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+    }
+
+    .reveal .slides {
+      text-align: left;
+    }
+
+    .reveal .slides section {
+      padding: 40px 60px;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      text-transform: none;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .reveal h1 {
+      font-size: 2.8em;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .reveal h2 {
+      font-size: 2em;
+      color: var(--neon-blue);
+      margin-bottom: 0.6em;
+    }
+
+    .reveal h3 {
+      font-size: 1.4em;
+      color: var(--neon-purple);
+    }
+
+    .reveal p, .reveal li {
+      font-size: 0.85em;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .reveal strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .reveal .slide-background {
+      background: var(--bg-dark);
+    }
+
+    /* Neon glow text */
+    .neon {
+      color: var(--neon-blue);
+      text-shadow: 0 0 10px rgba(0,212,255,0.5), 0 0 40px rgba(0,212,255,0.2);
+    }
+
+    .neon-purple {
+      color: var(--neon-purple);
+      text-shadow: 0 0 10px rgba(168,85,247,0.5), 0 0 40px rgba(168,85,247,0.2);
+    }
+
+    .neon-green {
+      color: var(--neon-green);
+      text-shadow: 0 0 10px rgba(34,197,94,0.5);
+    }
+
+    .neon-orange {
+      color: var(--neon-orange);
+      text-shadow: 0 0 10px rgba(249,115,22,0.5);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 12px 0;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--neon-blue);
+      transform: translateY(-2px);
+    }
+
+    .card-blue { border-left: 4px solid var(--neon-blue); }
+    .card-purple { border-left: 4px solid var(--neon-purple); }
+    .card-green { border-left: 4px solid var(--neon-green); }
+    .card-orange { border-left: 4px solid var(--neon-orange); }
+    .card-pink { border-left: 4px solid var(--neon-pink); }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    /* Big number */
+    .big-number {
+      font-size: 3em;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .big-label {
+      font-size: 0.75em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Comparison table */
+    .compare-row {
+      display: flex;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.82em;
+    }
+
+    .compare-feature {
+      flex: 2;
+      color: var(--text-muted);
+    }
+
+    .compare-check {
+      flex: 1;
+      text-align: center;
+      font-size: 1.2em;
+    }
+
+    /* Quote */
+    .quote {
+      font-size: 1.3em;
+      font-style: italic;
+      color: var(--text-primary);
+      border-left: 4px solid var(--neon-purple);
+      padding-left: 24px;
+      margin: 30px 0;
+      line-height: 1.5;
+    }
+
+    /* Org chart */
+    .org-chart {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .org-ceo {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      color: white;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1em;
+      margin-bottom: 8px;
+    }
+
+    .org-line {
+      width: 2px;
+      height: 30px;
+      background: rgba(255,255,255,0.2);
+      margin: 0 auto;
+    }
+
+    .org-branch {
+      width: 80%;
+      height: 2px;
+      background: rgba(255,255,255,0.2);
+      margin: 0 auto;
+    }
+
+    .org-agents {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .org-agent {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 12px 16px;
+      text-align: center;
+      min-width: 130px;
+    }
+
+    .org-agent .emoji {
+      font-size: 1.8em;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .org-agent .name {
+      font-weight: 700;
+      font-size: 0.8em;
+      color: var(--text-primary);
+    }
+
+    .org-agent .role {
+      font-size: 0.65em;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.7em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-blue { background: rgba(0,212,255,0.15); color: var(--neon-blue); }
+    .badge-green { background: rgba(34,197,94,0.15); color: var(--neon-green); }
+    .badge-purple { background: rgba(168,85,247,0.15); color: var(--neon-purple); }
+    .badge-orange { background: rgba(249,115,22,0.15); color: var(--neon-orange); }
+
+    /* Timeline */
+    .timeline-item {
+      display: flex;
+      gap: 16px;
+      margin: 14px 0;
+      align-items: flex-start;
+    }
+
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--neon-blue);
+      margin-top: 6px;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(0,212,255,0.5);
+    }
+
+    .timeline-content {
+      flex: 1;
+    }
+
+    .timeline-content strong {
+      font-size: 0.85em;
+    }
+
+    .timeline-content p {
+      font-size: 0.75em;
+      margin: 2px 0 0;
+    }
+
+    /* Centered slides */
+    .centered {
+      text-align: center !important;
+    }
+
+    .centered h1, .centered h2 {
+      text-align: center;
+    }
+
+    /* Subtitle */
+    .subtitle {
+      font-size: 1.1em;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* Emoji icon big */
+    .icon-big {
+      font-size: 3em;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    /* Fragment animations */
+    .reveal .fragment.fade-up {
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .reveal .fragment.fade-up.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Custom progress bar */
+    .reveal .progress {
+      height: 4px;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    }
+
+    /* Slide number */
+    .reveal .slide-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Lesson card */
+    .lesson {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin: 12px 0;
+    }
+
+    .lesson-icon {
+      font-size: 1.5em;
+      flex-shrink: 0;
+    }
+
+    .lesson-text {
+      font-size: 0.8em;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .lesson-text strong {
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* CTA button style */
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      color: white !important;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9em;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ============ SLIDE 1: CAPA ============ -->
+      <section class="centered" data-background-gradient="radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 70%)">
+        <span class="icon-big">🐔</span>
+        <h1>O Marvado</h1>
+        <p class="subtitle">Como eu construí uma equipe de IA que trabalha 24/7<br>usando <span class="neon">OpenClaw</span></p>
+        <br>
+        <p style="font-size: 0.7em; color: var(--text-muted);">
+          <strong style="color: var(--neon-blue);">Marco Bahe</strong> · Full Funnel · Março 2026
+        </p>
+      </section>
+
+      <!-- ============ SLIDE 2: A PIADA ============ -->
+      <section data-background-gradient="radial-gradient(ellipse at bottom, #1a1a2e 0%, #0a0a0f 70%)">
+        <h2>🐔 A Rinha</h2>
+        <br>
+        <div class="fragment fade-up">
+          <p style="font-size: 1em; color: var(--text-primary);">
+            Um cara da capital chega no interior e vê uma rinha de galo.<br>
+            Pensa: <em>"Vou ganhar um dinheiro em cima desses matutos."</em>
+          </p>
+        </div>
+        <br>
+        <div class="fragment fade-up">
+          <p style="font-size: 1em; color: var(--text-primary);">
+            Pergunta pro local: <em>"Qual é o galo bom?"</em><br>
+            <strong>"O bom é o branco."</strong>
+          </p>
+        </div>
+        <br>
+        <div class="fragment fade-up">
+          <p style="font-size: 1em; color: var(--text-primary);">
+            Aposta R$ 1.000 no branco. 💸<br>
+            O galo preto dá uma <strong>surra</strong>. O branco sai corrido.
+          </p>
+        </div>
+        <br>
+        <div class="fragment fade-up">
+          <p style="font-size: 1.1em; color: var(--text-primary);">
+            <em>"Mas você não disse que o bom era o branco?!"</em>
+          </p>
+          <br>
+          <p style="font-size: 1.4em; font-weight: 900;">
+            <span class="neon-purple">"O bom é o branco...</span><br>
+            <span class="neon">mas o marvado é o preto."</span> 🐓
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 3: ANALOGIA ============ -->
+      <section class="centered">
+        <h2>A Analogia</h2>
+        <br>
+        <div class="grid-3">
+          <div class="card card-blue fragment fade-up">
+            <span class="icon-big">🤖</span>
+            <h3 style="font-size: 1.1em;">Claude Code</h3>
+            <p style="font-size: 0.9em;"><strong class="neon">O bom</strong></p>
+            <p>Executa tarefas pontuais.<br>Morre quando fecha o terminal.</p>
+          </div>
+          <div class="card card-purple fragment fade-up">
+            <span class="icon-big">💻</span>
+            <h3 style="font-size: 1.1em;">Coworking</h3>
+            <p style="font-size: 0.9em;"><strong class="neon-purple">O bom também</strong></p>
+            <p>Colaboração em tempo real.<br>Cron jobs. Mas preso no desktop.</p>
+          </div>
+          <div class="card card-green fragment fade-up" style="border: 2px solid var(--neon-green);">
+            <span class="icon-big">🐾</span>
+            <h3 style="font-size: 1.1em;">OpenClaw</h3>
+            <p style="font-size: 0.9em;"><strong class="neon-green">O marvado</strong></p>
+            <p>24/7. Memória. Multi-canal.<br>Skills. Sub-agentes. Sem limites.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 4: POR QUE O MARVADO? ============ -->
+      <section>
+        <h2>Por que o OpenClaw é o <span class="neon-green">marvado</span>?</h2>
+        <br>
+        <div class="compare-row" style="font-weight: 700; color: var(--text-primary); border-bottom: 2px solid rgba(255,255,255,0.1);">
+          <span class="compare-feature">Feature</span>
+          <span class="compare-check">Claude Code</span>
+          <span class="compare-check">Coworking</span>
+          <span class="compare-check" style="color: var(--neon-green);">OpenClaw</span>
+        </div>
+        <div class="compare-row fragment fade-up">
+          <span class="compare-feature">Funciona 24/7 sem supervisão</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">⚠️</span>
+          <span class="compare-check">✅</span>
+        </div>
+        <div class="compare-row fragment fade-up">
+          <span class="compare-feature">Memória entre sessões</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">✅</span>
+        </div>
+        <div class="compare-row fragment fade-up">
+          <span class="compare-feature">Conecta Telegram / WhatsApp / Discord</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">✅</span>
+        </div>
+        <div class="compare-row fragment fade-up">
+          <span class="compare-feature">Cron jobs e heartbeats</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">✅</span>
+          <span class="compare-check">✅</span>
+        </div>
+        <div class="compare-row fragment fade-up">
+          <span class="compare-feature">Navega na web / faz login</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">✅</span>
+        </div>
+        <div class="compare-row fragment fade-up">
+          <span class="compare-feature">Sub-agentes especializados</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">✅</span>
+        </div>
+        <div class="compare-row fragment fade-up">
+          <span class="compare-feature">Skills instaláveis (plugins)</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">✅</span>
+        </div>
+        <div class="compare-row fragment fade-up">
+          <span class="compare-feature">Open source / personalizável</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">❌</span>
+          <span class="compare-check">✅</span>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 5: ESTRUTURA EMPRESA ============ -->
+      <section class="centered">
+        <h2>Estruture como uma <span class="neon">empresa</span></h2>
+        <p class="subtitle">Você não contrata uma pessoa pra fazer tudo.<br>Por que faria isso com IA?</p>
+        <br>
+        <div class="org-chart">
+          <div class="org-ceo">🧠 Fully — Orquestrador / CEO</div>
+          <div class="org-line"></div>
+          <div class="org-branch"></div>
+          <div class="org-agents">
+            <div class="org-agent fragment fade-up">
+              <span class="emoji">💬</span>
+              <span class="name">Full Bot</span>
+              <span class="role">Suporte ao Cliente</span>
+            </div>
+            <div class="org-agent fragment fade-up">
+              <span class="emoji">👨‍💻</span>
+              <span class="name">Dev Agent</span>
+              <span class="role">Código & Deploy</span>
+            </div>
+            <div class="org-agent fragment fade-up">
+              <span class="emoji">🎨</span>
+              <span class="name">Jony</span>
+              <span class="role">Design & Criativos</span>
+            </div>
+            <div class="org-agent fragment fade-up">
+              <span class="emoji">📚</span>
+              <span class="name">Aprendiz</span>
+              <span class="role">Pesquisa & KB</span>
+            </div>
+            <div class="org-agent fragment fade-up">
+              <span class="emoji">🔍</span>
+              <span class="name">Researcher</span>
+              <span class="role">Mercado & Benchmark</span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <p class="fragment fade-up" style="font-size: 0.8em;">
+          Cada agente tem <strong>personalidade</strong>, <strong>especialidade</strong> e <strong>escopo definido</strong>.<br>
+          Quanto mais especialista, melhor o resultado.
+        </p>
+      </section>
+
+      <!-- ============ SLIDE 6: CASO DE USO 1 — PRODUTO ============ -->
+      <section>
+        <span class="badge badge-blue">Caso de uso #1</span>
+        <h2>Construí um app <span class="neon">pelo Telegram</span></h2>
+        <p>Full Whisper: app nativo macOS de transcrição por voz.</p>
+        <br>
+        <div class="grid-2">
+          <div>
+            <div class="timeline-item fragment fade-up">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <strong>Dia 1 — MVP</strong>
+                <p>Gravação, transcrição, cola automática. 8 versões em 1 dia.</p>
+              </div>
+            </div>
+            <div class="timeline-item fragment fade-up">
+              <div class="timeline-dot" style="background: var(--neon-purple);"></div>
+              <div class="timeline-content">
+                <strong>Dia 2 — Produto completo</strong>
+                <p>API, licenciamento, multi-provider, multilingual, ícone.</p>
+              </div>
+            </div>
+            <div class="timeline-item fragment fade-up">
+              <div class="timeline-dot" style="background: var(--neon-green);"></div>
+              <div class="timeline-content">
+                <strong>Dia 2 (noite) — Go to market</strong>
+                <p>Benchmark de 8 concorrentes, roadmap, estratégia AppSumo.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card card-blue fragment fade-up">
+            <p style="font-size: 0.85em;"><strong>Resultado em 48h:</strong></p>
+            <br>
+            <div class="big-number neon">v2.4</div>
+            <div class="big-label">24 builds</div>
+            <br>
+            <div class="big-number neon-purple">5</div>
+            <div class="big-label">Providers de IA integrados</div>
+            <br>
+            <div class="big-number neon-green">3</div>
+            <div class="big-label">Idiomas suportados</div>
+            <br>
+            <p style="font-size: 0.75em; color: var(--text-muted); margin-top: 12px;">
+              ⏱️ Tempo estimado manual: <strong>1 mês+</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 7: CASO DE USO 2 — SUPORTE ============ -->
+      <section>
+        <span class="badge badge-green">Caso de uso #2</span>
+        <h2>Suporte <span class="neon-green">100% automatizado</span></h2>
+        <p>Full Bot: atende clientes da Full Funnel sem intervenção humana.</p>
+        <br>
+        <div class="grid-2">
+          <div>
+            <div class="card card-green fragment fade-up">
+              <p><strong>💬 O que ele faz:</strong></p>
+              <p>Responde dúvidas, consulta knowledge base, agenda calls, escala pra humano quando precisa.</p>
+            </div>
+            <div class="card card-purple fragment fade-up">
+              <p><strong>📚 Base de conhecimento:</strong></p>
+              <p><span class="neon">636 artigos</span> indexados automaticamente. Atualiza sozinho toda madrugada.</p>
+            </div>
+            <div class="card card-blue fragment fade-up">
+              <p><strong>🧠 Aprende sozinho:</strong></p>
+              <p>Aprendiz analisa conversas passadas, identifica gaps e melhora as respostas.</p>
+            </div>
+          </div>
+          <div class="fragment fade-up" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <div class="big-number neon-green" style="font-size: 4em;">24/7</div>
+            <div class="big-label" style="font-size: 0.9em;">Nunca tira férias</div>
+            <br>
+            <div class="big-number neon" style="font-size: 2em;">1.040+</div>
+            <div class="big-label">Clientes atendidos</div>
+            <br>
+            <div class="big-number neon-purple" style="font-size: 2em;">< 1 min</div>
+            <div class="big-label">Tempo de resposta</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 8: CASO DE USO 3 — PESQUISA ============ -->
+      <section>
+        <span class="badge badge-purple">Caso de uso #3</span>
+        <h2>Pesquisa de mercado <span class="neon-purple">enquanto eu durmo</span></h2>
+        <br>
+        <div class="card card-purple fragment fade-up" style="max-width: 90%;">
+          <p style="font-size: 0.95em;">
+            🌙 <strong>23h:</strong> Pedi pro agente pesquisar concorrentes do Full Whisper.
+          </p>
+        </div>
+        <div class="card card-blue fragment fade-up" style="max-width: 90%;">
+          <p style="font-size: 0.95em;">
+            ☀️ <strong>Manhã seguinte:</strong> Benchmark completo de 8 concorrentes.<br>
+            Preços, features, pontos fracos, oportunidades. Tudo documentado.
+          </p>
+        </div>
+        <div class="card card-green fragment fade-up" style="max-width: 90%;">
+          <p style="font-size: 0.95em;">
+            🎯 <strong>Resultado:</strong> Descobri que o diferencial matador é BYOK (Bring Your Own Key).<br>
+            Nenhum concorrente grande oferece. Nós oferecemos.
+          </p>
+        </div>
+        <br>
+        <div class="fragment fade-up">
+          <p class="quote">"Eu acordei e a pesquisa que levaria um dia inteiro já estava pronta."</p>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 9: CASO DE USO 4 — OPERAÇÃO ============ -->
+      <section>
+        <span class="badge badge-orange">Caso de uso #4</span>
+        <h2>Operação <span class="neon-orange">autônoma</span></h2>
+        <p>O agente cuida da operação enquanto eu cuido do negócio.</p>
+        <br>
+        <div class="grid-2">
+          <div class="card card-orange fragment fade-up">
+            <p><strong>⏰ Cron Jobs:</strong></p>
+            <p>Tarefas agendadas que rodam automaticamente. Checagem de suporte a cada minuto. Atualização de KB toda madrugada. Re-indexação de memória periódica.</p>
+          </div>
+          <div class="card card-blue fragment fade-up">
+            <p><strong>💓 Heartbeats:</strong></p>
+            <p>Verificações proativas a cada 30 min. Checa emails, calendário, status dos serviços. Só me avisa quando algo precisa de atenção.</p>
+          </div>
+          <div class="card card-green fragment fade-up">
+            <p><strong>🌙 Turno da Noite:</strong></p>
+            <p>Enquanto eu durmo, o agente pesquisa mercado, estuda atualizações da plataforma, identifica oportunidades e me deixa um briefing matinal.</p>
+          </div>
+          <div class="card card-purple fragment fade-up">
+            <p><strong>🧠 Memória Persistente:</strong></p>
+            <p>Lembra de tudo. Decisões, preferências, contextos. Acordo e continuo de onde parei — ele sabe exatamente o que está acontecendo.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 10: NÚMEROS ============ -->
+      <section class="centered">
+        <h2>Os números <span class="neon">não mentem</span></h2>
+        <br>
+        <div class="grid-4">
+          <div class="fragment fade-up" style="text-align: center;">
+            <div class="big-number neon">48h</div>
+            <div class="big-label">pra um app completo</div>
+          </div>
+          <div class="fragment fade-up" style="text-align: center;">
+            <div class="big-number neon-green">636</div>
+            <div class="big-label">artigos de KB indexados</div>
+          </div>
+          <div class="fragment fade-up" style="text-align: center;">
+            <div class="big-number neon-purple">24/7</div>
+            <div class="big-label">suporte automatizado</div>
+          </div>
+          <div class="fragment fade-up" style="text-align: center;">
+            <div class="big-number neon-orange">5+</div>
+            <div class="big-label">agentes especializados</div>
+          </div>
+        </div>
+        <br><br>
+        <div class="fragment fade-up">
+          <p style="font-size: 1.1em; color: var(--text-primary); text-align: center;">
+            Tudo isso operado por <strong>uma pessoa</strong>.<br>
+            <span style="color: var(--text-muted);">Com um time de IA que nunca dorme.</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 11: BOAS PRÁTICAS ============ -->
+      <section>
+        <h2>🧪 Boas práticas <span class="neon">(aprendidas errando)</span></h2>
+        <br>
+        <div class="lesson fragment fade-up">
+          <span class="lesson-icon">🧠</span>
+          <div class="lesson-text">
+            <strong>Invista em memória</strong>
+            Sem memória o agente "acorda" zerado a cada sessão. Configure MEMORY.md, daily notes, e Mem0 pra memória persistente.
+          </div>
+        </div>
+        <div class="lesson fragment fade-up">
+          <span class="lesson-icon">🎯</span>
+          <div class="lesson-text">
+            <strong>Especialize os sub-agentes</strong>
+            Um agente generalista é medíocre. Um especialista em suporte, outro em código, outro em pesquisa — cada um é excelente no seu escopo.
+          </div>
+        </div>
+        <div class="lesson fragment fade-up">
+          <span class="lesson-icon">📋</span>
+          <div class="lesson-text">
+            <strong>SOUL.md é tudo</strong>
+            Defina personalidade, regras, limites. O agente precisa saber quem ele é e como deve se comportar. Sem isso, ele vira um robô genérico.
+          </div>
+        </div>
+        <div class="lesson fragment fade-up">
+          <span class="lesson-icon">🔧</span>
+          <div class="lesson-text">
+            <strong>Skills são superpoderes</strong>
+            Instale skills no ClawHub: GitHub, browser automation, design, busca semântica. Cada skill é uma capacidade nova.
+          </div>
+        </div>
+        <div class="lesson fragment fade-up">
+          <span class="lesson-icon">⚠️</span>
+          <div class="lesson-text">
+            <strong>Monitore o contexto</strong>
+            Sessões longas demais corrompem. Configure alertas em 85% do contexto e reinicie antes de travar.
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 12: INFRAESTRUTURA ============ -->
+      <section>
+        <h2>🏗️ Nossa infraestrutura</h2>
+        <p>De hobby a produção — o caminho real.</p>
+        <br>
+        <div class="grid-2">
+          <div>
+            <div class="card card-blue fragment fade-up">
+              <p><strong>🖥️ Mac Mini</strong> <span class="badge badge-blue">Principal</span></p>
+              <p>Agente orquestrador (Fully). Acessa desktop, navegador, terminal. Conectado via Telegram.</p>
+            </div>
+            <div class="card card-purple fragment fade-up">
+              <p><strong>☁️ VPS Hostinger</strong> <span class="badge badge-purple">Produção</span></p>
+              <p>Bot de suporte 24/7. Containers isolados. Mais barato que qualquer funcionário.</p>
+            </div>
+            <div class="card card-green fragment fade-up">
+              <p><strong>🔮 Futuro</strong> <span class="badge badge-green">Roadmap</span></p>
+              <p>VPS potente (Hetzner) como principal. Mac Mini como auxiliar. Escala real.</p>
+            </div>
+          </div>
+          <div class="fragment fade-up" style="display: flex; flex-direction: column; justify-content: center;">
+            <p style="font-size: 0.85em; line-height: 1.8;">
+              💡 <strong>Começou:</strong> Laptop pessoal<br>
+              📦 <strong>Evoluiu:</strong> Mac Mini dedicado<br>
+              ☁️ <strong>Escalou:</strong> VPS pra produção<br>
+              🚀 <strong>Próximo:</strong> Multi-servidor
+            </p>
+            <br>
+            <p style="font-size: 0.8em; color: var(--neon-green);">
+              <strong>Custo total: ~$250/mês</strong><br>
+              <span style="color: var(--text-muted);">Menos que um estagiário. Mais que um time.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 13: VISÃO ============ -->
+      <section class="centered" data-background-gradient="radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 70%)">
+        <h2>A visão</h2>
+        <br>
+        <p class="quote fragment fade-up" style="border-left-color: var(--neon-green); max-width: 700px; margin: 0 auto;">
+          "Isso não é o futuro.<br>
+          <strong>Já está acontecendo.</strong>"
+        </p>
+        <br><br>
+        <div class="fragment fade-up">
+          <p style="font-size: 1em; color: var(--text-primary);">
+            Quem montar seu agente <strong>agora</strong><br>
+            vai ter vantagem competitiva absurda<br>
+            em <span class="neon" style="font-size: 1.3em; font-weight: 900;">6 meses</span>.
+          </p>
+        </div>
+        <br>
+        <div class="fragment fade-up">
+          <p style="font-size: 0.85em; color: var(--text-muted);">
+            O <strong>galo bom</strong> te ajuda no dia a dia.<br>
+            O <strong class="neon-green">marvado</strong> transforma seu negócio.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 14: CTA ============ -->
+      <section class="centered" data-background-gradient="radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 70%)">
+        <span class="icon-big">🐾</span>
+        <h1>Comece agora</h1>
+        <br>
+        <div class="grid-3 fragment fade-up" style="max-width: 800px; margin: 0 auto;">
+          <div style="text-align: center;">
+            <p style="font-size: 2em;">📦</p>
+            <p style="font-size: 0.85em;"><strong>1. Instale</strong></p>
+            <p style="font-size: 0.75em; color: var(--text-muted);">openclaw.ai<br>5 minutos de setup</p>
+          </div>
+          <div style="text-align: center;">
+            <p style="font-size: 2em;">📝</p>
+            <p style="font-size: 0.85em;"><strong>2. Configure</strong></p>
+            <p style="font-size: 0.75em; color: var(--text-muted);">SOUL.md + MEMORY.md<br>Defina a personalidade</p>
+          </div>
+          <div style="text-align: center;">
+            <p style="font-size: 2em;">🚀</p>
+            <p style="font-size: 0.85em;"><strong>3. Conecte</strong></p>
+            <p style="font-size: 0.75em; color: var(--text-muted);">Telegram, Discord, Slack<br>Converse de qualquer lugar</p>
+          </div>
+        </div>
+        <br><br>
+        <div class="fragment fade-up">
+          <a href="https://github.com/openclaw/openclaw" class="cta-btn" target="_blank">⭐ github.com/openclaw/openclaw</a>
+          <br><br>
+          <p style="font-size: 0.75em; color: var(--text-muted);">
+            Comunidade: <a href="https://discord.com/invite/clawd" style="color: var(--neon-blue);">discord.com/invite/clawd</a> ·
+            Skills: <a href="https://clawhub.com" style="color: var(--neon-purple);">clawhub.com</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 15: OBRIGADO ============ -->
+      <section class="centered" data-background-gradient="radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 70%)">
+        <h1 style="font-size: 3.5em;">Obrigado! 🤙</h1>
+        <br>
+        <p style="font-size: 1em; color: var(--text-muted);">
+          <strong style="color: var(--neon-blue);">Marco Bahe</strong>
+        </p>
+        <p style="font-size: 0.85em; color: var(--text-muted);">
+          Full Funnel · @MarcoBahe
+        </p>
+        <br><br>
+        <p style="font-size: 0.8em; color: var(--text-muted);">
+          <em>Esta apresentação foi feita pelo <span class="neon">Fully</span>,<br>meu agente OpenClaw. Em tempo real. Pelo Telegram.</em> 🐾
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      transition: 'slide',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      center: false,
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      controlsTutorial: false,
+      progress: true,
+      fragments: true,
+    });
+  </script>
+</body>
+</html>
