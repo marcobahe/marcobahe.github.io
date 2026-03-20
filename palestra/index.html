@@ -143,6 +143,7 @@
 <body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary">
 <div class="nav-dots">
 <a class="nav-dot active" href="#hero"></a>
+<a class="nav-dot" href="#fight"></a>
 <a class="nav-dot" href="#levels"></a>
 <a class="nav-dot" href="#comparison"></a>
 <a class="nav-dot" href="#structure"></a>
@@ -171,7 +172,7 @@
 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
 <div class="reveal-up">
 <div class="w-20 h-20 bg-primary/10 rounded-xl flex items-center justify-center mb-8 border border-primary/20">
-<img alt="Rooster" class="w-12 h-12" src="black-rooster.png"/>
+<img alt="Rooster" class="w-12 h-12" src="stitch-icon.png"/>
 </div>
 <h1 class="text-7xl md:text-9xl font-bold tracking-tighter leading-none text-white mb-6">
                     O <span class="text-primary">Marvado</span>
@@ -189,13 +190,20 @@
 </div>
 <div class="relative reveal-up delay-1">
 <div class="aspect-square rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,255,204,0.1)] border border-white/5">
-<img alt="Cinematic Rooster" class="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000" src="black-rooster.png"/>
+<img alt="Cinematic Rooster" class="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000" src="stitch-rooster.png"/>
 </div>
 <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/10 blur-3xl rounded-full"></div>
 </div>
 </div>
 </section>
-<!-- 2. Three Roosters Section -->
+<!-- 2. A PIADA - Fullscreen image, no text -->
+<section class="snap-section" id="fight" style="padding: 0; height: 100vh;">
+<img alt="Galo branco vs galo preto" src="stitch-fight.png" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
+<nav aria-label="Slide navigation" class="nav-indicator" style="position: absolute; left: 2rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 1rem; z-index: 50;">
+</nav>
+</section>
+
+<!-- 3. Three Roosters Section -->
 <section class="snap-section bg-surface-container-low" id="levels">
 <div class="max-w-7xl mx-auto w-full">
 <div class="mb-12 reveal-up">
@@ -291,45 +299,53 @@
 <h2 class="text-5xl font-bold text-white mt-2">Estruture como uma <span class="text-primary">empresa</span></h2>
 <p class="text-on-surface-variant mt-4">Você não contrata uma pessoa para fazer tudo. Por que faria isso com IA?</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4 reveal-up delay-1">
-<div class="p-6 bg-surface-container rounded-xl border border-white/5">
-<div class="text-blue-400 font-bold mb-4 flex items-center gap-2">
-<span class="material-symbols-outlined text-lg">code</span> DESENVOLVIMENTO
-                    </div>
-<ul class="space-y-3 text-xs text-on-surface-variant">
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> <b>Dexter:</b> Head Dev, Arquitetura, Análise</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> <b>Sub-agentes:</b> Claude Code, Coders on-demand</li>
-</ul>
-</div>
-<div class="p-6 bg-surface-container rounded-xl border border-white/5">
-<div class="text-purple-400 font-bold mb-4 flex items-center gap-2">
-<span class="material-symbols-outlined text-lg">palette</span> MARKETING &amp; CRIATIVO
-                    </div>
-<ul class="space-y-3 text-xs text-on-surface-variant">
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> <b>Olivetto:</b> Dir. Criativo</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> <b>Steven:</b> Roteirista</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> <b>David:</b> Copywriter</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> <b>Jony:</b> Designer</li>
-</ul>
-</div>
-<div class="p-6 bg-surface-container rounded-xl border border-white/5">
-<div class="text-green-400 font-bold mb-4 flex items-center gap-2">
-<span class="material-symbols-outlined text-lg">support_agent</span> SUPORTE
-                    </div>
-<ul class="space-y-3 text-xs text-on-surface-variant">
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> <b>Full Bot:</b> Atendimento 24/7</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> <b>Aprendiz:</b> KB & Treinamento, changelog GHL</li>
-</ul>
-</div>
-<div class="p-6 bg-primary/10 rounded-xl border border-primary/20 flex flex-col justify-center items-center text-center">
-<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black font-bold mb-4">MB</div>
-<div class="font-bold text-white">Marco — CEO</div>
-<p class="text-[10px] text-on-surface-variant mt-2 uppercase">Visão, decisão, negócios</p>
-<div class="w-full h-px bg-white/10 my-4"></div>
-<div class="text-[10px] text-primary font-bold uppercase">Fully — COO / Orquestrador</div>
+<!-- CEO + COO -->
+<div class="flex flex-col items-center gap-2 mb-6 reveal-up delay-1">
+<div class="p-4 bg-primary/10 rounded-xl inline-flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-black font-bold text-sm">MB</div>
+<div class="text-left">
+<div class="font-bold text-white text-sm">Marco — CEO</div>
+<div class="text-[10px] text-on-surface-variant">Visão, decisões, negócio</div>
 </div>
 </div>
-<p class="text-center text-xs text-on-surface-variant mt-8 italic">Cada agente permanente pode mobilizar <b>seus próprios sub-agentes</b> conforme a demanda.</p>
+<div class="w-0.5 h-4 bg-white/10"></div>
+<div class="p-4 bg-surface-container rounded-xl inline-flex items-center gap-3" style="border: 1px solid rgba(0,255,204,0.2);">
+<span class="material-symbols-outlined text-primary">hub</span>
+<div class="text-left">
+<div class="font-bold text-primary text-sm">Fully — COO / Orquestrador</div>
+<div class="text-[10px] text-on-surface-variant">Coordena tudo, delega, acompanha</div>
+</div>
+</div>
+</div>
+<div class="w-0.5 h-3 bg-white/10 mx-auto"></div>
+<div class="mx-auto mb-4" style="width: 70%; height: 1px; background: rgba(255,255,255,0.06);"></div>
+<!-- Departments -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal-up delay-2">
+<div class="p-6 bg-surface-container rounded-xl" style="border-top: 3px solid #60a5fa;">
+<div class="text-blue-400 font-bold mb-4 flex items-center gap-2 text-xs uppercase tracking-wider">
+<span class="material-symbols-outlined text-lg">code</span> Desenvolvimento</div>
+<div class="space-y-2">
+<div class="flex items-center gap-2 p-2 rounded-lg bg-blue-500/5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span><span class="text-xs"><b class="text-white">Dexter</b> <span class="text-on-surface-variant">· Head</span></span></div>
+<div class="flex items-center gap-2 p-2 rounded-lg"><span class="w-1.5 h-1.5 rounded-full bg-blue-400/40"></span><span class="text-xs text-on-surface-variant">Sub-agentes Claude Code, Codex</span></div>
+</div></div>
+<div class="p-6 bg-surface-container rounded-xl" style="border-top: 3px solid #c084fc;">
+<div class="text-purple-400 font-bold mb-4 flex items-center gap-2 text-xs uppercase tracking-wider">
+<span class="material-symbols-outlined text-lg">palette</span> Marketing &amp; Criativo</div>
+<div class="space-y-2">
+<div class="flex items-center gap-2 p-2 rounded-lg bg-purple-500/5"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span><span class="text-xs"><b class="text-white">Olivetto</b> <span class="text-on-surface-variant">· Dir. Criativo</span></span></div>
+<div class="flex items-center gap-2 p-2 rounded-lg"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span><span class="text-xs"><b class="text-white">Steven</b> <span class="text-on-surface-variant">· Roteirista</span></span></div>
+<div class="flex items-center gap-2 p-2 rounded-lg"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span><span class="text-xs"><b class="text-white">David</b> <span class="text-on-surface-variant">· Copywriter</span></span></div>
+<div class="flex items-center gap-2 p-2 rounded-lg"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span><span class="text-xs"><b class="text-white">Jony</b> <span class="text-on-surface-variant">· Designer</span></span></div>
+</div></div>
+<div class="p-6 bg-surface-container rounded-xl" style="border-top: 3px solid #4ade80;">
+<div class="text-green-400 font-bold mb-4 flex items-center gap-2 text-xs uppercase tracking-wider">
+<span class="material-symbols-outlined text-lg">support_agent</span> Suporte</div>
+<div class="space-y-2">
+<div class="flex items-center gap-2 p-2 rounded-lg bg-green-500/5"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span><span class="text-xs"><b class="text-white">Full Bot</b> <span class="text-on-surface-variant">· Atendimento 24/7</span></span></div>
+<div class="flex items-center gap-2 p-2 rounded-lg"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span><span class="text-xs"><b class="text-white">Aprendiz</b> <span class="text-on-surface-variant">· KB &amp; Treinamento</span></span></div>
+</div></div>
+</div>
+<p class="text-center text-xs text-on-surface-variant mt-6 italic reveal-up delay-3">Cada agente permanente pode mobilizar <b>seus próprios sub-agentes</b> conforme a demanda.</p>
 </div>
 </section>
 <!-- 5. Team in Action Section -->
@@ -555,28 +571,10 @@
 <h2 class="text-5xl md:text-7xl font-bold text-white tracking-tighter">O galo bom ou o <span class="text-primary italic uppercase">Marvado</span>?</h2>
 <p class="text-on-surface-variant mt-8 text-xl">Crie sua equipe de agentes <br/> e <span class="text-primary font-bold">parta pra cima do mercado.</span></p>
 </div>
-<div class="reveal-up delay-1 bg-surface-container rounded-2xl p-12 border border-primary/20 relative overflow-hidden">
-<span class="material-symbols-outlined text-6xl text-primary mb-8">rocket</span>
-<h2 class="text-4xl font-bold text-white mb-8">Monte o seu time</h2>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-<div class="space-y-2">
-<div class="text-primary font-bold">1. Instale</div>
-<p class="text-xs text-on-surface-variant">Openclaw.ai 5 minutos de setup</p>
-</div>
-<div class="space-y-2">
-<div class="text-primary font-bold">2. Configure</div>
-<p class="text-xs text-on-surface-variant">SOUL.md + MEMORY.md Defina a personalidade</p>
-</div>
-<div class="space-y-2">
-<div class="text-primary font-bold">3. Conecte</div>
-<p class="text-xs text-on-surface-variant">Telegram, Discord, Slack Converse de qualquer lugar</p>
-</div>
-</div>
-<div class="flex flex-wrap justify-center gap-4">
+<div class="reveal-up delay-1 flex flex-wrap justify-center gap-4 mb-8">
 <a class="bg-primary text-black px-8 py-3 rounded-lg font-bold flex items-center gap-2 hover:scale-105 transition-transform" href="https://github.com/openclaw/openclaw">
-                        github.com/openclaw/openclaw
-                    </a>
-</div>
+github.com/openclaw/openclaw →
+</a>
 </div>
 <div class="mt-20 reveal-up delay-2">
 <h2 class="text-6xl font-bold text-white mb-4">Obrigado! 👋</h2>
