@@ -3,856 +3,393 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Full Funnel — O que ninguém te conta sobre vender com IA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Carousel — O que ninguém te conta sobre vender com IA</title>
 <style>
-  :root {
-    --bg: #0a0e1a;
-    --bg-card: #0d1224;
-    --bg-subtle: #111830;
-    --primary: #1A56DB;
-    --primary-light: #3B82F6;
-    --accent: #F97316;
-    --accent-warm: #FB923C;
-    --text: #F1F5F9;
-    --text-muted: #94A3B8;
-    --text-dim: #64748B;
-    --border: rgba(26, 86, 219, 0.15);
-    --glow-primary: rgba(26, 86, 219, 0.3);
-    --glow-accent: rgba(249, 115, 22, 0.25);
-    --slide-w: 1080px;
-    --slide-h: 1350px;
-  }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: #050810;
+    background: #111;
     font-family: 'Inter', sans-serif;
-    color: var(--text);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0 60px;
-    gap: 32px;
-    min-height: 100vh;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
   }
 
+  /* ── Page wrapper ── */
+  .page-wrapper {
+    padding: 20px;
+  }
+
+  /* ── Desktop: horizontal scroll ── */
+  @media (min-width: 769px) {
+    .page-wrapper {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 40px;
+      min-height: 100vh;
+      align-items: center;
+    }
+    .slide {
+      scroll-snap-align: center;
+      flex-shrink: 0;
+    }
+  }
+
+  /* ── Mobile: stacked vertically ── */
+  @media (max-width: 768px) {
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+  }
+
+  /* ── Slide base ── */
   .slide {
-    width: var(--slide-w);
-    height: var(--slide-h);
-    background: var(--bg);
+    width: 1080px;
+    height: 1350px;
+    background: #0a0a0a;
+    border-radius: 8px;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
-  }
-
-  /* === BACKGROUND EFFECTS === */
-  .slide::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 600px 400px at 10% 10%, rgba(26, 86, 219, 0.08), transparent),
-      radial-gradient(ellipse 500px 500px at 90% 85%, rgba(249, 115, 22, 0.05), transparent);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .slide-inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 60px 72px 50px;
-  }
-
-  /* === NOISE TEXTURE === */
-  .noise {
-    position: absolute;
-    inset: 0;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 128px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* === GRID PATTERN === */
-  .grid-pattern {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(26, 86, 219, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(26, 86, 219, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* === TOP BAR === */
-  .top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .logo-icon {
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    box-shadow: 0 0 20px var(--glow-primary);
+    padding: 80px;
   }
 
-  .logo-icon svg {
-    width: 20px;
-    height: 20px;
-    stroke: white;
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .logo-text {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-  }
-
-  .slide-counter {
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-dim);
-    background: rgba(255,255,255,0.04);
-    padding: 6px 16px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-
-  /* === CONTENT === */
-  .content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 28px;
-  }
-
-  .tag-line {
-    width: 28px;
-    height: 2px;
-    background: var(--accent);
-    border-radius: 1px;
-  }
-
-  h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 32px;
-    letter-spacing: -1px;
-  }
-
-  .headline-large {
-    font-size: 64px;
-  }
-
-  .headline-medium {
-    font-size: 52px;
-  }
-
-  .headline-accent {
-    color: var(--accent);
-  }
-
-  .headline-primary {
-    color: var(--primary-light);
-  }
-
-  .body-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 22px;
-    line-height: 1.7;
-    color: var(--text-muted);
-    max-width: 850px;
-  }
-
-  .body-text strong {
-    color: var(--text);
-    font-weight: 600;
-  }
-
-  .body-text em {
-    color: var(--accent-warm);
-    font-style: normal;
-    font-weight: 500;
-  }
-
-  /* === DIVIDER === */
-  .divider {
-    width: 64px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    border-radius: 2px;
-    margin: 28px 0;
-  }
-
-  /* === VISUAL ELEMENTS === */
-  .icon-block {
-    width: 72px;
-    height: 72px;
-    background: linear-gradient(135deg, rgba(26, 86, 219, 0.15), rgba(26, 86, 219, 0.05));
-    border: 1px solid rgba(26, 86, 219, 0.2);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 32px;
-    box-shadow: 0 0 30px rgba(26, 86, 219, 0.1);
-  }
-
-  .icon-block svg {
-    width: 32px;
-    height: 32px;
-    stroke: var(--primary-light);
-    fill: none;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .icon-block.accent {
-    background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(249, 115, 22, 0.05));
-    border-color: rgba(249, 115, 22, 0.2);
-    box-shadow: 0 0 30px rgba(249, 115, 22, 0.1);
-  }
-
-  .icon-block.accent svg {
-    stroke: var(--accent);
-  }
-
-  /* === COMPARISON CARD === */
-  .compare-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 32px;
-  }
-
-  .compare-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px;
-    padding: 32px;
-  }
-
-  .compare-card.loses {
-    border-color: rgba(239, 68, 68, 0.2);
-    background: rgba(239, 68, 68, 0.03);
-  }
-
-  .compare-card.wins {
-    border-color: rgba(34, 197, 94, 0.2);
-    background: rgba(34, 197, 94, 0.03);
-  }
-
-  .compare-label {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .compare-label.red { color: #EF4444; }
-  .compare-label.green { color: #22C55E; }
-
-  .compare-label svg {
-    width: 20px;
-    height: 20px;
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
-  }
-
-  .compare-item {
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    color: var(--text-muted);
-    padding: 8px 0;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    line-height: 1.4;
-  }
-
-  .compare-item svg {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    stroke-width: 2;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .compare-item.red-item svg { stroke: #EF4444; }
-  .compare-item.green-item svg { stroke: #22C55E; }
-
-  /* === INSIGHT BOX === */
-  .insight-box {
-    background: rgba(26, 86, 219, 0.06);
-    border: 1px solid rgba(26, 86, 219, 0.15);
-    border-left: 3px solid var(--primary);
-    border-radius: 0 12px 12px 0;
-    padding: 24px 28px;
-    margin-top: 28px;
-  }
-
-  .insight-box p {
-    font-family: 'Inter', sans-serif;
-    font-size: 19px;
-    line-height: 1.6;
-    color: var(--text-muted);
-  }
-
-  .insight-box strong {
-    color: var(--primary-light);
-  }
-
-  /* === BOTTOM DECORATION === */
-  .bottom-accent {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
-    z-index: 2;
-  }
-
-  /* === SLIDE 1 SPECIFICS === */
-  .slide-1 .content {
-    text-align: left;
-  }
-
-  .slide-1 h1 {
-    font-size: 72px;
-    line-height: 1.05;
-    margin-bottom: 36px;
-  }
-
-  .slide-1 .subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 24px;
-    color: var(--text-dim);
-    font-weight: 400;
-    line-height: 1.5;
-    margin-top: 8px;
-  }
-
-  .slide-1 .subtitle em {
-    color: var(--text-muted);
-    font-style: normal;
-    text-decoration: line-through;
-    text-decoration-color: var(--accent);
-  }
-
-  /* === GLOW ORBS === */
-  .glow-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .glow-orb.blue {
-    background: rgba(26, 86, 219, 0.12);
-  }
-
-  .glow-orb.orange {
-    background: rgba(249, 115, 22, 0.08);
-  }
-
-  /* === STAT HIGHLIGHT === */
-  .stat {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    font-size: 80px;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 8px;
-    text-shadow: 0 0 40px var(--glow-accent);
-  }
-
-  .stat-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    color: var(--text-dim);
-    font-weight: 400;
-  }
-
-  /* === CTA SLIDE === */
-  .cta-box {
-    background: linear-gradient(135deg, rgba(26, 86, 219, 0.08), rgba(249, 115, 22, 0.06));
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 40px;
-    margin-top: 32px;
-  }
-
-  .cta-box p {
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    line-height: 1.6;
-    color: var(--text-muted);
-  }
-
-  .cta-box p + p {
-    margin-top: 16px;
-  }
-
-  .save-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(249, 115, 22, 0.1);
-    border: 1px solid rgba(249, 115, 22, 0.25);
-    border-radius: 10px;
-    padding: 12px 24px;
-    margin-top: 28px;
-    font-family: 'Inter', sans-serif;
-    font-size: 17px;
-    font-weight: 500;
-    color: var(--accent-warm);
-  }
-
-  .save-badge svg {
-    width: 20px;
-    height: 20px;
-    stroke: var(--accent);
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  /* === FLOATING ELEMENTS === */
-  .float-icon {
-    position: absolute;
-    z-index: 0;
-    opacity: 0.06;
-  }
-
-  .float-icon svg {
-    fill: none;
-    stroke: var(--primary-light);
-    stroke-width: 1;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  /* === RESPONSIVE === */
-  @media (max-width: 1100px) {
+  /* Scale slides to viewport on mobile */
+  @media (max-width: 768px) {
     .slide {
       width: 100vw;
       height: calc(100vw * 1.25);
+      padding: calc(100vw * 0.074);
+      border-radius: 0;
     }
-    .slide-inner {
-      padding: 5vw 6vw 4vw;
+  }
+
+  /* ── Slide counter ── */
+  .slide-counter {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 28px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 2px;
+  }
+  @media (max-width: 768px) {
+    .slide-counter {
+      font-size: calc(100vw * 0.026);
+      top: calc(100vw * 0.037);
+      right: calc(100vw * 0.037);
     }
-    .slide-1 h1 { font-size: 6.5vw; }
-    h1 { font-size: 5vw; }
-    .headline-large { font-size: 5.8vw; }
-    .headline-medium { font-size: 4.8vw; }
-    .body-text { font-size: 2vw; }
-    .stat { font-size: 7vw; }
-    .tag { font-size: 1.3vw; }
-    .compare-item { font-size: 1.7vw; }
-    .compare-label { font-size: 1.5vw; }
-    .insight-box p { font-size: 1.8vw; }
-    .cta-box p { font-size: 1.9vw; }
-    .save-badge { font-size: 1.6vw; }
-    .slide-1 .subtitle { font-size: 2.2vw; }
-    .logo-text { font-size: 1.5vw; }
-    .slide-counter { font-size: 1.4vw; }
+  }
+
+  /* ── Typography ── */
+  .headline {
+    font-size: 96px;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 32px;
+  }
+
+  .headline-lg {
+    font-size: 110px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -3px;
+    margin-bottom: 32px;
+  }
+
+  .subhead {
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 24px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .body-text {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .small-text {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .accent {
+    color: #6EE7B7;
+  }
+
+  .accent-orange {
+    color: #FBBF24;
+  }
+
+  .accent-red {
+    color: #F87171;
+  }
+
+  .accent-blue {
+    color: #60A5FA;
+  }
+
+  /* ── Responsive font scaling ── */
+  @media (max-width: 768px) {
+    .headline     { font-size: calc(100vw * 0.089); margin-bottom: calc(100vw * 0.03); letter-spacing: -1px; }
+    .headline-lg  { font-size: calc(100vw * 0.102); margin-bottom: calc(100vw * 0.03); letter-spacing: -2px; }
+    .subhead      { font-size: calc(100vw * 0.048); margin-bottom: calc(100vw * 0.022); }
+    .body-text    { font-size: calc(100vw * 0.037); }
+    .small-text   { font-size: calc(100vw * 0.028); }
+  }
+
+  /* ── Slide-specific ── */
+
+  /* Slide 1 — Hook */
+  .slide-1 {
+    background: linear-gradient(160deg, #0a0a0a 0%, #111827 100%);
+    justify-content: center;
+  }
+  .slide-1 .headline {
+    font-size: 88px;
+    line-height: 1.15;
+    letter-spacing: -2px;
+  }
+  @media (max-width: 768px) {
+    .slide-1 .headline { font-size: calc(100vw * 0.082); }
+  }
+  .slide-1 .subtitle {
+    font-size: 36px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    margin-top: 40px;
+    font-style: italic;
+  }
+  @media (max-width: 768px) {
+    .slide-1 .subtitle { font-size: calc(100vw * 0.033); margin-top: calc(100vw * 0.037); }
+  }
+
+  /* Top accent line */
+  .top-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #6EE7B7, #3B82F6);
+  }
+
+  /* Slide 6 columns */
+  .columns {
+    display: flex;
+    gap: 60px;
+    margin-top: 48px;
+  }
+  @media (max-width: 768px) {
+    .columns { gap: calc(100vw * 0.056); margin-top: calc(100vw * 0.044); }
+  }
+  .col {
+    flex: 1;
+  }
+  .col-label {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 3px solid rgba(255,255,255,0.15);
+  }
+  @media (max-width: 768px) {
+    .col-label { font-size: calc(100vw * 0.03); margin-bottom: calc(100vw * 0.022); padding-bottom: calc(100vw * 0.015); }
+  }
+  .col-item {
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.75);
+  }
+  @media (max-width: 768px) {
+    .col-item { font-size: calc(100vw * 0.035); }
+  }
+
+  /* Divider line */
+  .divider {
+    width: 80px;
+    height: 4px;
+    background: #6EE7B7;
+    margin: 32px 0;
+    border-radius: 2px;
+  }
+  @media (max-width: 768px) {
+    .divider { width: calc(100vw * 0.074); margin: calc(100vw * 0.03) 0; }
+  }
+
+  /* Slide 7 logo */
+  .logo {
+    position: absolute;
+    bottom: 60px;
+    left: 80px;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+  @media (max-width: 768px) {
+    .logo {
+      font-size: calc(100vw * 0.026);
+      bottom: calc(100vw * 0.056);
+      left: calc(100vw * 0.074);
+    }
+  }
+
+  /* Arrow icon for Slide 1 */
+  .arrow-icon {
+    position: absolute;
+    bottom: 60px;
+    right: 80px;
+    opacity: 0.2;
+  }
+  @media (max-width: 768px) {
+    .arrow-icon {
+      bottom: calc(100vw * 0.056);
+      right: calc(100vw * 0.074);
+    }
+    .arrow-icon svg { width: calc(100vw * 0.037); height: calc(100vw * 0.037); }
+  }
+
+  /* Greater-than symbol styling */
+  .gt-symbol {
+    color: #6EE7B7;
+    font-weight: 900;
+  }
+
+  /* Arrow between lines */
+  .arrow-text {
+    font-size: 44px;
+    color: rgba(255,255,255,0.3);
+    margin: 8px 0;
+  }
+  @media (max-width: 768px) {
+    .arrow-text { font-size: calc(100vw * 0.041); }
   }
 </style>
 </head>
 <body>
 
-<!-- ===================== SLIDE 1 — HOOK ===================== -->
-<div class="slide slide-1">
-  <div class="noise"></div>
-  <div class="grid-pattern"></div>
-  <div class="glow-orb blue" style="width:400px;height:400px;top:-100px;right:-100px;"></div>
-  <div class="glow-orb orange" style="width:300px;height:300px;bottom:100px;left:-80px;"></div>
+<div class="page-wrapper">
 
-  <div class="slide-inner">
-    <div class="top-bar">
-      <div class="logo">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <span class="logo-text">Full Funnel</span>
-      </div>
-      <div class="slide-counter">1 / 7</div>
+  <!-- ════════════════════════════════════════ SLIDE 1 — HOOK ════════════════════════════════════════ -->
+  <div class="slide slide-1">
+    <div class="top-line"></div>
+    <span class="slide-counter">1 / 7</span>
+    <div>
+      <h1 class="headline">O que ninguém te conta sobre <span class="accent">vender com IA</span></h1>
+      <p class="subtitle">(e não, não é sobre "responder rápido")</p>
     </div>
-
-    <div class="content">
-      <div class="tag">
-        <span class="tag-line"></span>
-        Verdades inconvenientes
-      </div>
-      <h1>
-        O que ninguem<br>
-        te conta sobre<br>
-        <span class="headline-accent">vender com IA</span>
-      </h1>
-      <p class="subtitle">
-        (E nao, nao e sobre <em>"responder rapido"</em>)
-      </p>
+    <div class="arrow-icon">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </div>
   </div>
-  <div class="bottom-accent"></div>
-</div>
 
-<!-- ===================== SLIDE 2 — COPY ===================== -->
-<div class="slide">
-  <div class="noise"></div>
-  <div class="grid-pattern"></div>
-  <div class="glow-orb blue" style="width:350px;height:350px;top:200px;right:-80px;"></div>
-
-  <div class="slide-inner">
-    <div class="top-bar">
-      <div class="logo">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <span class="logo-text">Full Funnel</span>
-      </div>
-      <div class="slide-counter">2 / 7</div>
-    </div>
-
-    <div class="content">
-      <div class="icon-block">
-        <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-      </div>
-      <div class="tag">
-        <span class="tag-line"></span>
-        Erro #1
-      </div>
-      <h1 class="headline-large">
-        IA nao substitui<br>
-        copy. Ela <span class="headline-accent">amplifica.</span>
-      </h1>
-      <p class="body-text">
-        A IA pode gerar texto o dia inteiro. Mas <strong>sem estrategia de persuasao por tras, e so ruido bonito.</strong>
-      </p>
+  <!-- ════════════════════════════════════════ SLIDE 2 ════════════════════════════════════════ -->
+  <div class="slide" style="background: linear-gradient(160deg, #0a0a0a 0%, #0f172a 100%);">
+    <div class="top-line"></div>
+    <span class="slide-counter">2 / 7</span>
+    <div>
+      <h2 class="headline-lg">IA não substitui copy.</h2>
+      <h2 class="headline-lg"><span class="accent">Ela amplifica.</span></h2>
       <div class="divider"></div>
-      <p class="body-text">
-        O erro classico: jogar o problema no chat e esperar milagre. <em>A IA e o megafone. Voce e a mensagem.</em>
-      </p>
+      <p class="body-text">Sem estratégia, ela só amplifica o nada.</p>
     </div>
   </div>
-  <div class="bottom-accent"></div>
-</div>
 
-<!-- ===================== SLIDE 3 — QUALIFICACAO ===================== -->
-<div class="slide">
-  <div class="noise"></div>
-  <div class="grid-pattern"></div>
-  <div class="glow-orb orange" style="width:300px;height:300px;top:100px;left:-60px;"></div>
-  <div class="glow-orb blue" style="width:250px;height:250px;bottom:150px;right:-50px;"></div>
-
-  <div class="slide-inner">
-    <div class="top-bar">
-      <div class="logo">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <span class="logo-text">Full Funnel</span>
-      </div>
-      <div class="slide-counter">3 / 7</div>
-    </div>
-
-    <div class="content">
-      <div class="icon-block accent">
-        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      </div>
-      <div class="tag">
-        <span class="tag-line"></span>
-        Qualificacao
-      </div>
-      <h1 class="headline-medium">
-        Qualificacao automatica<br>
-        e <span class="headline-accent">arte</span>, nao ciencia.
-      </h1>
-      <p class="body-text">
-        A maioria configura perguntas genericas e reza pro closer dar conta. <strong>Os que convertem sabem: a pergunta CERTA elimina 80% do trabalho.</strong>
-      </p>
-      <div class="insight-box">
-        <p>Perguntas que revelam <strong>intencao real</strong> > perguntas que coletam dados. Um lead que diz "preciso resolver isso esse mes" vale mais que 50 "tenho interesse".</p>
-      </div>
+  <!-- ════════════════════════════════════════ SLIDE 3 ════════════════════════════════════════ -->
+  <div class="slide" style="background: linear-gradient(160deg, #0a0a0a 0%, #1a0f27 100%);">
+    <div class="top-line"></div>
+    <span class="slide-counter">3 / 7</span>
+    <div>
+      <h2 class="headline">Qualificação automática é <span class="accent-orange">arte.</span></h2>
+      <div class="divider" style="background: #FBBF24;"></div>
+      <p class="subhead">A pergunta certa elimina 80% do trabalho do closer.</p>
+      <p class="small-text">A maioria usa perguntas genéricas. Os que vendem formulam <em>a pergunta</em> que revela intenção real.</p>
     </div>
   </div>
-  <div class="bottom-accent"></div>
-</div>
 
-<!-- ===================== SLIDE 4 — TIMING ===================== -->
-<div class="slide">
-  <div class="noise"></div>
-  <div class="grid-pattern"></div>
-  <div class="glow-orb blue" style="width:400px;height:400px;bottom:-100px;right:-100px;"></div>
-
-  <div class="slide-inner">
-    <div class="top-bar">
-      <div class="logo">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <span class="logo-text">Full Funnel</span>
-      </div>
-      <div class="slide-counter">4 / 7</div>
-    </div>
-
-    <div class="content">
-      <div class="icon-block">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      </div>
-      <div class="tag">
-        <span class="tag-line"></span>
-        Follow-up
-      </div>
-      <h1 class="headline-large">
-        <span class="headline-primary">Timing</span> de follow-up<br>
-        > quantidade de<br>
-        mensagens.
-      </h1>
-      <p class="body-text">
-        Nao e mandar 10 mensagens. <strong>E mandar 3 no momento certo.</strong>
-      </p>
+  <!-- ════════════════════════════════════════ SLIDE 4 ════════════════════════════════════════ -->
+  <div class="slide" style="background: linear-gradient(160deg, #0a0a0a 0%, #172027 100%);">
+    <div class="top-line"></div>
+    <span class="slide-counter">4 / 7</span>
+    <div>
+      <h2 class="headline-lg">Timing <span class="gt-symbol">&gt;</span> Quantidade</h2>
       <div class="divider"></div>
-      <p class="body-text">
-        A IA entende quando o lead ta pronto — e quando ta fugindo. <em>A diferenca entre insistir e converter e timing.</em>
-      </p>
+      <p class="subhead" style="color: rgba(255,255,255,0.5);">Não é mandar 10 mensagens.</p>
+      <p class="subhead">É mandar <span class="accent">3</span> no momento certo.</p>
     </div>
   </div>
-  <div class="bottom-accent"></div>
-</div>
 
-<!-- ===================== SLIDE 5 — BASE DE CONHECIMENTO ===================== -->
-<div class="slide">
-  <div class="noise"></div>
-  <div class="grid-pattern"></div>
-  <div class="glow-orb orange" style="width:350px;height:350px;top:-80px;left:-60px;"></div>
-  <div class="glow-orb blue" style="width:300px;height:300px;bottom:50px;right:-80px;"></div>
-
-  <div class="slide-inner">
-    <div class="top-bar">
-      <div class="logo">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <span class="logo-text">Full Funnel</span>
-      </div>
-      <div class="slide-counter">5 / 7</div>
-    </div>
-
-    <div class="content">
-      <div class="icon-block accent">
-        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="12" y1="6" x2="12" y2="13"/><line x1="8.5" y1="9.5" x2="15.5" y2="9.5"/></svg>
-      </div>
-      <div class="tag">
-        <span class="tag-line"></span>
-        O verdadeiro segredo
-      </div>
-      <h1 class="headline-medium">
-        A magica nao e a IA.<br>
-        E a <span class="headline-accent">base de<br>conhecimento.</span>
-      </h1>
-      <p class="body-text">
-        Quem treina a IA com respostas genericas, recebe respostas genericas. <strong>Garbage in, garbage out.</strong>
-      </p>
+  <!-- ════════════════════════════════════════ SLIDE 5 ════════════════════════════════════════ -->
+  <div class="slide" style="background: linear-gradient(160deg, #0a0a0a 0%, #0f2718 100%);">
+    <div class="top-line"></div>
+    <span class="slide-counter">5 / 7</span>
+    <div>
+      <h2 class="headline">O segredo não é a IA.</h2>
+      <h2 class="headline"><span class="accent">É a base de conhecimento.</span></h2>
       <div class="divider"></div>
-      <p class="body-text">
-        Os que vendem usam a <em>propria linguagem do negocio</em>, cases reais, objecoes documentadas. A IA so e tao boa quanto o que voce alimenta.
-      </p>
+      <p class="small-text">Treina com respostas genéricas → recebe genérico.<br>Treina com sua linguagem, seus cases, suas objeções → <span style="color: rgba(255,255,255,0.8);">vende.</span></p>
     </div>
   </div>
-  <div class="bottom-accent"></div>
-</div>
 
-<!-- ===================== SLIDE 6 — COMPARACAO ===================== -->
-<div class="slide">
-  <div class="noise"></div>
-  <div class="grid-pattern"></div>
-  <div class="glow-orb blue" style="width:300px;height:300px;top:50px;left:-80px;"></div>
-  <div class="glow-orb orange" style="width:250px;height:250px;bottom:80px;right:-60px;"></div>
-
-  <div class="slide-inner">
-    <div class="top-bar">
-      <div class="logo">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+  <!-- ════════════════════════════════════════ SLIDE 6 ════════════════════════════════════════ -->
+  <div class="slide" style="background: linear-gradient(160deg, #0a0a0a 0%, #1a1127 100%);">
+    <div class="top-line"></div>
+    <span class="slide-counter">6 / 7</span>
+    <div>
+      <h2 class="headline" style="margin-bottom: 8px;">Onde a IA <span class="accent-red">perde.</span></h2>
+      <h2 class="headline">E onde <span class="accent">ganha.</span></h2>
+      <div class="columns">
+        <div class="col">
+          <div class="col-label" style="color: #F87171; border-color: rgba(248,113,113,0.3);">Perde</div>
+          <div class="col-item">Empatia</div>
+          <div class="col-item">Leitura de contexto</div>
+          <div class="col-item">Negociação complexa</div>
         </div>
-        <span class="logo-text">Full Funnel</span>
-      </div>
-      <div class="slide-counter">6 / 7</div>
-    </div>
-
-    <div class="content">
-      <div class="tag">
-        <span class="tag-line"></span>
-        Visao estrategica
-      </div>
-      <h1 class="headline-medium">
-        Onde a IA <span style="color:#EF4444;">perde</span><br>
-        (e onde ela <span style="color:#22C55E;">ganha</span><br>
-        de lavada)
-      </h1>
-
-      <div class="compare-grid">
-        <div class="compare-card loses">
-          <div class="compare-label red">
-            <svg viewBox="0 0 24 24" stroke="#EF4444"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            Perde
-          </div>
-          <div class="compare-item red-item">
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            Empatia emocional
-          </div>
-          <div class="compare-item red-item">
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            Contexto sutil
-          </div>
-          <div class="compare-item red-item">
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            Negociacao complexa
-          </div>
+        <div class="col">
+          <div class="col-label" style="color: #6EE7B7; border-color: rgba(110,231,183,0.3);">Ganha</div>
+          <div class="col-item">Consistência</div>
+          <div class="col-item">Velocidade</div>
+          <div class="col-item">Escala</div>
+          <div class="col-item">Não esquece follow-up</div>
         </div>
-
-        <div class="compare-card wins">
-          <div class="compare-label green">
-            <svg viewBox="0 0 24 24" stroke="#22C55E"><polyline points="20 6 9 17 4 12"/></svg>
-            Ganha
-          </div>
-          <div class="compare-item green-item">
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Consistencia 24/7
-          </div>
-          <div class="compare-item green-item">
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Velocidade de resposta
-          </div>
-          <div class="compare-item green-item">
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Follow-up sem falha
-          </div>
-          <div class="compare-item green-item">
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            Escala infinita
-          </div>
-        </div>
-      </div>
-
-      <div class="insight-box" style="margin-top:28px;">
-        <p><strong>Saber a diferenca</strong> e o que separa quem usa de quem realmente vende.</p>
       </div>
     </div>
   </div>
-  <div class="bottom-accent"></div>
-</div>
 
-<!-- ===================== SLIDE 7 — CTA ===================== -->
-<div class="slide">
-  <div class="noise"></div>
-  <div class="grid-pattern"></div>
-  <div class="glow-orb blue" style="width:400px;height:400px;top:-50px;right:-100px;"></div>
-  <div class="glow-orb orange" style="width:350px;height:350px;bottom:-50px;left:-80px;"></div>
-
-  <div class="slide-inner">
-    <div class="top-bar">
-      <div class="logo">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <span class="logo-text">Full Funnel</span>
-      </div>
-      <div class="slide-counter">7 / 7</div>
+  <!-- ════════════════════════════════════════ SLIDE 7 — CTA ════════════════════════════════════════ -->
+  <div class="slide" style="background: linear-gradient(160deg, #0a0a0a 0%, #111827 100%);">
+    <div class="top-line"></div>
+    <span class="slide-counter">7 / 7</span>
+    <div>
+      <h2 class="headline">IA é ferramenta.<br><span class="accent">Estratégia é sua.</span></h2>
+      <div class="divider"></div>
+      <p class="subhead" style="color: rgba(255,255,255,0.7);">A diferença entre quem usa e quem vende? Treinar a IA com o contexto do seu negócio.</p>
+      <p class="small-text" style="margin-top: 24px;">Salva esse post pra quando for configurar suas automações.</p>
     </div>
-
-    <div class="content">
-      <div class="icon-block">
-        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      </div>
-      <div class="tag">
-        <span class="tag-line"></span>
-        A real
-      </div>
-      <h1 class="headline-medium">
-        A maioria trata IA<br>
-        como <span class="headline-accent">gimmick.</span>
-      </h1>
-      <p class="body-text">
-        Um bot que responde "posso te ajudar?" nao e inteligencia artificial aplicada a vendas. E um FAQ glorificado.
-      </p>
-
-      <div class="cta-box">
-        <p>
-          <strong style="color:var(--text);">A diferenca real:</strong> IA treinada no contexto do <strong style="color:var(--accent);">seu</strong> negocio. Com a linguagem dos seus clientes. Com as objecoes que seu time ja ouviu mil vezes.
-        </p>
-        <p style="color:var(--text-dim);">
-          Nao e plug-and-play generico. E estrategia de venda com tecnologia embarcada.
-        </p>
-      </div>
-
-      <div class="save-badge">
-        <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-        Salva esse conteudo. Vai servir quando voce for configurar suas automacoes.
-      </div>
-    </div>
+    <div class="logo">FULL FUNNEL</div>
   </div>
-  <div class="bottom-accent"></div>
+
 </div>
 
 </body>
