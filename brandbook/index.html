@@ -6,6 +6,7 @@
 <title>Full Funnel — Instagram Brand Book</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -55,7 +56,7 @@ section{padding:6rem 1.5rem 4rem}
 
 /* COLOR PALETTE */
 .palette-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem}
-.color-swatch{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:12px;overflow:hidden;transition:transform .2s}
+.color-swatch{background:var(--ff-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;transition:transform .2s}
 .color-swatch:hover{transform:translateY(-4px)}
 .color-swatch .swatch-color{height:80px;position:relative}
 .color-swatch .swatch-color::after{content:attr(data-hex);position:absolute;bottom:8px;right:10px;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.8);background:rgba(0,0,0,.3);padding:2px 8px;border-radius:4px}
@@ -76,7 +77,13 @@ section{padding:6rem 1.5rem 4rem}
 .pillar-card{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
 .pillar-card:hover{transform:translateY(-4px);box-shadow:var(--ff-shadow-glow)}
 .pillar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.pillar-emoji{font-size:2.5rem;margin-bottom:1rem}
+.pillar-emoji{margin-bottom:1rem;display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.04)}
+.pillar-emoji svg{width:28px;height:28px}
+.lucide-icon{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}
+.lucide-icon svg{width:24px;height:24px}
+.lucide-icon.lg svg{width:32px;height:32px}
+.lucide-icon.xl svg{width:40px;height:40px}
+.lucide-icon.sm svg{width:18px;height:18px}
 .pillar-name{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
 .pillar-desc{font-size:.88rem;color:#94a3b8;margin-bottom:1rem;line-height:1.5}
 .pillar-meta{display:flex;gap:1rem;flex-wrap:wrap}
@@ -84,7 +91,7 @@ section{padding:6rem 1.5rem 4rem}
 
 /* CALENDAR */
 .cal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
-.cal-card{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:12px;padding:1.2rem;position:relative;overflow:hidden;transition:transform .15s}
+.cal-card{background:var(--ff-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.2rem;position:relative;overflow:hidden;transition:transform .15s}
 .cal-card:hover{transform:translateY(-2px)}
 .cal-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px}
 .cal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
@@ -102,7 +109,7 @@ section{padding:6rem 1.5rem 4rem}
 .slides-container::-webkit-scrollbar{height:6px}
 .slides-container::-webkit-scrollbar-track{background:var(--ff-card-border);border-radius:3px}
 .slides-container::-webkit-scrollbar-thumb{background:var(--ff-primary);border-radius:3px}
-.slide-card{min-width:280px;max-width:320px;border-radius:14px;overflow:hidden;flex-shrink:0;scroll-snap-align:start;border:1px solid var(--ff-card-border)}
+.slide-card{min-width:280px;max-width:320px;border-radius:16px;overflow:hidden;flex-shrink:0;scroll-snap-align:start;border:1px solid rgba(255,255,255,.06)}
 .slide-visual{padding:1.5rem;min-height:200px;display:flex;flex-direction:column;justify-content:center}
 .slide-visual.dark{color:var(--ff-white)}
 .slide-visual.light{color:var(--ff-dark)}
@@ -114,13 +121,13 @@ section{padding:6rem 1.5rem 4rem}
 .slide-desc{background:rgba(0,0,0,.3);padding:1rem;font-size:.72rem;color:#94a3b8;line-height:1.5;border-top:1px solid var(--ff-card-border)}
 .slide-cta-btn{display:inline-block;margin-top:1rem;padding:.6rem 1.5rem;border-radius:999px;font-size:.8rem;font-weight:700;background:var(--ff-white);color:var(--ff-primary);text-align:center}
 
-.single-post{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:16px;overflow:hidden;max-width:500px}
+.single-post{background:var(--ff-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;max-width:500px}
 .single-visual{min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem;text-align:center;position:relative}
 .single-desc{padding:1.2rem;font-size:.78rem;color:#94a3b8;line-height:1.5;border-top:1px solid var(--ff-card-border)}
 
 /* REFERENCES */
 .ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem}
-.ref-card{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:14px;padding:1.5rem;transition:transform .2s}
+.ref-card{background:var(--ff-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.5rem;transition:transform .2s}
 .ref-card:hover{transform:translateY(-3px)}
 .ref-card.highlight{border-color:var(--ff-secondary);box-shadow:0 0 20px rgba(249,115,22,.08)}
 .ref-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.8rem}
@@ -134,18 +141,18 @@ section{padding:6rem 1.5rem 4rem}
 .ref-steal{margin-top:.8rem;background:rgba(26,86,219,.06);border-radius:8px;padding:.8rem}
 .ref-steal-title{font-size:.65rem;font-weight:700;color:var(--ff-primary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem}
 .ref-steal li{font-size:.75rem;color:#b4c0d3;line-height:1.4;margin-bottom:.2rem;list-style:none;padding-left:.8rem;position:relative}
-.ref-steal li::before{content:'💡';position:absolute;left:0;font-size:.6rem}
+.ref-steal li::before{content:'→';position:absolute;left:0;font-size:.7rem;color:var(--ff-primary)}
 
 /* INSIGHTS */
 .insights-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem;margin-top:2rem}
-.insight-card{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:14px;padding:1.5rem}
+.insight-card{background:var(--ff-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.5rem}
 .insight-num{font-size:2rem;font-weight:900;background:var(--ff-gradient-energy);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
 .insight-title{font-size:.95rem;font-weight:700;color:var(--ff-white);margin-bottom:.5rem}
 .insight-detail{font-size:.8rem;color:#94a3b8;line-height:1.5}
 
 /* HASHTAGS */
 .hashtag-tiers{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
-.hashtag-tier{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:14px;padding:1.8rem}
+.hashtag-tier{background:var(--ff-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.8rem}
 .tier-label{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.8rem}
 .tier-desc{font-size:.85rem;color:#94a3b8;margin-bottom:1rem}
 .tag-cloud{display:flex;flex-wrap:wrap;gap:.5rem}
@@ -154,15 +161,45 @@ section{padding:6rem 1.5rem 4rem}
 
 /* VOICE */
 .voice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
-.voice-trait{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:12px;padding:1.2rem;text-align:center}
+.voice-trait{background:var(--ff-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.2rem;text-align:center}
+.voice-trait .voice-icon{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;margin:0 auto .6rem;background:rgba(255,255,255,.04)}
+.voice-trait .voice-icon svg{width:22px;height:22px}
 .voice-trait h4{font-size:.9rem;margin-bottom:.3rem}
 .voice-trait p{font-size:.78rem;color:#94a3b8;line-height:1.4}
-.caption-example{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:12px;padding:1.5rem;margin-bottom:1rem;position:relative}
-.caption-example::before{content:'BOM ✅';position:absolute;top:12px;right:12px;font-size:.6rem;font-weight:700;color:var(--ff-accent);padding:.2rem .5rem;border-radius:4px;background:rgba(16,185,129,.1)}
-.caption-example.bad::before{content:'RUIM ❌';color:#ef4444;background:rgba(239,68,68,.1)}
+.caption-example{background:var(--ff-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.5rem;margin-bottom:1rem;position:relative}
+.caption-example::before{content:'BOM';position:absolute;top:12px;right:12px;font-size:.6rem;font-weight:700;color:var(--ff-accent);padding:.2rem .5rem;border-radius:4px;background:rgba(16,185,129,.1);letter-spacing:.04em}
+.caption-example.bad::before{content:'RUIM';color:#ef4444;background:rgba(239,68,68,.1);letter-spacing:.04em}
 .caption-pillar{font-size:.65rem;font-weight:600;color:var(--ff-primary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
 .caption-text{font-size:.85rem;color:#cbd5e1;white-space:pre-line;line-height:1.6}
 .caption-why{font-size:.75rem;color:#ef4444;margin-top:.5rem;font-style:italic}
+
+/* MICRO-INTERACTIONS & POLISH */
+.pillar-card{transition:transform .25s cubic-bezier(.4,0,.2,1),box-shadow .25s cubic-bezier(.4,0,.2,1),border-color .25s}
+.pillar-card:hover{transform:translateY(-4px);box-shadow:0 8px 40px rgba(26,86,219,.12),0 0 0 1px rgba(26,86,219,.08);border-color:rgba(255,255,255,.1)}
+.cal-card{transition:transform .2s cubic-bezier(.4,0,.2,1),box-shadow .2s,border-color .2s}
+.cal-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.2);border-color:rgba(255,255,255,.1)}
+.ref-card{transition:transform .25s cubic-bezier(.4,0,.2,1),box-shadow .25s,border-color .25s}
+.ref-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.2);border-color:rgba(255,255,255,.1)}
+.insight-card{transition:transform .2s cubic-bezier(.4,0,.2,1),border-color .2s}
+.insight-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.12)}
+.color-swatch{transition:transform .2s cubic-bezier(.4,0,.2,1),box-shadow .2s}
+.color-swatch:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.gradient-card{transition:transform .2s,box-shadow .2s;border-radius:12px}
+.gradient-card:hover{transform:scale(1.02);box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.voice-trait{transition:transform .2s cubic-bezier(.4,0,.2,1),border-color .2s}
+.voice-trait:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.12)}
+.slide-card{transition:transform .2s cubic-bezier(.4,0,.2,1),box-shadow .2s}
+.slide-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.single-post{transition:transform .25s cubic-bezier(.4,0,.2,1),box-shadow .25s}
+.single-post:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.slide-cta-btn{transition:transform .15s,box-shadow .15s}
+.slide-cta-btn:hover{transform:scale(1.04);box-shadow:0 4px 16px rgba(255,255,255,.2)}
+.hashtag{transition:all .2s cubic-bezier(.4,0,.2,1)}
+.hashtag:hover{border-color:var(--ff-primary);color:var(--ff-primary);background:rgba(26,86,219,.08);transform:translateY(-1px)}
+section{position:relative}
+section::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:min(80%,800px);height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent)}
+.hero::after{background:none}
+.topnav{transition:background .3s}
 
 /* FOOTER */
 footer{text-align:center;padding:3rem 1.5rem;border-top:1px solid var(--ff-card-border);margin-top:2rem}
@@ -189,7 +226,7 @@ footer p{font-size:.8rem;color:#475569}
 <!-- NAV -->
 <nav class="topnav">
 <div class="topnav-inner">
-<div class="topnav-logo">Full Funnel ⚡</div>
+<div class="topnav-logo">Full Funnel <i data-lucide="zap" style="width:16px;height:16px;display:inline;vertical-align:middle;stroke:var(--ff-secondary)"></i></div>
 <ul class="topnav-links">
 <li><a href="#identidade">Identidade</a></li>
 <li><a href="#pilares">Pilares</a></li>
@@ -253,7 +290,7 @@ footer p{font-size:.8rem;color:#475569}
 <div class="typo-row"><span class="typo-label">Body Large</span><span style="font-size:1.15rem;color:#94a3b8">Configure uma vez e todo novo lead recebe uma sequência personalizada de emails.</span></div>
 <div class="typo-row"><span class="typo-label">Body Regular</span><span style="font-size:1rem;color:#94a3b8">Corpo de texto para parágrafos, explicações e descrições detalhadas.</span></div>
 <div class="typo-row"><span class="typo-label">Caption</span><span style="font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748b">Automação de Marketing</span></div>
-<div class="typo-row"><span class="typo-label">Número</span><span style="font-size:3.5rem;font-weight:900;color:var(--ff-secondary)">347</span></div>
+<div class="typo-row"><span class="typo-label">Número</span><span style="font-size:3.5rem;font-weight:900;color:var(--ff-secondary)">2.847</span></div>
 <div class="typo-row"><span class="typo-label">Citação</span><span style="font-size:1.3rem;font-weight:500;font-style:italic;color:#cbd5e1">"A automação não substitui você. Ela multiplica você."</span></div>
 </div>
 
@@ -293,7 +330,7 @@ footer p{font-size:.8rem;color:#475569}
 <div class="pillars-grid">
 
 <div class="pillar-card" style="border-top:3px solid #1A56DB">
-<div class="pillar-emoji">🤖</div>
+<div class="pillar-emoji"><i data-lucide="bot" style="stroke:var(--ff-primary)"></i></div>
 <div class="pillar-name">Automação & Produtividade</div>
 <div class="pillar-desc">Tudo sobre automação de marketing, workflows, economia de tempo e escala. Mostra como a Full Funnel elimina tarefas manuais e multiplica resultados.</div>
 <div class="pillar-meta">
@@ -305,7 +342,7 @@ footer p{font-size:.8rem;color:#475569}
 </div>
 
 <div class="pillar-card" style="border-top:3px solid #10B981">
-<div class="pillar-emoji">📊</div>
+<div class="pillar-emoji"><i data-lucide="bar-chart-2" style="stroke:var(--ff-accent)"></i></div>
 <div class="pillar-name">Resultados & Cases</div>
 <div class="pillar-desc">Prova social, números reais, cases de sucesso, antes/depois. Mostra o impacto tangível da Full Funnel nos negócios dos clientes.</div>
 <div class="pillar-meta">
@@ -317,7 +354,7 @@ footer p{font-size:.8rem;color:#475569}
 </div>
 
 <div class="pillar-card" style="border-top:3px solid #F97316">
-<div class="pillar-emoji">🎓</div>
+<div class="pillar-emoji"><i data-lucide="graduation-cap" style="stroke:var(--ff-secondary)"></i></div>
 <div class="pillar-name">Educação & Marketing Digital</div>
 <div class="pillar-desc">Conteúdo educativo sobre funis de venda, copywriting, tráfego pago. Posiciona a Full Funnel como autoridade no assunto.</div>
 <div class="pillar-meta">
@@ -328,7 +365,7 @@ footer p{font-size:.8rem;color:#475569}
 </div>
 
 <div class="pillar-card" style="border-top:3px solid #1A56DB">
-<div class="pillar-emoji">⚡</div>
+<div class="pillar-emoji"><i data-lucide="zap" style="stroke:var(--ff-primary)"></i></div>
 <div class="pillar-name">Produto & Features</div>
 <div class="pillar-desc">Demonstração de funcionalidades da plataforma, novidades, updates, tutoriais de uso. Mostra o poder da ferramenta em ação.</div>
 <div class="pillar-meta">
@@ -339,7 +376,7 @@ footer p{font-size:.8rem;color:#475569}
 </div>
 
 <div class="pillar-card" style="border-top:3px solid #F97316">
-<div class="pillar-emoji">🤝</div>
+<div class="pillar-emoji"><i data-lucide="users" style="stroke:var(--ff-secondary)"></i></div>
 <div class="pillar-name">Comunidade & Bastidores</div>
 <div class="pillar-desc">Humanização da marca. Bastidores, time, cultura, eventos, interação com a comunidade. Cria conexão emocional e pertencimento.</div>
 <div class="pillar-meta">
@@ -361,18 +398,18 @@ footer p{font-size:.8rem;color:#475569}
 <div class="section-subtitle">Calendário completo com pilares, formatos, tópicos e hooks. Pronto pra executar.</div>
 
 <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2rem">
-<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(26,86,219,.15);color:#1A56DB">🤖 Automação: 11 posts</span>
-<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(16,185,129,.15);color:#10B981">📊 Resultados: 7 posts</span>
-<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(249,115,22,.15);color:#F97316">🎓 Educação: 7 posts</span>
-<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(26,86,219,.15);color:#60a5fa">⚡ Produto: 6 posts</span>
-<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(249,115,22,.15);color:#fb923c">🤝 Comunidade: 5 posts</span>
+<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(26,86,219,.15);color:#1A56DB;display:inline-flex;align-items:center;gap:.3rem"><i data-lucide="bot" style="width:14px;height:14px;stroke:#1A56DB"></i> Automação: 11 posts</span>
+<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(16,185,129,.15);color:#10B981;display:inline-flex;align-items:center;gap:.3rem"><i data-lucide="bar-chart-2" style="width:14px;height:14px;stroke:#10B981"></i> Resultados: 7 posts</span>
+<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(249,115,22,.15);color:#F97316;display:inline-flex;align-items:center;gap:.3rem"><i data-lucide="graduation-cap" style="width:14px;height:14px;stroke:#F97316"></i> Educação: 7 posts</span>
+<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(26,86,219,.15);color:#60a5fa;display:inline-flex;align-items:center;gap:.3rem"><i data-lucide="zap" style="width:14px;height:14px;stroke:#60a5fa"></i> Produto: 6 posts</span>
+<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(249,115,22,.15);color:#fb923c;display:inline-flex;align-items:center;gap:.3rem"><i data-lucide="users" style="width:14px;height:14px;stroke:#fb923c"></i> Comunidade: 5 posts</span>
 </div>
 
 <div class="cal-grid">
 
-<div class="cal-card" style="--pillar-color:#1A56DB"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">01 Abr · Qua</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">7 Automações Que Vão Dobrar Suas Vendas</div><div class="cal-hook">"Você ainda manda follow-up manualmente? 😬"</div></div>
+<div class="cal-card" style="--pillar-color:#1A56DB"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">01 Abr · Qua</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">7 Automações Que Vão Dobrar Suas Vendas</div><div class="cal-hook">"Você ainda manda follow-up manualmente?"</div></div>
 
-<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#10B981;border-radius:2px"></div><div class="cal-top"><span class="cal-day">02 Abr · Qui</span><span class="cal-type" style="background:#10B981">Single</span></div><div class="cal-topic">347 Leads em 7 Dias — Case Real</div><div class="cal-hook">"Esse número não é sorte. É sistema."</div></div>
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#10B981;border-radius:2px"></div><div class="cal-top"><span class="cal-day">02 Abr · Qui</span><span class="cal-type" style="background:#10B981">Single</span></div><div class="cal-topic">2.847 Leads Qualificados em 30 Dias — Case Real</div><div class="cal-hook">"Esse número não é sorte. É sistema."</div></div>
 
 <div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">03 Abr · Sex</span><span class="cal-type" style="background:#7c3aed">Reels</span></div><div class="cal-topic">Tour pela Plataforma em 60 Segundos</div><div class="cal-hook">"Tudo que você paga separado, em um só lugar"</div></div>
 
@@ -444,7 +481,7 @@ footer p{font-size:.8rem;color:#475569}
 <!-- CAROUSEL 1: 7 Automações -->
 <div class="post-section">
 <div class="post-header">
-<span class="post-badge" style="background:rgba(26,86,219,.15);color:#1A56DB">🤖 Automação</span>
+<span class="post-badge" style="background:rgba(26,86,219,.15);color:#1A56DB;display:inline-flex;align-items:center;gap:.3rem"><i data-lucide="bot" style="width:14px;height:14px;stroke:#1A56DB"></i> Automação</span>
 <span class="post-title">7 Automações Que Vão Dobrar Suas Vendas</span>
 </div>
 <div class="slides-container">
@@ -509,7 +546,7 @@ footer p{font-size:.8rem;color:#475569}
 <div class="slide-headline" style="color:#1F2937">Pesquisa NPS<br>Pós-Venda</div>
 <div class="slide-body" style="color:#6B7280">7 dias após a compra: pesquisa automática. Nota alta? Pede indicação. Nota baixa? Alerta suporte. Tudo sem intervenção manual.</div>
 </div>
-<div class="slide-desc">Escala NPS com emojis (😡 😐 😊 🤩). Setas mostrando ramificações automáticas.</div>
+<div class="slide-desc">Escala NPS visual com ícones de satisfação (1-10). Setas mostrando ramificações automáticas para cada faixa de nota.</div>
 </div>
 
 <div class="slide-card">
@@ -523,7 +560,7 @@ footer p{font-size:.8rem;color:#475569}
 
 <div class="slide-card">
 <div class="slide-visual dark" style="background:linear-gradient(135deg,#1A56DB 0%,#F97316 100%);text-align:center">
-<div style="font-size:2.5rem;margin-bottom:.5rem">🚀</div>
+<div style="margin-bottom:.8rem"><i data-lucide="rocket" style="width:40px;height:40px;stroke:var(--ff-white)"></i></div>
 <div class="slide-headline">Pronto pra<br>Automatizar?</div>
 <div class="slide-subtitle">Teste grátis por 14 dias.<br>Sem cartão. Sem compromisso.</div>
 <div class="slide-cta-btn">COMEÇAR AGORA →</div>
@@ -537,7 +574,7 @@ footer p{font-size:.8rem;color:#475569}
 <!-- CAROUSEL 2: Funil de Vendas -->
 <div class="post-section">
 <div class="post-header">
-<span class="post-badge" style="background:rgba(249,115,22,.15);color:#F97316">🎓 Educação</span>
+<span class="post-badge" style="background:rgba(249,115,22,.15);color:#F97316;display:inline-flex;align-items:center;gap:.3rem"><i data-lucide="graduation-cap" style="width:14px;height:14px;stroke:#F97316"></i> Educação</span>
 <span class="post-title">Funil de Vendas: Do Zero ao Primeiro Lead</span>
 </div>
 <div class="slides-container">
@@ -598,7 +635,7 @@ footer p{font-size:.8rem;color:#475569}
 
 <div class="slide-card">
 <div class="slide-visual dark" style="background:linear-gradient(135deg,#1A56DB 0%,#0F3285 100%);text-align:center">
-<div style="font-size:2.5rem;margin-bottom:.5rem">🎯</div>
+<div style="margin-bottom:.8rem"><i data-lucide="target" style="width:40px;height:40px;stroke:var(--ff-white)"></i></div>
 <div class="slide-headline">Monta Seu Funil<br>Hoje Mesmo</div>
 <div class="slide-subtitle">Templates prontos + automação incluída</div>
 <div class="slide-cta-btn">TESTAR GRÁTIS →</div>
@@ -612,7 +649,7 @@ footer p{font-size:.8rem;color:#475569}
 <!-- CAROUSEL 3: Antes e Depois -->
 <div class="post-section">
 <div class="post-header">
-<span class="post-badge" style="background:rgba(16,185,129,.15);color:#10B981">📊 Resultados</span>
+<span class="post-badge" style="background:rgba(16,185,129,.15);color:#10B981;display:inline-flex;align-items:center;gap:.3rem"><i data-lucide="bar-chart-2" style="width:14px;height:14px;stroke:#10B981"></i> Resultados</span>
 <span class="post-title">Antes e Depois: Agência Sem vs Com Full Funnel</span>
 </div>
 <div class="slides-container">
@@ -621,8 +658,8 @@ footer p{font-size:.8rem;color:#475569}
 <div class="slide-visual dark" style="background:linear-gradient(90deg,#374151 50%,#1A56DB 50%);text-align:center">
 <div class="slide-tag">ANTES vs DEPOIS</div>
 <div style="display:flex;justify-content:space-around;width:100%">
-<div><div class="slide-headline" style="font-size:1rem">Sem Full<br>Funnel 😩</div></div>
-<div><div class="slide-headline" style="font-size:1rem">Com Full<br>Funnel 🚀</div></div>
+<div><div class="slide-headline" style="font-size:1rem">Sem Full<br>Funnel</div></div>
+<div><div class="slide-headline" style="font-size:1rem">Com Full<br>Funnel</div></div>
 </div>
 <div class="slide-subtitle">Desliza pra ver a diferença →</div>
 </div>
@@ -633,8 +670,8 @@ footer p{font-size:.8rem;color:#475569}
 <div class="slide-visual light" style="background:linear-gradient(90deg,#F3F4F6 50%,#E8EEFB 50%);padding:1rem">
 <div style="text-align:center;margin-bottom:.8rem;font-weight:700;color:#1F2937;font-size:.9rem">Gestão de Leads</div>
 <div style="display:flex;gap:.5rem">
-<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#ef4444;font-weight:700">❌</span> Planilha do Excel com 500 contatos bagunçados, sem saber quem tá quente ou frio</div>
-<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#10B981;font-weight:700">✅</span> CRM visual com pipeline, lead scoring automático e histórico completo</div>
+<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#ef4444;font-weight:700">✕</span> Planilha do Excel com 500 contatos bagunçados, sem saber quem tá quente ou frio</div>
+<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#10B981;font-weight:700">✓</span> CRM visual com pipeline, lead scoring automático e histórico completo</div>
 </div>
 </div>
 <div class="slide-desc">Layout split. Esquerda cinza neutro. Direita azul claro. Divisor central sutil.</div>
@@ -644,8 +681,8 @@ footer p{font-size:.8rem;color:#475569}
 <div class="slide-visual light" style="background:linear-gradient(90deg,#F3F4F6 50%,#E8EEFB 50%);padding:1rem">
 <div style="text-align:center;margin-bottom:.8rem;font-weight:700;color:#1F2937;font-size:.9rem">Follow-up</div>
 <div style="display:flex;gap:.5rem">
-<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#ef4444;font-weight:700">❌</span> Esqueceu de responder 3 leads essa semana. Quando lembrou, já tinham comprado do concorrente.</div>
-<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#10B981;font-weight:700">✅</span> Sequência automática de 5 toques em 15 dias. Nenhum lead esquecido. Nunca mais.</div>
+<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#ef4444;font-weight:700">✕</span> Esqueceu de responder 3 leads essa semana. Quando lembrou, já tinham comprado do concorrente.</div>
+<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#10B981;font-weight:700">✓</span> Sequência automática de 5 toques em 15 dias. Nenhum lead esquecido. Nunca mais.</div>
 </div>
 </div>
 <div class="slide-desc">Mesmo layout split, mantendo consistência visual e ritmo na leitura.</div>
@@ -655,8 +692,8 @@ footer p{font-size:.8rem;color:#475569}
 <div class="slide-visual light" style="background:linear-gradient(90deg,#F3F4F6 50%,#E8EEFB 50%);padding:1rem">
 <div style="text-align:center;margin-bottom:.8rem;font-weight:700;color:#1F2937;font-size:.9rem">Ferramentas</div>
 <div style="display:flex;gap:.5rem">
-<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#ef4444;font-weight:700">❌</span> Mailchimp + Calendly + Typeform + Zapier + WhatsApp Web = R$800/mês + 5 logins</div>
-<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#10B981;font-weight:700">✅</span> Tudo dentro da Full Funnel: email, agenda, formulários, automação, WhatsApp. Uma plataforma, um login.</div>
+<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#ef4444;font-weight:700">✕</span> Mailchimp + Calendly + Typeform + Zapier + WhatsApp Web = R$800/mês + 5 logins</div>
+<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#10B981;font-weight:700">✓</span> Tudo dentro da Full Funnel: email, agenda, formulários, automação, WhatsApp. Uma plataforma, um login.</div>
 </div>
 </div>
 <div class="slide-desc">No 'antes', ícones de ferramentas empilhados caoticamente. No 'depois', um único ícone limpo.</div>
@@ -674,7 +711,7 @@ footer p{font-size:.8rem;color:#475569}
 
 <div class="slide-card">
 <div class="slide-visual dark" style="background:linear-gradient(135deg,#1A56DB 0%,#F97316 100%);text-align:center">
-<div style="font-size:2.5rem;margin-bottom:.5rem">💪</div>
+<div style="margin-bottom:.8rem"><i data-lucide="trophy" style="width:40px;height:40px;stroke:var(--ff-white)"></i></div>
 <div class="slide-headline">Chega de Gambiarra.<br>Profissionaliza.</div>
 <div class="slide-subtitle">14 dias grátis pra você testar</div>
 <div class="slide-cta-btn">QUERO TESTAR →</div>
@@ -691,10 +728,10 @@ footer p{font-size:.8rem;color:#475569}
 
 <div class="single-post">
 <div class="single-visual" style="background:#0F3285">
-<div style="position:absolute;top:16px;left:16px;font-size:.6rem;font-weight:700;padding:.25rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8)">📊 CASE REAL</div>
+<div style="position:absolute;top:16px;left:16px;font-size:.6rem;font-weight:700;padding:.25rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);display:inline-flex;align-items:center;gap:.3rem"><i data-lucide="bar-chart-2" style="width:12px;height:12px;stroke:currentColor"></i> CASE REAL</div>
 <div style="position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid rgba(255,255,255,.06);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
-<div style="font-size:4.5rem;font-weight:900;color:#F97316;position:relative">347</div>
-<div style="font-size:1.3rem;font-weight:700;color:#fff;position:relative">leads em 7 dias</div>
+<div style="font-size:4.5rem;font-weight:900;color:#F97316;position:relative">2.847</div>
+<div style="font-size:1.3rem;font-weight:700;color:#fff;position:relative">leads qualificados em 30 dias</div>
 <div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-top:.5rem;position:relative">Funil de 3 páginas + sequência de email + WhatsApp automático</div>
 </div>
 <div class="single-desc">Impacto visual pelo contraste do número laranja gigante sobre fundo azul escuro. Círculo decorativo centralizado. Clean e confiante.</div>
@@ -723,31 +760,31 @@ footer p{font-size:.8rem;color:#475569}
 <div class="section-subtitle">A Full Funnel fala como um amigo esperto que manja de marketing digital. Parceiro que já fez, já errou, e divide o caminho mais curto.</div>
 
 <div class="voice-grid">
-<div class="voice-trait"><h4>🎯 Direto</h4><p>Vai ao ponto. Sem enrolação. O seguidor tem 3 segundos — usa bem.</p></div>
-<div class="voice-trait"><h4>💪 Confiante</h4><p>Sabe do que fala. Tem propriedade. Mas nunca menospreza quem tá começando.</p></div>
-<div class="voice-trait"><h4>🤝 Acessível</h4><p>Explica complexo de forma simples. Analogias do dia a dia. Zero jargão.</p></div>
-<div class="voice-trait"><h4>⚡ Energético</h4><p>Transmite movimento, ação, progresso. Energia constante, não explosão.</p></div>
-<div class="voice-trait"><h4>🇧🇷 Brasileiro</h4><p>Fala como brasileiro. Expressões naturais, humor leve, referências locais.</p></div>
+<div class="voice-trait"><div class="voice-icon"><i data-lucide="target" style="stroke:var(--ff-secondary)"></i></div><h4>Direto</h4><p>Vai ao ponto. Sem enrolação. O seguidor tem 3 segundos — usa bem.</p></div>
+<div class="voice-trait"><div class="voice-icon"><i data-lucide="shield-check" style="stroke:var(--ff-primary)"></i></div><h4>Confiante</h4><p>Sabe do que fala. Tem propriedade. Mas nunca menospreza quem tá começando.</p></div>
+<div class="voice-trait"><div class="voice-icon"><i data-lucide="hand-helping" style="stroke:var(--ff-accent)"></i></div><h4>Acessível</h4><p>Explica complexo de forma simples. Analogias do dia a dia. Zero jargão.</p></div>
+<div class="voice-trait"><div class="voice-icon"><i data-lucide="zap" style="stroke:var(--ff-secondary)"></i></div><h4>Energético</h4><p>Transmite movimento, ação, progresso. Energia constante, não explosão.</p></div>
+<div class="voice-trait"><div class="voice-icon"><i data-lucide="globe" style="stroke:var(--ff-accent)"></i></div><h4>Brasileiro</h4><p>Fala como brasileiro. Expressões naturais, humor leve, referências locais.</p></div>
 </div>
 
 <h3 style="font-size:1.1rem;font-weight:700;margin:2rem 0 1rem">Exemplos de Legenda</h3>
 
 <div class="caption-example">
-<div class="caption-pillar">🤖 Automação</div>
-<div class="caption-text">Você ainda manda follow-up manualmente? 😬
+<div class="caption-pillar">Automação</div>
+<div class="caption-text">Você ainda manda follow-up manualmente?
 
 Enquanto você copia e cola mensagem por mensagem, seu concorrente configurou UM workflow e tá convertendo no automático.
 
 A diferença entre 5 vendas por mês e 50 muitas vezes é só uma automação bem feita.
 
-Salva esse post e configura a sua hoje 👇
+Salva esse post e configura a sua hoje.
 
 #marketingdigital #automação #fullfunnel #vendas #whatsappmarketing</div>
 </div>
 
 <div class="caption-example">
-<div class="caption-pillar">📊 Resultados</div>
-<div class="caption-text">347 leads em 7 dias.
+<div class="caption-pillar">Resultados</div>
+<div class="caption-text">2.847 leads qualificados em 30 dias.
 
 Isso não foi mágica. Foi um funil de 3 páginas + sequência de 5 emails + follow-up no WhatsApp.
 
@@ -755,29 +792,29 @@ Tudo rodando automático dentro da Full Funnel.
 
 A única coisa que o @[cliente] precisou fazer? Subir o tráfego e deixar a máquina trabalhar.
 
-Quer montar o seu? Link na bio 🚀
+Quer montar o seu? Link na bio.
 
 #casesdesucesso #funil #leads #fullfunnel #marketingdigitalbrasil</div>
 </div>
 
 <div class="caption-example bad">
-<div class="caption-pillar">❌ O que NÃO fazer</div>
+<div class="caption-pillar">O que NÃO fazer</div>
 <div class="caption-text">Venha conhecer a melhor plataforma de marketing do mercado! Não perca essa oportunidade única! Clique no link e saiba mais!!!</div>
 <div class="caption-why">Genérico, sem dado específico, linguagem de panfleto, excesso de exclamação, zero personalidade.</div>
 </div>
 
 <div class="caption-example bad">
-<div class="caption-pillar">❌ O que NÃO fazer</div>
+<div class="caption-pillar">O que NÃO fazer</div>
 <div class="caption-text">Nosso software possui diversas funcionalidades que irão auxiliar na otimização dos seus processos de marketing.</div>
 <div class="caption-why">Linguagem corporativa, impessoal, vago ('diversas funcionalidades'), não fala com o leitor.</div>
 </div>
 
 <h3 style="font-size:1.1rem;font-weight:700;margin:2rem 0 1rem">Estrutura da Legenda</h3>
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem">
-<div style="background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:10px;padding:1.2rem"><span style="font-size:1.5rem">🪝</span><div style="font-size:.85rem;font-weight:700;color:var(--ff-white);margin:.3rem 0 .2rem">Linha 1: Hook</div><div style="font-size:.75rem;color:#94a3b8">Pergunta, dado chocante, provocação</div></div>
-<div style="background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:10px;padding:1.2rem"><span style="font-size:1.5rem">📖</span><div style="font-size:.85rem;font-weight:700;color:var(--ff-white);margin:.3rem 0 .2rem">Linhas 2-3: Contexto</div><div style="font-size:.75rem;color:#94a3b8">Problema, insight, desenvolvimento</div></div>
-<div style="background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:10px;padding:1.2rem"><span style="font-size:1.5rem">💡</span><div style="font-size:.85rem;font-weight:700;color:var(--ff-white);margin:.3rem 0 .2rem">Linhas 4-5: Valor</div><div style="font-size:.75rem;color:#94a3b8">Solução, como aplicar, benefício</div></div>
-<div style="background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:10px;padding:1.2rem"><span style="font-size:1.5rem">👉</span><div style="font-size:.85rem;font-weight:700;color:var(--ff-white);margin:.3rem 0 .2rem">Linha Final: CTA</div><div style="font-size:.75rem;color:#94a3b8">Salvar, compartilhar, comentar, link na bio</div></div>
+<div style="background:var(--ff-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.2rem"><div style="width:36px;height:36px;border-radius:8px;background:rgba(249,115,22,.1);display:flex;align-items:center;justify-content:center;margin-bottom:.4rem"><i data-lucide="anchor" style="width:18px;height:18px;stroke:var(--ff-secondary)"></i></div><div style="font-size:.85rem;font-weight:700;color:var(--ff-white);margin:.3rem 0 .2rem">Linha 1: Hook</div><div style="font-size:.75rem;color:#94a3b8">Pergunta, dado chocante, provocação</div></div>
+<div style="background:var(--ff-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.2rem"><div style="width:36px;height:36px;border-radius:8px;background:rgba(26,86,219,.1);display:flex;align-items:center;justify-content:center;margin-bottom:.4rem"><i data-lucide="book-open" style="width:18px;height:18px;stroke:var(--ff-primary)"></i></div><div style="font-size:.85rem;font-weight:700;color:var(--ff-white);margin:.3rem 0 .2rem">Linhas 2-3: Contexto</div><div style="font-size:.75rem;color:#94a3b8">Problema, insight, desenvolvimento</div></div>
+<div style="background:var(--ff-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.2rem"><div style="width:36px;height:36px;border-radius:8px;background:rgba(16,185,129,.1);display:flex;align-items:center;justify-content:center;margin-bottom:.4rem"><i data-lucide="lightbulb" style="width:18px;height:18px;stroke:var(--ff-accent)"></i></div><div style="font-size:.85rem;font-weight:700;color:var(--ff-white);margin:.3rem 0 .2rem">Linhas 4-5: Valor</div><div style="font-size:.75rem;color:#94a3b8">Solução, como aplicar, benefício</div></div>
+<div style="background:var(--ff-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.2rem"><div style="width:36px;height:36px;border-radius:8px;background:rgba(249,115,22,.1);display:flex;align-items:center;justify-content:center;margin-bottom:.4rem"><i data-lucide="mouse-pointer-click" style="width:18px;height:18px;stroke:var(--ff-secondary)"></i></div><div style="font-size:.85rem;font-weight:700;color:var(--ff-white);margin:.3rem 0 .2rem">Linha Final: CTA</div><div style="font-size:.75rem;color:#94a3b8">Salvar, compartilhar, comentar, link na bio</div></div>
 </div>
 
 </div>
@@ -858,7 +895,7 @@ Quer montar o seu? Link na bio 🚀
 <div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
 <li>Volume de stories mostrando dia a dia</li>
 <li>Frases de impacto: 'Você não tem problema de leads, tem de funil'</li>
-<li>Lives semanais sobre GHL/automação</li>
+<li>Lives semanais sobre automação de marketing</li>
 </ul></div>
 </div>
 
@@ -882,8 +919,8 @@ Quer montar o seu? Link na bio 🚀
 
 <div class="ref-card highlight">
 <div class="ref-top">
-<div><div class="ref-name">GoHighLevel</div><div class="ref-handle">@gohighlevel</div></div>
-<div class="ref-followers">~68K</div>
+<div><div class="ref-name">HubSpot</div><div class="ref-handle">@hubspot</div></div>
+<div class="ref-followers">~750K</div>
 </div>
 <div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
 <li>Feature releases como conteúdo</li>
@@ -892,9 +929,9 @@ Quer montar o seu? Link na bio 🚀
 <li>Community-driven: reposta conteúdo de usuários</li>
 </ul></div>
 <div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
-<li>Reels 'Feature da Semana' do GHL</li>
-<li>Updates do GHL como pauta constante</li>
-<li>Posicionar como 'O GHL explicado em português'</li>
+<li>Reels 'Feature da Semana' da plataforma</li>
+<li>Updates e novidades como pauta constante</li>
+<li>Posicionar como referência em automação no Brasil</li>
 </ul></div>
 </div>
 
@@ -904,12 +941,12 @@ Quer montar o seu? Link na bio 🚀
 <div class="ref-followers">~9K</div>
 </div>
 <div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
-<li>Tutoriais práticos de GHL</li>
+<li>Tutoriais práticos de automação de marketing</li>
 <li>Mostra números reais de leads</li>
 <li>CTA para DM como funil de entrada</li>
 </ul></div>
 <div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
-<li>Tutoriais em tela gravada passo a passo no GHL</li>
+<li>Tutoriais em tela gravada passo a passo na plataforma</li>
 <li>DM como CTA: 'Manda DM com FUNIL'</li>
 <li>Cortar webinários em micro-conteúdos</li>
 </ul></div>
@@ -945,7 +982,7 @@ Quer montar o seu? Link na bio 🚀
 </ul></div>
 <div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
 <li>Humor BR nos Reels: 'Quando o cliente diz que automação não funciona'</li>
-<li>Formato sketch/meme pra explicar features do GHL</li>
+<li>Formato sketch/meme pra explicar features da plataforma</li>
 <li>Linguagem irreverente (combina com a vibe do Marco)</li>
 </ul></div>
 </div>
@@ -980,7 +1017,7 @@ Quer montar o seu? Link na bio 🚀
 <li>Fala pra iniciante sem elitismo</li>
 </ul></div>
 <div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
-<li>Screen recordings do GHL em ação com resultados</li>
+<li>Screen recordings da plataforma em ação com resultados</li>
 <li>Série 'Full Funnel Responde' com dúvidas</li>
 <li>Conteúdo prático > teórico</li>
 </ul></div>
@@ -1048,7 +1085,7 @@ Quer montar o seu? Link na bio 🚀
 <li>Fala de ferramentas de forma acessível</li>
 </ul></div>
 <div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
-<li>Dashboards reais do GHL com resultados</li>
+<li>Dashboards reais da plataforma com resultados</li>
 <li>Edição moderna sem exageros</li>
 <li>Print de resultados como prova social</li>
 </ul></div>
@@ -1057,7 +1094,7 @@ Quer montar o seu? Link na bio 🚀
 </div>
 
 <!-- TOP INSIGHTS -->
-<h3 style="font-size:1.3rem;font-weight:800;margin:3rem 0 .5rem">🔥 Top 10 Insights Estratégicos</h3>
+<h3 style="font-size:1.3rem;font-weight:800;margin:3rem 0 .5rem;display:flex;align-items:center;gap:.5rem"><i data-lucide="flame" style="width:24px;height:24px;stroke:var(--ff-secondary)"></i> Top 10 Insights Estratégicos</h3>
 <p style="color:#94a3b8;margin-bottom:1.5rem;font-size:.9rem">As descobertas mais importantes da análise dos 15 perfis de referência.</p>
 
 <div class="insights-grid">
@@ -1066,7 +1103,7 @@ Quer montar o seu? Link na bio 🚀
 
 <div class="insight-card"><div class="insight-num">02</div><div class="insight-title">Diagramas de Funil = Identidade Visual Perfeita</div><div class="insight-detail">Ninguém no Brasil está fazendo diagramas de funil bonitos e educativos no Instagram. Funnelytics faz em inglês. Full Funnel pode DOMINAR esse formato em PT-BR.</div></div>
 
-<div class="insight-card"><div class="insight-num">03</div><div class="insight-title">Screen Recordings Geram Trust</div><div class="insight-detail">Mostrar a TELA do software com resultados reais é mais poderoso que qualquer design. Full Funnel deve postar Reels gravando o GHL mostrando automações rodando e leads entrando.</div></div>
+<div class="insight-card"><div class="insight-num">03</div><div class="insight-title">Screen Recordings Geram Trust</div><div class="insight-detail">Mostrar a TELA do software com resultados reais é mais poderoso que qualquer design. Full Funnel deve postar Reels gravando a plataforma mostrando automações rodando e leads entrando.</div></div>
 
 <div class="insight-card"><div class="insight-num">04</div><div class="insight-title">Humor + Educação = Viralidade (BR)</div><div class="insight-detail">Leandro Ladeira prova que humor brasileiro conecta brutalmente. Reels tipo sketch: 'Quando o cliente fala que email marketing morreu'. Humor BR + nicho tech = oceano azul.</div></div>
 
@@ -1078,7 +1115,7 @@ Quer montar o seu? Link na bio 🚀
 
 <div class="insight-card"><div class="insight-num">08</div><div class="insight-title">Cores Consistentes = Reconhecimento</div><div class="insight-detail">Neil Patel = laranja. Hormozi = preto+amarelo. Full Funnel precisa TRAVAR a paleta e usar em TODOS os posts. Reconhecível sem ler o nome.</div></div>
 
-<div class="insight-card"><div class="insight-num">09</div><div class="insight-title">Posicionar Como 'O GHL em Português'</div><div class="insight-detail">Não existe no Brasil um perfil forte referência em GoHighLevel. Full Funnel pode ser A autoridade GHL no Brasil — o Sobral do GHL. Nicho claro, concorrência fraca.</div></div>
+<div class="insight-card"><div class="insight-num">09</div><div class="insight-title">Posicionar Como A Referência em Automação BR</div><div class="insight-detail">Não existe no Brasil um perfil forte referência em automação de marketing com plataforma própria. Full Funnel pode ser A autoridade em funis automatizados no Brasil — o Sobral da automação. Nicho claro, concorrência fraca.</div></div>
 
 <div class="insight-card"><div class="insight-num">10</div><div class="insight-title">Mix: 40% Reels + 30% Carrosséis + 20% Stories + 10% Estáticos</div><div class="insight-detail">Reels para alcance (discovery), carrosséis para saves/autoridade, stories para conexão diária, estáticos para marcos. Priorizar Reels curtos (30-60s) com hooks fortes.</div></div>
 
@@ -1097,7 +1134,7 @@ Quer montar o seu? Link na bio 🚀
 <div class="hashtag-tiers">
 
 <div class="hashtag-tier" style="border-top:3px solid var(--ff-secondary)">
-<div class="tier-label" style="color:var(--ff-secondary)">🏷️ Tier 1 — Branded</div>
+<div class="tier-label" style="color:var(--ff-secondary);display:flex;align-items:center;gap:.4rem"><i data-lucide="tag" style="width:14px;height:14px;stroke:var(--ff-secondary)"></i> Tier 1 — Branded</div>
 <div class="tier-desc">Hashtags da marca. Sempre incluir 1-2 em todo post.</div>
 <div class="tag-cloud">
 <span class="hashtag">#fullfunnel</span>
@@ -1108,7 +1145,7 @@ Quer montar o seu? Link na bio 🚀
 </div>
 
 <div class="hashtag-tier" style="border-top:3px solid var(--ff-primary)">
-<div class="tier-label" style="color:var(--ff-primary)">🎯 Tier 2 — Nicho</div>
+<div class="tier-label" style="color:var(--ff-primary);display:flex;align-items:center;gap:.4rem"><i data-lucide="target" style="width:14px;height:14px;stroke:var(--ff-primary)"></i> Tier 2 — Nicho</div>
 <div class="tier-desc">Hashtags do nicho de marketing digital. Incluir 4-6 relevantes ao conteúdo.</div>
 <div class="tag-cloud">
 <span class="hashtag">#marketingdigital</span>
@@ -1121,15 +1158,15 @@ Quer montar o seu? Link na bio 🚀
 <span class="hashtag">#vendasonline</span>
 <span class="hashtag">#infoproduto</span>
 <span class="hashtag">#agenciadigital</span>
-<span class="hashtag">#gohighlevelbrasil</span>
-<span class="hashtag">#ghlbrasil</span>
+<span class="hashtag">#plataformadevendas</span>
+<span class="hashtag">#crmmarketing</span>
 <span class="hashtag">#crmvendas</span>
 <span class="hashtag">#gestaodeleads</span>
 </div>
 </div>
 
 <div class="hashtag-tier" style="border-top:3px solid var(--ff-accent)">
-<div class="tier-label" style="color:var(--ff-accent)">🌐 Tier 3 — Alcance</div>
+<div class="tier-label" style="color:var(--ff-accent);display:flex;align-items:center;gap:.4rem"><i data-lucide="globe" style="width:14px;height:14px;stroke:var(--ff-accent)"></i> Tier 3 — Alcance</div>
 <div class="tier-desc">Hashtags de alcance maior. Incluir 3-5 para expandir descoberta.</div>
 <div class="tag-cloud">
 <span class="hashtag">#empreendedorismo</span>
@@ -1149,7 +1186,7 @@ Quer montar o seu? Link na bio 🚀
 </div>
 
 <div style="margin-top:2.5rem;background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:14px;padding:2rem">
-<h4 style="font-size:1rem;margin-bottom:1rem">📌 Regras de Uso</h4>
+<h4 style="font-size:1rem;margin-bottom:1rem;display:flex;align-items:center;gap:.4rem"><i data-lucide="pin" style="width:18px;height:18px;stroke:var(--ff-secondary)"></i> Regras de Uso</h4>
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem">
 <div style="font-size:.85rem;color:#94a3b8;line-height:1.5">
 <strong style="color:var(--ff-white)">Posicionamento:</strong> Sempre no final da legenda, separadas por linha em branco do texto principal.
@@ -1161,7 +1198,7 @@ Quer montar o seu? Link na bio 🚀
 <strong style="color:var(--ff-white)">Quantidade:</strong> 10-15 por post. Mix de branded (1-2) + nicho (4-6) + alcance (3-5).
 </div>
 <div style="font-size:.85rem;color:#94a3b8;line-height:1.5">
-<strong style="color:var(--ff-white)">Emojis na legenda:</strong> 1-3 por post, com intenção. Favoritos: 🚀 ⚡ 📊 🎯 💡 ✅ 🔥
+<strong style="color:var(--ff-white)">Emojis na legenda:</strong> Máximo 2-3 por post, com intenção. Usar com moderação para pontuar, não decorar.
 </div>
 </div>
 </div>
@@ -1173,8 +1210,8 @@ Quer montar o seu? Link na bio 🚀
 <section style="background:linear-gradient(135deg,#0F3285 0%,#1F2937 100%)">
 <div class="container" style="text-align:center;padding:3rem 0">
 <div style="font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ff-secondary);margin-bottom:1rem">Oportunidade Identificada</div>
-<h2 style="font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;max-width:700px;margin:0 auto 1.5rem">NÃO EXISTE no Brasil um perfil forte de Instagram focado em GoHighLevel + Automação de Marketing</h2>
-<p style="color:rgba(255,255,255,.7);max-width:600px;margin:0 auto;font-size:1rem;line-height:1.6">Os grandes falam de tráfego e lançamento, mas ninguém domina o nicho de funis automatizados + CRM. Esse é o oceano azul do @fullfunneloficial.</p>
+<h2 style="font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;max-width:700px;margin:0 auto 1.5rem">NÃO EXISTE no Brasil um perfil forte de Instagram focado em Automação de Marketing com Plataforma Proprietária</h2>
+<p style="color:rgba(255,255,255,.7);max-width:600px;margin:0 auto;font-size:1rem;line-height:1.6">Os grandes falam de tráfego e lançamento, mas ninguém domina o nicho de funis automatizados + CRM + plataforma all-in-one. Esse é o oceano azul do @fullfunneloficial.</p>
 </div>
 </section>
 
@@ -1183,5 +1220,6 @@ Quer montar o seu? Link na bio 🚀
 <p style="margin-top:.3rem;color:#334155">Gerado automaticamente a partir dos dados de marca, calendário e pesquisa de referências.</p>
 </footer>
 
+<script>lucide.createIcons();</script>
 </body>
 </html>
