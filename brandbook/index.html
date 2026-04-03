@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Funnel — Instagram Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--ff-primary:#1A56DB;--ff-primary-dark:#0F3285;--ff-primary-light:#E8EEFB;
+--ff-secondary:#F97316;--ff-secondary-light:#FFF3E6;--ff-accent:#10B981;
+--ff-dark:#1F2937;--ff-medium:#6B7280;--ff-light:#F3F4F6;--ff-white:#FFFFFF;
+--ff-bg:#0a0e1a;--ff-card:#111827;--ff-card-border:#1e293b;
+--ff-gradient-primary:linear-gradient(135deg,#1A56DB 0%,#0F3285 100%);
+--ff-gradient-energy:linear-gradient(135deg,#1A56DB 0%,#F97316 100%);
+--ff-gradient-dark:linear-gradient(135deg,#0F3285 0%,#1F2937 100%);
+--ff-shadow-glow:0 0 30px rgba(26,86,219,0.15);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;background:var(--ff-bg);color:#e2e8f0;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Poppins',sans-serif;color:var(--ff-white);line-height:1.15}
+
+/* NAV */
+.topnav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--ff-card-border);padding:0 2rem}
+.topnav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.topnav-logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.1rem;background:var(--ff-gradient-energy);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.topnav-links{display:flex;gap:1.5rem;list-style:none}
+.topnav-links a{color:#94a3b8;text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s}
+.topnav-links a:hover{color:var(--ff-secondary)}
+@media(max-width:768px){.topnav-links{display:none}}
+
+/* SECTIONS */
+section{padding:6rem 1.5rem 4rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ff-secondary);margin-bottom:.5rem}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:.5rem}
+.section-subtitle{color:#94a3b8;font-size:1.05rem;max-width:600px;margin-bottom:3rem}
+.divider{width:48px;height:3px;border-radius:2px;background:var(--ff-gradient-energy);margin:1.2rem 0 2.5rem}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding-top:60px}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(26,86,219,.18) 0%,transparent 70%)}
+.hero::after{content:'';position:absolute;width:600px;height:600px;border-radius:50%;border:1px solid rgba(26,86,219,.08);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.hero-content{position:relative;z-index:1}
+.hero-badge{display:inline-block;padding:.4rem 1.2rem;border:1px solid rgba(249,115,22,.3);border-radius:999px;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ff-secondary);margin-bottom:1.5rem;background:rgba(249,115,22,.06)}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;letter-spacing:-.03em;margin-bottom:1rem}
+.hero h1 span{background:var(--ff-gradient-energy);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.15rem;color:#94a3b8;max-width:560px;margin:0 auto 2rem}
+.hero-stats{display:flex;gap:3rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:2.2rem;font-weight:900;color:var(--ff-white)}
+.hero-stat .lbl{font-size:.75rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem}
+
+/* COLOR PALETTE */
+.palette-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem}
+.color-swatch{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:12px;overflow:hidden;transition:transform .2s}
+.color-swatch:hover{transform:translateY(-4px)}
+.color-swatch .swatch-color{height:80px;position:relative}
+.color-swatch .swatch-color::after{content:attr(data-hex);position:absolute;bottom:8px;right:10px;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.8);background:rgba(0,0,0,.3);padding:2px 8px;border-radius:4px}
+.color-swatch .swatch-info{padding:.8rem}
+.color-swatch .swatch-name{font-size:.85rem;font-weight:700;color:var(--ff-white)}
+.color-swatch .swatch-use{font-size:.7rem;color:#64748b;margin-top:.2rem;line-height:1.4}
+
+.gradient-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-top:1.5rem}
+.gradient-card{height:64px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:.04em}
+
+/* TYPOGRAPHY */
+.typo-samples{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
+.typo-row{display:flex;align-items:baseline;gap:2rem;flex-wrap:wrap;padding:1rem 0;border-bottom:1px solid var(--ff-card-border)}
+.typo-label{font-size:.7rem;color:#64748b;text-transform:uppercase;letter-spacing:.08em;min-width:100px}
+
+/* PILLARS */
+.pillars-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.pillar-card{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.pillar-card:hover{transform:translateY(-4px);box-shadow:var(--ff-shadow-glow)}
+.pillar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.pillar-emoji{font-size:2.5rem;margin-bottom:1rem}
+.pillar-name{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
+.pillar-desc{font-size:.88rem;color:#94a3b8;margin-bottom:1rem;line-height:1.5}
+.pillar-meta{display:flex;gap:1rem;flex-wrap:wrap}
+.pillar-tag{font-size:.7rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;background:rgba(255,255,255,.05);color:#94a3b8}
+
+/* CALENDAR */
+.cal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.cal-card{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:12px;padding:1.2rem;position:relative;overflow:hidden;transition:transform .15s}
+.cal-card:hover{transform:translateY(-2px)}
+.cal-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px}
+.cal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+.cal-day{font-size:.7rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.06em}
+.cal-type{font-size:.65rem;font-weight:600;padding:.2rem .6rem;border-radius:999px;color:var(--ff-white)}
+.cal-topic{font-size:.9rem;font-weight:700;color:var(--ff-white);margin-bottom:.4rem;line-height:1.3}
+.cal-hook{font-size:.78rem;color:#94a3b8;font-style:italic;line-height:1.4}
+
+/* POSTS */
+.post-section{margin-bottom:4rem}
+.post-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.post-badge{font-size:.65rem;font-weight:700;padding:.3rem .8rem;border-radius:999px;text-transform:uppercase;letter-spacing:.06em}
+.post-title{font-size:1.3rem;font-weight:800}
+.slides-container{display:flex;gap:1rem;overflow-x:auto;padding-bottom:1rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.slides-container::-webkit-scrollbar{height:6px}
+.slides-container::-webkit-scrollbar-track{background:var(--ff-card-border);border-radius:3px}
+.slides-container::-webkit-scrollbar-thumb{background:var(--ff-primary);border-radius:3px}
+.slide-card{min-width:280px;max-width:320px;border-radius:14px;overflow:hidden;flex-shrink:0;scroll-snap-align:start;border:1px solid var(--ff-card-border)}
+.slide-visual{padding:1.5rem;min-height:200px;display:flex;flex-direction:column;justify-content:center}
+.slide-visual.dark{color:var(--ff-white)}
+.slide-visual.light{color:var(--ff-dark)}
+.slide-num{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.8rem;opacity:.7}
+.slide-tag{display:inline-block;font-size:.6rem;font-weight:600;padding:.2rem .6rem;border-radius:999px;margin-bottom:.8rem;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8)}
+.slide-headline{font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:800;line-height:1.15;margin-bottom:.5rem}
+.slide-subtitle{font-size:.82rem;opacity:.8;line-height:1.4}
+.slide-body{font-size:.82rem;line-height:1.5;margin-top:.5rem}
+.slide-desc{background:rgba(0,0,0,.3);padding:1rem;font-size:.72rem;color:#94a3b8;line-height:1.5;border-top:1px solid var(--ff-card-border)}
+.slide-cta-btn{display:inline-block;margin-top:1rem;padding:.6rem 1.5rem;border-radius:999px;font-size:.8rem;font-weight:700;background:var(--ff-white);color:var(--ff-primary);text-align:center}
+
+.single-post{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:16px;overflow:hidden;max-width:500px}
+.single-visual{min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem;text-align:center;position:relative}
+.single-desc{padding:1.2rem;font-size:.78rem;color:#94a3b8;line-height:1.5;border-top:1px solid var(--ff-card-border)}
+
+/* REFERENCES */
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem}
+.ref-card{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:14px;padding:1.5rem;transition:transform .2s}
+.ref-card:hover{transform:translateY(-3px)}
+.ref-card.highlight{border-color:var(--ff-secondary);box-shadow:0 0 20px rgba(249,115,22,.08)}
+.ref-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.8rem}
+.ref-name{font-size:1rem;font-weight:700;color:var(--ff-white)}
+.ref-handle{font-size:.78rem;color:var(--ff-primary);font-weight:500}
+.ref-followers{font-size:.7rem;font-weight:600;color:var(--ff-accent);padding:.2rem .6rem;border-radius:999px;background:rgba(16,185,129,.1)}
+.ref-good{margin:.6rem 0}
+.ref-good-title{font-size:.7rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem}
+.ref-good li{font-size:.78rem;color:#94a3b8;line-height:1.5;margin-bottom:.2rem;padding-left:.8rem;position:relative}
+.ref-good li::before{content:'→';position:absolute;left:0;color:var(--ff-secondary);font-size:.7rem}
+.ref-steal{margin-top:.8rem;background:rgba(26,86,219,.06);border-radius:8px;padding:.8rem}
+.ref-steal-title{font-size:.65rem;font-weight:700;color:var(--ff-primary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem}
+.ref-steal li{font-size:.75rem;color:#b4c0d3;line-height:1.4;margin-bottom:.2rem;list-style:none;padding-left:.8rem;position:relative}
+.ref-steal li::before{content:'💡';position:absolute;left:0;font-size:.6rem}
+
+/* INSIGHTS */
+.insights-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem;margin-top:2rem}
+.insight-card{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:14px;padding:1.5rem}
+.insight-num{font-size:2rem;font-weight:900;background:var(--ff-gradient-energy);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
+.insight-title{font-size:.95rem;font-weight:700;color:var(--ff-white);margin-bottom:.5rem}
+.insight-detail{font-size:.8rem;color:#94a3b8;line-height:1.5}
+
+/* HASHTAGS */
+.hashtag-tiers{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.hashtag-tier{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:14px;padding:1.8rem}
+.tier-label{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.8rem}
+.tier-desc{font-size:.85rem;color:#94a3b8;margin-bottom:1rem}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:.5rem}
+.hashtag{font-size:.75rem;font-weight:500;padding:.3rem .7rem;border-radius:999px;border:1px solid var(--ff-card-border);color:#b4c0d3;transition:all .15s}
+.hashtag:hover{border-color:var(--ff-primary);color:var(--ff-primary);background:rgba(26,86,219,.06)}
+
+/* VOICE */
+.voice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
+.voice-trait{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:12px;padding:1.2rem;text-align:center}
+.voice-trait h4{font-size:.9rem;margin-bottom:.3rem}
+.voice-trait p{font-size:.78rem;color:#94a3b8;line-height:1.4}
+.caption-example{background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:12px;padding:1.5rem;margin-bottom:1rem;position:relative}
+.caption-example::before{content:'BOM ✅';position:absolute;top:12px;right:12px;font-size:.6rem;font-weight:700;color:var(--ff-accent);padding:.2rem .5rem;border-radius:4px;background:rgba(16,185,129,.1)}
+.caption-example.bad::before{content:'RUIM ❌';color:#ef4444;background:rgba(239,68,68,.1)}
+.caption-pillar{font-size:.65rem;font-weight:600;color:var(--ff-primary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
+.caption-text{font-size:.85rem;color:#cbd5e1;white-space:pre-line;line-height:1.6}
+.caption-why{font-size:.75rem;color:#ef4444;margin-top:.5rem;font-style:italic}
+
+/* FOOTER */
+footer{text-align:center;padding:3rem 1.5rem;border-top:1px solid var(--ff-card-border);margin-top:2rem}
+footer p{font-size:.8rem;color:#475569}
+
+/* SCROLL INDICATOR */
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:float 2s ease-in-out infinite}
+.scroll-hint span{font-size:.7rem;color:#475569;text-transform:uppercase;letter-spacing:.1em}
+.scroll-hint .arrow{width:20px;height:20px;border-right:2px solid #475569;border-bottom:2px solid #475569;transform:rotate(45deg)}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  section{padding:4rem 1rem 3rem}
+  .hero-stats{gap:1.5rem}
+  .slides-container{gap:.8rem}
+  .slide-card{min-width:260px}
+  .ref-grid,.insights-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav">
+<div class="topnav-inner">
+<div class="topnav-logo">Full Funnel ⚡</div>
+<ul class="topnav-links">
+<li><a href="#identidade">Identidade</a></li>
+<li><a href="#pilares">Pilares</a></li>
+<li><a href="#calendario">Calendário</a></li>
+<li><a href="#posts">Posts</a></li>
+<li><a href="#voz">Voz</a></li>
+<li><a href="#referencias">Referências</a></li>
+<li><a href="#hashtags">Hashtags</a></li>
+</ul>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+<div class="hero-content">
+<div class="hero-badge">Brand Book — Instagram 2026</div>
+<h1><span>Full Funnel</span><br>Instagram Brand Book</h1>
+<p>Guia completo de identidade visual, conteúdo e estratégia para o @fullfunneloficial. Tudo que precisamos pra dominar o nicho de automação de marketing no Brasil.</p>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num">5</div><div class="lbl">Pilares de Conteúdo</div></div>
+<div class="hero-stat"><div class="num">30</div><div class="lbl">Dias de Calendário</div></div>
+<div class="hero-stat"><div class="num">15</div><div class="lbl">Perfis de Referência</div></div>
+<div class="hero-stat"><div class="num">10</div><div class="lbl">Insights Estratégicos</div></div>
+</div>
+</div>
+<div class="scroll-hint"><span>Rola</span><div class="arrow"></div></div>
+</section>
+
+<!-- IDENTIDADE VISUAL -->
+<section id="identidade">
+<div class="container">
+<div class="section-label">01 — Identidade Visual</div>
+<div class="section-title">Paleta de Cores</div>
+<div class="section-subtitle">Cores que transmitem confiança, energia e tecnologia. Cada cor tem um propósito claro no sistema visual.</div>
+
+<div class="palette-grid">
+<div class="color-swatch"><div class="swatch-color" style="background:#1A56DB" data-hex="#1A56DB"></div><div class="swatch-info"><div class="swatch-name">Full Blue</div><div class="swatch-use">Cor principal — CTAs, títulos, ícones</div></div></div>
+<div class="color-swatch"><div class="swatch-color" style="background:#0F3285" data-hex="#0F3285"></div><div class="swatch-info"><div class="swatch-name">Deep Funnel</div><div class="swatch-use">Backgrounds escuros, gradientes, slides de abertura</div></div></div>
+<div class="color-swatch"><div class="swatch-color" style="background:#E8EEFB" data-hex="#E8EEFB"></div><div class="swatch-info"><div class="swatch-name">Sky Trust</div><div class="swatch-use">Fundos claros, cards, áreas de respiro</div></div></div>
+<div class="color-swatch"><div class="swatch-color" style="background:#F97316" data-hex="#F97316"></div><div class="swatch-info"><div class="swatch-name">Pulse Orange</div><div class="swatch-use">Destaques, badges, números, setas</div></div></div>
+<div class="color-swatch"><div class="swatch-color" style="background:#FFF3E6" data-hex="#FFF3E6"></div><div class="swatch-info"><div class="swatch-name">Warm Glow</div><div class="swatch-use">Fundos alternativos quentes, hover states</div></div></div>
+<div class="color-swatch"><div class="swatch-color" style="background:#10B981" data-hex="#10B981"></div><div class="swatch-info"><div class="swatch-name">Growth Green</div><div class="swatch-use">Crescimento, check marks, resultados positivos</div></div></div>
+<div class="color-swatch"><div class="swatch-color" style="background:#1F2937" data-hex="#1F2937"></div><div class="swatch-info"><div class="swatch-name">Charcoal</div><div class="swatch-use">Textos principais, títulos sobre fundo claro</div></div></div>
+<div class="color-swatch"><div class="swatch-color" style="background:#6B7280" data-hex="#6B7280"></div><div class="swatch-info"><div class="swatch-name">Slate</div><div class="swatch-use">Textos secundários, legendas, subtítulos</div></div></div>
+<div class="color-swatch"><div class="swatch-color" style="background:#F3F4F6" data-hex="#F3F4F6"></div><div class="swatch-info"><div class="swatch-name">Cloud</div><div class="swatch-use">Fundos neutros, separadores</div></div></div>
+</div>
+
+<h3 style="margin-top:2.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem">Gradientes</h3>
+<div class="gradient-grid">
+<div class="gradient-card" style="background:linear-gradient(135deg,#1A56DB 0%,#0F3285 100%)">Primary</div>
+<div class="gradient-card" style="background:linear-gradient(135deg,#1A56DB 0%,#F97316 100%)">Energy</div>
+<div class="gradient-card" style="background:linear-gradient(180deg,#E8EEFB 0%,#FFFFFF 100%);color:#1F2937">Subtle</div>
+<div class="gradient-card" style="background:linear-gradient(135deg,#0F3285 0%,#1F2937 100%)">Dark</div>
+</div>
+
+<h3 style="margin-top:2.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem">Tipografia</h3>
+<div class="typo-samples">
+<div class="typo-row"><span class="typo-label">H1 Hero</span><span style="font-family:'Poppins';font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-.02em">Automações Que Vendem</span></div>
+<div class="typo-row"><span class="typo-label">H2 Slide</span><span style="font-family:'Poppins';font-size:clamp(1.3rem,3vw,2.2rem);font-weight:800">Email de Boas-Vindas Automático</span></div>
+<div class="typo-row"><span class="typo-label">H3 Section</span><span style="font-family:'Poppins';font-size:1.4rem;font-weight:700">Recuperação de Carrinho</span></div>
+<div class="typo-row"><span class="typo-label">Body Large</span><span style="font-size:1.15rem;color:#94a3b8">Configure uma vez e todo novo lead recebe uma sequência personalizada de emails.</span></div>
+<div class="typo-row"><span class="typo-label">Body Regular</span><span style="font-size:1rem;color:#94a3b8">Corpo de texto para parágrafos, explicações e descrições detalhadas.</span></div>
+<div class="typo-row"><span class="typo-label">Caption</span><span style="font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748b">Automação de Marketing</span></div>
+<div class="typo-row"><span class="typo-label">Número</span><span style="font-size:3.5rem;font-weight:900;color:var(--ff-secondary)">347</span></div>
+<div class="typo-row"><span class="typo-label">Citação</span><span style="font-size:1.3rem;font-weight:500;font-style:italic;color:#cbd5e1">"A automação não substitui você. Ela multiplica você."</span></div>
+</div>
+
+<h3 style="margin-top:2.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem">Templates de Conteúdo</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem">
+<div style="background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:12px;padding:1.2rem">
+<div style="font-size:.7rem;color:var(--ff-secondary);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">Carrossel</div>
+<div style="font-size:.85rem;color:var(--ff-white);font-weight:600;margin-bottom:.3rem">1080 × 1350px (4:5)</div>
+<div style="font-size:.75rem;color:#64748b">9 slides: Hook → 7 Conteúdo → CTA</div>
+</div>
+<div style="background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:12px;padding:1.2rem">
+<div style="font-size:.7rem;color:var(--ff-secondary);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">Post Único</div>
+<div style="font-size:.85rem;color:var(--ff-white);font-weight:600;margin-bottom:.3rem">1080 × 1080px (1:1)</div>
+<div style="font-size:.75rem;color:#64748b">Dica rápida, Estatística, Citação</div>
+</div>
+<div style="background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:12px;padding:1.2rem">
+<div style="font-size:.7rem;color:var(--ff-secondary);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">Story</div>
+<div style="font-size:.85rem;color:var(--ff-white);font-weight:600;margin-bottom:.3rem">1080 × 1920px (9:16)</div>
+<div style="font-size:.75rem;color:#64748b">Dica do dia, Quiz, Bastidores</div>
+</div>
+<div style="background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:12px;padding:1.2rem">
+<div style="font-size:.7rem;color:var(--ff-secondary);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">Capa Reels</div>
+<div style="font-size:.85rem;color:var(--ff-white);font-weight:600;margin-bottom:.3rem">1080 × 1920px (9:16)</div>
+<div style="font-size:.75rem;color:#64748b">Grid uniforme, título centralizado</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PILARES -->
+<section id="pilares" style="background:rgba(17,24,39,.5)">
+<div class="container">
+<div class="section-label">02 — Pilares de Conteúdo</div>
+<div class="section-title">5 Pilares Que Guiam Tudo</div>
+<div class="section-subtitle">Cada post se encaixa em pelo menos um pilar. Eles formam a identidade editorial da Full Funnel no Instagram.</div>
+
+<div class="pillars-grid">
+
+<div class="pillar-card" style="border-top:3px solid #1A56DB">
+<div class="pillar-emoji">🤖</div>
+<div class="pillar-name">Automação & Produtividade</div>
+<div class="pillar-desc">Tudo sobre automação de marketing, workflows, economia de tempo e escala. Mostra como a Full Funnel elimina tarefas manuais e multiplica resultados.</div>
+<div class="pillar-meta">
+<span class="pillar-tag" style="border:1px solid #1A56DB;color:#1A56DB">3x por semana</span>
+<span class="pillar-tag">Carrossel educativo</span>
+<span class="pillar-tag">Reels tutorial</span>
+<span class="pillar-tag">Story enquete</span>
+</div>
+</div>
+
+<div class="pillar-card" style="border-top:3px solid #10B981">
+<div class="pillar-emoji">📊</div>
+<div class="pillar-name">Resultados & Cases</div>
+<div class="pillar-desc">Prova social, números reais, cases de sucesso, antes/depois. Mostra o impacto tangível da Full Funnel nos negócios dos clientes.</div>
+<div class="pillar-meta">
+<span class="pillar-tag" style="border:1px solid #10B981;color:#10B981">2x por semana</span>
+<span class="pillar-tag">Post número</span>
+<span class="pillar-tag">Antes/depois</span>
+<span class="pillar-tag">Reels depoimento</span>
+</div>
+</div>
+
+<div class="pillar-card" style="border-top:3px solid #F97316">
+<div class="pillar-emoji">🎓</div>
+<div class="pillar-name">Educação & Marketing Digital</div>
+<div class="pillar-desc">Conteúdo educativo sobre funis de venda, copywriting, tráfego pago. Posiciona a Full Funnel como autoridade no assunto.</div>
+<div class="pillar-meta">
+<span class="pillar-tag" style="border:1px solid #F97316;color:#F97316">2x por semana</span>
+<span class="pillar-tag">Carrossel passo a passo</span>
+<span class="pillar-tag">Reels explicativo</span>
+</div>
+</div>
+
+<div class="pillar-card" style="border-top:3px solid #1A56DB">
+<div class="pillar-emoji">⚡</div>
+<div class="pillar-name">Produto & Features</div>
+<div class="pillar-desc">Demonstração de funcionalidades da plataforma, novidades, updates, tutoriais de uso. Mostra o poder da ferramenta em ação.</div>
+<div class="pillar-meta">
+<span class="pillar-tag" style="border:1px solid #1A56DB;color:#1A56DB">2x por semana</span>
+<span class="pillar-tag">Reels screencast</span>
+<span class="pillar-tag">Feature tour</span>
+</div>
+</div>
+
+<div class="pillar-card" style="border-top:3px solid #F97316">
+<div class="pillar-emoji">🤝</div>
+<div class="pillar-name">Comunidade & Bastidores</div>
+<div class="pillar-desc">Humanização da marca. Bastidores, time, cultura, eventos, interação com a comunidade. Cria conexão emocional e pertencimento.</div>
+<div class="pillar-meta">
+<span class="pillar-tag" style="border:1px solid #F97316;color:#F97316">1-2x por semana</span>
+<span class="pillar-tag">Story interativo</span>
+<span class="pillar-tag">Reels bastidores</span>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CALENDÁRIO -->
+<section id="calendario">
+<div class="container">
+<div class="section-label">03 — Calendário Editorial</div>
+<div class="section-title">30 Dias de Conteúdo — Abril 2026</div>
+<div class="section-subtitle">Calendário completo com pilares, formatos, tópicos e hooks. Pronto pra executar.</div>
+
+<div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2rem">
+<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(26,86,219,.15);color:#1A56DB">🤖 Automação: 11 posts</span>
+<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(16,185,129,.15);color:#10B981">📊 Resultados: 7 posts</span>
+<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(249,115,22,.15);color:#F97316">🎓 Educação: 7 posts</span>
+<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(26,86,219,.15);color:#60a5fa">⚡ Produto: 6 posts</span>
+<span style="font-size:.7rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;background:rgba(249,115,22,.15);color:#fb923c">🤝 Comunidade: 5 posts</span>
+</div>
+
+<div class="cal-grid">
+
+<div class="cal-card" style="--pillar-color:#1A56DB"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">01 Abr · Qua</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">7 Automações Que Vão Dobrar Suas Vendas</div><div class="cal-hook">"Você ainda manda follow-up manualmente? 😬"</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#10B981;border-radius:2px"></div><div class="cal-top"><span class="cal-day">02 Abr · Qui</span><span class="cal-type" style="background:#10B981">Single</span></div><div class="cal-topic">347 Leads em 7 Dias — Case Real</div><div class="cal-hook">"Esse número não é sorte. É sistema."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">03 Abr · Sex</span><span class="cal-type" style="background:#7c3aed">Reels</span></div><div class="cal-topic">Tour pela Plataforma em 60 Segundos</div><div class="cal-hook">"Tudo que você paga separado, em um só lugar"</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#F97316;border-radius:2px"></div><div class="cal-top"><span class="cal-day">04 Abr · Sáb</span><span class="cal-type" style="background:#F97316">Stories</span></div><div class="cal-topic">Quiz: Você Tá Perdendo Leads?</div><div class="cal-hook">"Responde 3 perguntas e descobre"</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#F97316;border-radius:2px"></div><div class="cal-top"><span class="cal-day">05 Abr · Dom</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">Funil de Vendas: Do Zero ao Primeiro Lead</div><div class="cal-hook">"Nunca criou um funil? Esse post é pra você."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">06 Abr · Seg</span><span class="cal-type" style="background:#7c3aed">Reels</span></div><div class="cal-topic">Email de Boas-Vindas em 3 Minutos</div><div class="cal-hook">"Lead entrou? Em 30 segundos ele já recebeu seu primeiro email."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#10B981;border-radius:2px"></div><div class="cal-top"><span class="cal-day">07 Abr · Ter</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">Antes e Depois: Agência Sem vs Com Full Funnel</div><div class="cal-hook">"3x mais leads convertidos. 20h economizadas por semana."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#F97316;border-radius:2px"></div><div class="cal-top"><span class="cal-day">08 Abr · Qua</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">5 Métricas Que Todo Empreendedor Deve Acompanhar</div><div class="cal-hook">"Se você não mede, você não gerencia."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">09 Abr · Qui</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">5 Features da Full Funnel Que Você Não Está Usando</div><div class="cal-hook">"Tem gente pagando a plataforma toda e usando só 20%."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">10 Abr · Sex</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">Sequência de 5 Emails Que Converte (Template)</div><div class="cal-hook">"Copia, cola e adapta. Funciona pra qualquer nicho."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#F97316;border-radius:2px"></div><div class="cal-top"><span class="cal-day">11 Abr · Sáb</span><span class="cal-type" style="background:#7c3aed">Reels</span></div><div class="cal-topic">Bastidores: Como Nasce Uma Nova Feature</div><div class="cal-hook">"O que vocês pedem no suporte vira roadmap."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#F97316;border-radius:2px"></div><div class="cal-top"><span class="cal-day">12 Abr · Dom</span><span class="cal-type" style="background:#7c3aed">Reels</span></div><div class="cal-topic">Copy Pra WhatsApp: Vender Sem Ser Chato</div><div class="cal-hook">"Todo mundo odeia mensagem de vendedor. Menos quando é assim:"</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">13 Abr · Seg</span><span class="cal-type" style="background:#10B981">Single</span></div><div class="cal-topic">A Automação Não Substitui Você. Ela Multiplica Você.</div><div class="cal-hook">"1 pessoa operando como 10."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#10B981;border-radius:2px"></div><div class="cal-top"><span class="cal-day">14 Abr · Ter</span><span class="cal-type" style="background:#7c3aed">Reels</span></div><div class="cal-topic">Depoimento: Cliente Que Triplicou Faturamento</div><div class="cal-hook">"Em 90 dias, sem contratar ninguém."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">15 Abr · Qua</span><span class="cal-type" style="background:#7c3aed">Reels</span></div><div class="cal-topic">Integração Full Funnel + WhatsApp Business</div><div class="cal-hook">"Seu follow-up no WhatsApp no piloto automático."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">16 Abr · Qui</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">Lead Scoring: Saiba Quem Tá Pronto Pra Comprar</div><div class="cal-hook">"Para de perder tempo com lead frio."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#F97316;border-radius:2px"></div><div class="cal-top"><span class="cal-day">17 Abr · Sex</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">Landing Page Que Converte: 7 Elementos Obrigatórios</div><div class="cal-hook">"Sua landing page tem todos esses?"</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#F97316;border-radius:2px"></div><div class="cal-top"><span class="cal-day">18 Abr · Sáb</span><span class="cal-type" style="background:#10B981">Single</span></div><div class="cal-topic">Meme: Planilha vs Automação</div><div class="cal-hook">"Quando você descobre que podia ter automatizado há 2 anos..."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#10B981;border-radius:2px"></div><div class="cal-top"><span class="cal-day">19 Abr · Dom</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">ROI Real: Quanto Clientes Economizam Por Mês</div><div class="cal-hook">"De R$800 em ferramentas separadas pra R$97 em uma só."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">20 Abr · Seg</span><span class="cal-type" style="background:#7c3aed">Reels</span></div><div class="cal-topic">Recuperação de Carrinho em 3 Toques</div><div class="cal-hook">"30% dos abandonos voltam com essa sequência."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">21 Abr · Ter</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">Calendário Inteligente: Fim do Ping-Pong</div><div class="cal-hook">"Zero 'qual horário fica bom pra você?'"</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#F97316;border-radius:2px"></div><div class="cal-top"><span class="cal-day">22 Abr · Qua</span><span class="cal-type" style="background:#7c3aed">Reels</span></div><div class="cal-topic">Tráfego Pago Pra Iniciantes: R$20/Dia</div><div class="cal-hook">"Não precisa de grana pra testar. Precisa de método."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">23 Abr · Qui</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">Pesquisa NPS Automática: O Que Fazer Com Cada Nota</div><div class="cal-hook">"Cliente satisfeito indica. Insatisfeito churna."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#10B981;border-radius:2px"></div><div class="cal-top"><span class="cal-day">24 Abr · Sex</span><span class="cal-type" style="background:#10B981">Single</span></div><div class="cal-topic">1.040+ Clientes Ativos em 5 Países</div><div class="cal-hook">"Brasil, Portugal, Espanha, Argentina, Colômbia."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#F97316;border-radius:2px"></div><div class="cal-top"><span class="cal-day">25 Abr · Sáb</span><span class="cal-type" style="background:#F97316">Stories</span></div><div class="cal-topic">Pergunta Box: Sua Maior Dor Em Marketing?</div><div class="cal-hook">"Responde aqui e vira conteúdo"</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#F97316;border-radius:2px"></div><div class="cal-top"><span class="cal-day">26 Abr · Dom</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">Tendências de Marketing Digital Pra 2026</div><div class="cal-hook">"O que tá funcionando agora que não funcionava em janeiro?"</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">27 Abr · Seg</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">Relatório Semanal Automático: Dashboard Por Email</div><div class="cal-hook">"Toda segunda às 9h, sem abrir 5 ferramentas."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#1A56DB;border-radius:2px"></div><div class="cal-top"><span class="cal-day">28 Abr · Ter</span><span class="cal-type" style="background:#7c3aed">Reels</span></div><div class="cal-topic">AI Employee: Seu Assistente de Vendas 24/7</div><div class="cal-hook">"Enquanto você dorme, ele qualifica leads."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#F97316;border-radius:2px"></div><div class="cal-top"><span class="cal-day">29 Abr · Qua</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">Email Marketing Morreu? Os Dados Dizem Que Não</div><div class="cal-hook">"R$42 de retorno pra cada R$1 investido."</div></div>
+
+<div class="cal-card"><div style="position:absolute;top:0;left:0;width:4px;height:100%;background:#10B981;border-radius:2px"></div><div class="cal-top"><span class="cal-day">30 Abr · Qui</span><span class="cal-type" style="background:#1A56DB">Carrossel</span></div><div class="cal-topic">Recap do Mês: O Que Aconteceu na Comunidade</div><div class="cal-hook">"30 dias de conteúdos, lives e novidades."</div></div>
+
+</div>
+</div>
+</section>
+
+<!-- POSTS DE EXEMPLO -->
+<section id="posts" style="background:rgba(17,24,39,.5)">
+<div class="container">
+<div class="section-label">04 — Posts de Exemplo</div>
+<div class="section-title">Carrosséis & Posts Prontos</div>
+<div class="section-subtitle">Exemplos completos com copy, visual e descrição de cada slide. Prontos pra produzir.</div>
+
+<!-- CAROUSEL 1: 7 Automações -->
+<div class="post-section">
+<div class="post-header">
+<span class="post-badge" style="background:rgba(26,86,219,.15);color:#1A56DB">🤖 Automação</span>
+<span class="post-title">7 Automações Que Vão Dobrar Suas Vendas</span>
+</div>
+<div class="slides-container">
+
+<div class="slide-card">
+<div class="slide-visual dark" style="background:linear-gradient(135deg,#1A56DB 0%,#0F3285 100%)">
+<div class="slide-tag">AUTOMAÇÃO DE MARKETING</div>
+<div class="slide-headline">7 Automações<br>Que Vão Dobrar<br>Suas Vendas</div>
+<div class="slide-subtitle">Sem contratar mais ninguém →</div>
+</div>
+<div class="slide-desc">Slide 1 — Hook. Fundo gradiente azul profundo. Texto branco grande à esquerda. Ícone de engrenagem decorativo com opacidade baixa no canto superior direito.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual light" style="background:#FFFFFF">
+<div class="slide-num" style="color:#F97316">01</div>
+<div class="slide-headline" style="color:#1F2937">Email de Boas-Vindas<br>Automático</div>
+<div class="slide-body" style="color:#6B7280">Novo lead entrou? Em 30 segundos ele recebe um email personalizado com seu nome, interesse e próximo passo. Sem você levantar um dedo.</div>
+</div>
+<div class="slide-desc">Fundo branco limpo. Ícone de envelope com checkmark verde centralizado na metade inferior.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual light" style="background:#E8EEFB">
+<div class="slide-num" style="color:#F97316">02</div>
+<div class="slide-headline" style="color:#1F2937">Follow-up WhatsApp<br>em 3 Etapas</div>
+<div class="slide-body" style="color:#6B7280">Lead não respondeu o email? Automação manda WhatsApp no dia 2, dia 5 e dia 10 com mensagens diferentes. Taxa de resposta: 4x maior.</div>
+</div>
+<div class="slide-desc">Fundo azul claríssimo. Mini fluxograma com 3 nós conectados por setas (envelope, WhatsApp, telefone).</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual light" style="background:#FFFFFF">
+<div class="slide-num" style="color:#F97316">03</div>
+<div class="slide-headline" style="color:#1F2937">Agendamento<br>Automático</div>
+<div class="slide-body" style="color:#6B7280">Lead qualificado? O sistema manda link do calendário automaticamente. Ele escolhe o horário, aparece na sua agenda. Zero ping-pong de mensagens.</div>
+</div>
+<div class="slide-desc">Fundo branco. Ícone de calendário com clock overlay, elementos decorativos sutis ao redor.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual light" style="background:#E8EEFB">
+<div class="slide-num" style="color:#F97316">04</div>
+<div class="slide-headline" style="color:#1F2937">Lead Scoring<br>Inteligente</div>
+<div class="slide-body" style="color:#6B7280">Cada ação do lead ganha pontos: abriu email (+5), clicou link (+10), visitou página de preço (+25). Quando atinge 50 pontos: 'Esse tá pronto pra comprar.'</div>
+</div>
+<div class="slide-desc">Barra de progresso elegante com marcos destacados. Ícones de ação (envelope, cursor, cifrão) acima de cada marco.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual light" style="background:#FFFFFF">
+<div class="slide-num" style="color:#F97316">05</div>
+<div class="slide-headline" style="color:#1F2937">Recuperação de<br>Carrinho/Proposta</div>
+<div class="slide-body" style="color:#6B7280">Cliente não fechou? 3 toques automáticos: email com benefício, WhatsApp com urgência, SMS com oferta. Recupera até 30% dos abandonos.</div>
+</div>
+<div class="slide-desc">Ícone de carrinho com seta circular verde. "30%" em destaque com cor verde.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual light" style="background:#E8EEFB">
+<div class="slide-num" style="color:#F97316">06</div>
+<div class="slide-headline" style="color:#1F2937">Pesquisa NPS<br>Pós-Venda</div>
+<div class="slide-body" style="color:#6B7280">7 dias após a compra: pesquisa automática. Nota alta? Pede indicação. Nota baixa? Alerta suporte. Tudo sem intervenção manual.</div>
+</div>
+<div class="slide-desc">Escala NPS com emojis (😡 😐 😊 🤩). Setas mostrando ramificações automáticas.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual light" style="background:#FFFFFF">
+<div class="slide-num" style="color:#F97316">07</div>
+<div class="slide-headline" style="color:#1F2937">Relatório Semanal<br>Automático</div>
+<div class="slide-body" style="color:#6B7280">Toda segunda às 9h: relatório no email com leads gerados, taxa de conversão, vendas fechadas. Decisão baseada em dados, sem abrir 5 ferramentas.</div>
+</div>
+<div class="slide-desc">Mini dashboard com gráfico de barras ascendente em azul/verde. Números em destaque.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual dark" style="background:linear-gradient(135deg,#1A56DB 0%,#F97316 100%);text-align:center">
+<div style="font-size:2.5rem;margin-bottom:.5rem">🚀</div>
+<div class="slide-headline">Pronto pra<br>Automatizar?</div>
+<div class="slide-subtitle">Teste grátis por 14 dias.<br>Sem cartão. Sem compromisso.</div>
+<div class="slide-cta-btn">COMEÇAR AGORA →</div>
+</div>
+<div class="slide-desc">Slide CTA. Gradiente energy azul→laranja. Botão pill branco com texto azul. Logo e handle na base.</div>
+</div>
+
+</div>
+</div>
+
+<!-- CAROUSEL 2: Funil de Vendas -->
+<div class="post-section">
+<div class="post-header">
+<span class="post-badge" style="background:rgba(249,115,22,.15);color:#F97316">🎓 Educação</span>
+<span class="post-title">Funil de Vendas: Do Zero ao Primeiro Lead</span>
+</div>
+<div class="slides-container">
+
+<div class="slide-card">
+<div class="slide-visual dark" style="background:#0F3285">
+<div class="slide-tag" style="background:rgba(249,115,22,.8);border:none;color:#fff">GUIA COMPLETO</div>
+<div class="slide-headline">Funil de Vendas:<br>Do Zero ao<br>Primeiro Lead</div>
+<div class="slide-subtitle">Passo a passo pra quem tá começando</div>
+</div>
+<div class="slide-desc">Fundo azul escuro sólido. Ilustração sutil de funil em linhas brancas finas na lateral direita como elemento decorativo.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual light" style="background:#FFFFFF">
+<div class="slide-num" style="color:#F97316">01</div>
+<div class="slide-headline" style="color:#1F2937">Defina Seu<br>Público-Alvo</div>
+<div class="slide-body" style="color:#6B7280">Antes de qualquer página ou anúncio: quem é seu cliente ideal? Idade, dor principal, onde ele passa tempo online. Sem isso, é tiro no escuro.</div>
+</div>
+<div class="slide-desc">Layout limpo. Ícone de alvo com silhueta no centro. Padrão visual consistente.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual light" style="background:#E8EEFB">
+<div class="slide-num" style="color:#F97316">02</div>
+<div class="slide-headline" style="color:#1F2937">Crie Sua<br>Isca Digital</div>
+<div class="slide-body" style="color:#6B7280">E-book, checklist, mini-curso, template. Algo que resolva um problema específico do seu público em troca do email dele. Valor real = leads reais.</div>
+</div>
+<div class="slide-desc">Ícone de presente digital com seta de download. Thumbnails de exemplos de iscas.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual light" style="background:#FFFFFF">
+<div class="slide-num" style="color:#F97316">03</div>
+<div class="slide-headline" style="color:#1F2937">Monte a<br>Landing Page</div>
+<div class="slide-body" style="color:#6B7280">Headline clara + benefício principal + formulário simples. Na Full Funnel você monta em 15 minutos com templates prontos. Sem designer ou dev.</div>
+</div>
+<div class="slide-desc">Mini wireframe de landing page (headline, imagem, form, botão). Seta apontando pro formulário.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual light" style="background:#E8EEFB">
+<div class="slide-num" style="color:#F97316">04</div>
+<div class="slide-headline" style="color:#1F2937">Configure a<br>Automação de Email</div>
+<div class="slide-body" style="color:#6B7280">Lead entrou → email 1 (isca) → email 2 (valor) → email 3 (oferta). Tudo automático. Configure uma vez, roda pra sempre.</div>
+</div>
+<div class="slide-desc">Fluxograma vertical com 3 etapas conectadas por setas. Visual didático e organizado.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual light" style="background:#FFFFFF">
+<div class="slide-num" style="color:#F97316">05</div>
+<div class="slide-headline" style="color:#1F2937">Suba o Tráfego<br>e Monitore</div>
+<div class="slide-body" style="color:#6B7280">Orgânico (Instagram, YouTube, blog) ou pago (Meta Ads, Google). Comece com R$20/dia, monitore os números. O funil faz o resto.</div>
+</div>
+<div class="slide-desc">Gráfico de linha ascendente em verde com lupa. Indicadores numéricos (CTR, CPL).</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual dark" style="background:linear-gradient(135deg,#1A56DB 0%,#0F3285 100%);text-align:center">
+<div style="font-size:2.5rem;margin-bottom:.5rem">🎯</div>
+<div class="slide-headline">Monta Seu Funil<br>Hoje Mesmo</div>
+<div class="slide-subtitle">Templates prontos + automação incluída</div>
+<div class="slide-cta-btn">TESTAR GRÁTIS →</div>
+</div>
+<div class="slide-desc">CTA. Gradiente azul. Elementos decorativos de funil em linhas brancas nas laterais.</div>
+</div>
+
+</div>
+</div>
+
+<!-- CAROUSEL 3: Antes e Depois -->
+<div class="post-section">
+<div class="post-header">
+<span class="post-badge" style="background:rgba(16,185,129,.15);color:#10B981">📊 Resultados</span>
+<span class="post-title">Antes e Depois: Agência Sem vs Com Full Funnel</span>
+</div>
+<div class="slides-container">
+
+<div class="slide-card" style="min-width:320px">
+<div class="slide-visual dark" style="background:linear-gradient(90deg,#374151 50%,#1A56DB 50%);text-align:center">
+<div class="slide-tag">ANTES vs DEPOIS</div>
+<div style="display:flex;justify-content:space-around;width:100%">
+<div><div class="slide-headline" style="font-size:1rem">Sem Full<br>Funnel 😩</div></div>
+<div><div class="slide-headline" style="font-size:1rem">Com Full<br>Funnel 🚀</div></div>
+</div>
+<div class="slide-subtitle">Desliza pra ver a diferença →</div>
+</div>
+<div class="slide-desc">Slide dividido ao meio. Esquerda escuro/acinzentado. Direita azul vibrante. Contraste forte.</div>
+</div>
+
+<div class="slide-card" style="min-width:320px">
+<div class="slide-visual light" style="background:linear-gradient(90deg,#F3F4F6 50%,#E8EEFB 50%);padding:1rem">
+<div style="text-align:center;margin-bottom:.8rem;font-weight:700;color:#1F2937;font-size:.9rem">Gestão de Leads</div>
+<div style="display:flex;gap:.5rem">
+<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#ef4444;font-weight:700">❌</span> Planilha do Excel com 500 contatos bagunçados, sem saber quem tá quente ou frio</div>
+<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#10B981;font-weight:700">✅</span> CRM visual com pipeline, lead scoring automático e histórico completo</div>
+</div>
+</div>
+<div class="slide-desc">Layout split. Esquerda cinza neutro. Direita azul claro. Divisor central sutil.</div>
+</div>
+
+<div class="slide-card" style="min-width:320px">
+<div class="slide-visual light" style="background:linear-gradient(90deg,#F3F4F6 50%,#E8EEFB 50%);padding:1rem">
+<div style="text-align:center;margin-bottom:.8rem;font-weight:700;color:#1F2937;font-size:.9rem">Follow-up</div>
+<div style="display:flex;gap:.5rem">
+<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#ef4444;font-weight:700">❌</span> Esqueceu de responder 3 leads essa semana. Quando lembrou, já tinham comprado do concorrente.</div>
+<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#10B981;font-weight:700">✅</span> Sequência automática de 5 toques em 15 dias. Nenhum lead esquecido. Nunca mais.</div>
+</div>
+</div>
+<div class="slide-desc">Mesmo layout split, mantendo consistência visual e ritmo na leitura.</div>
+</div>
+
+<div class="slide-card" style="min-width:320px">
+<div class="slide-visual light" style="background:linear-gradient(90deg,#F3F4F6 50%,#E8EEFB 50%);padding:1rem">
+<div style="text-align:center;margin-bottom:.8rem;font-weight:700;color:#1F2937;font-size:.9rem">Ferramentas</div>
+<div style="display:flex;gap:.5rem">
+<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#ef4444;font-weight:700">❌</span> Mailchimp + Calendly + Typeform + Zapier + WhatsApp Web = R$800/mês + 5 logins</div>
+<div style="flex:1;padding:.8rem;font-size:.75rem;color:#6B7280;line-height:1.4"><span style="color:#10B981;font-weight:700">✅</span> Tudo dentro da Full Funnel: email, agenda, formulários, automação, WhatsApp. Uma plataforma, um login.</div>
+</div>
+</div>
+<div class="slide-desc">No 'antes', ícones de ferramentas empilhados caoticamente. No 'depois', um único ícone limpo.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual dark" style="background:#0F3285;text-align:center">
+<div style="font-size:1rem;font-weight:700;margin-bottom:1.5rem;opacity:.8">O Resultado Real</div>
+<div style="margin-bottom:1rem"><span style="font-size:2.5rem;font-weight:900;color:#10B981">3x</span><br><span style="font-size:.8rem;opacity:.7">mais leads convertidos</span></div>
+<div style="margin-bottom:1rem"><span style="font-size:2.5rem;font-weight:900;color:#F97316">20h</span><br><span style="font-size:.8rem;opacity:.7">economizadas por semana</span></div>
+<div><span style="font-size:2.5rem;font-weight:900;color:#fff">1</span><br><span style="font-size:.8rem;opacity:.7">plataforma pra tudo</span></div>
+</div>
+<div class="slide-desc">Três números gigantes empilhados com cores de destaque. Visual de impacto com dados concretos.</div>
+</div>
+
+<div class="slide-card">
+<div class="slide-visual dark" style="background:linear-gradient(135deg,#1A56DB 0%,#F97316 100%);text-align:center">
+<div style="font-size:2.5rem;margin-bottom:.5rem">💪</div>
+<div class="slide-headline">Chega de Gambiarra.<br>Profissionaliza.</div>
+<div class="slide-subtitle">14 dias grátis pra você testar</div>
+<div class="slide-cta-btn">QUERO TESTAR →</div>
+</div>
+<div class="slide-desc">CTA provocativo. Gradiente vibrante. Tom firme mas amigável.</div>
+</div>
+
+</div>
+</div>
+
+<!-- SINGLE POSTS -->
+<h3 style="font-size:1.3rem;font-weight:800;margin:3rem 0 1.5rem">Posts Únicos</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:2rem">
+
+<div class="single-post">
+<div class="single-visual" style="background:#0F3285">
+<div style="position:absolute;top:16px;left:16px;font-size:.6rem;font-weight:700;padding:.25rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8)">📊 CASE REAL</div>
+<div style="position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid rgba(255,255,255,.06);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+<div style="font-size:4.5rem;font-weight:900;color:#F97316;position:relative">347</div>
+<div style="font-size:1.3rem;font-weight:700;color:#fff;position:relative">leads em 7 dias</div>
+<div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-top:.5rem;position:relative">Funil de 3 páginas + sequência de email + WhatsApp automático</div>
+</div>
+<div class="single-desc">Impacto visual pelo contraste do número laranja gigante sobre fundo azul escuro. Círculo decorativo centralizado. Clean e confiante.</div>
+</div>
+
+<div class="single-post">
+<div class="single-visual" style="background:#FFFFFF;border:2px solid #E8EEFB;margin:16px;border-radius:8px">
+<div style="position:absolute;top:40px;left:40px;font-size:5rem;color:#1A56DB;opacity:.12;font-family:Georgia,serif;line-height:1">"</div>
+<div style="font-size:1.3rem;font-weight:500;font-style:italic;color:#1F2937;padding:0 1.5rem;line-height:1.5;position:relative">A automação não substitui você.<br>Ela multiplica você.</div>
+<div style="width:40px;height:3px;background:#1A56DB;border-radius:2px;margin:1rem auto .5rem"></div>
+<div style="font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#6B7280">— Full Funnel</div>
+</div>
+<div class="single-desc">Elegante e minimalista. Borda interna criando moldura sofisticada. Aspas decorativas grandes em azul com opacidade baixa. Perfeito pra compartilhamento.</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- VOZ & TOM -->
+<section id="voz">
+<div class="container">
+<div class="section-label">05 — Voz & Tom</div>
+<div class="section-title">Personalidade da Marca</div>
+<div class="section-subtitle">A Full Funnel fala como um amigo esperto que manja de marketing digital. Parceiro que já fez, já errou, e divide o caminho mais curto.</div>
+
+<div class="voice-grid">
+<div class="voice-trait"><h4>🎯 Direto</h4><p>Vai ao ponto. Sem enrolação. O seguidor tem 3 segundos — usa bem.</p></div>
+<div class="voice-trait"><h4>💪 Confiante</h4><p>Sabe do que fala. Tem propriedade. Mas nunca menospreza quem tá começando.</p></div>
+<div class="voice-trait"><h4>🤝 Acessível</h4><p>Explica complexo de forma simples. Analogias do dia a dia. Zero jargão.</p></div>
+<div class="voice-trait"><h4>⚡ Energético</h4><p>Transmite movimento, ação, progresso. Energia constante, não explosão.</p></div>
+<div class="voice-trait"><h4>🇧🇷 Brasileiro</h4><p>Fala como brasileiro. Expressões naturais, humor leve, referências locais.</p></div>
+</div>
+
+<h3 style="font-size:1.1rem;font-weight:700;margin:2rem 0 1rem">Exemplos de Legenda</h3>
+
+<div class="caption-example">
+<div class="caption-pillar">🤖 Automação</div>
+<div class="caption-text">Você ainda manda follow-up manualmente? 😬
+
+Enquanto você copia e cola mensagem por mensagem, seu concorrente configurou UM workflow e tá convertendo no automático.
+
+A diferença entre 5 vendas por mês e 50 muitas vezes é só uma automação bem feita.
+
+Salva esse post e configura a sua hoje 👇
+
+#marketingdigital #automação #fullfunnel #vendas #whatsappmarketing</div>
+</div>
+
+<div class="caption-example">
+<div class="caption-pillar">📊 Resultados</div>
+<div class="caption-text">347 leads em 7 dias.
+
+Isso não foi mágica. Foi um funil de 3 páginas + sequência de 5 emails + follow-up no WhatsApp.
+
+Tudo rodando automático dentro da Full Funnel.
+
+A única coisa que o @[cliente] precisou fazer? Subir o tráfego e deixar a máquina trabalhar.
+
+Quer montar o seu? Link na bio 🚀
+
+#casesdesucesso #funil #leads #fullfunnel #marketingdigitalbrasil</div>
+</div>
+
+<div class="caption-example bad">
+<div class="caption-pillar">❌ O que NÃO fazer</div>
+<div class="caption-text">Venha conhecer a melhor plataforma de marketing do mercado! Não perca essa oportunidade única! Clique no link e saiba mais!!!</div>
+<div class="caption-why">Genérico, sem dado específico, linguagem de panfleto, excesso de exclamação, zero personalidade.</div>
+</div>
+
+<div class="caption-example bad">
+<div class="caption-pillar">❌ O que NÃO fazer</div>
+<div class="caption-text">Nosso software possui diversas funcionalidades que irão auxiliar na otimização dos seus processos de marketing.</div>
+<div class="caption-why">Linguagem corporativa, impessoal, vago ('diversas funcionalidades'), não fala com o leitor.</div>
+</div>
+
+<h3 style="font-size:1.1rem;font-weight:700;margin:2rem 0 1rem">Estrutura da Legenda</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem">
+<div style="background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:10px;padding:1.2rem"><span style="font-size:1.5rem">🪝</span><div style="font-size:.85rem;font-weight:700;color:var(--ff-white);margin:.3rem 0 .2rem">Linha 1: Hook</div><div style="font-size:.75rem;color:#94a3b8">Pergunta, dado chocante, provocação</div></div>
+<div style="background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:10px;padding:1.2rem"><span style="font-size:1.5rem">📖</span><div style="font-size:.85rem;font-weight:700;color:var(--ff-white);margin:.3rem 0 .2rem">Linhas 2-3: Contexto</div><div style="font-size:.75rem;color:#94a3b8">Problema, insight, desenvolvimento</div></div>
+<div style="background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:10px;padding:1.2rem"><span style="font-size:1.5rem">💡</span><div style="font-size:.85rem;font-weight:700;color:var(--ff-white);margin:.3rem 0 .2rem">Linhas 4-5: Valor</div><div style="font-size:.75rem;color:#94a3b8">Solução, como aplicar, benefício</div></div>
+<div style="background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:10px;padding:1.2rem"><span style="font-size:1.5rem">👉</span><div style="font-size:.85rem;font-weight:700;color:var(--ff-white);margin:.3rem 0 .2rem">Linha Final: CTA</div><div style="font-size:.75rem;color:#94a3b8">Salvar, compartilhar, comentar, link na bio</div></div>
+</div>
+
+</div>
+</section>
+
+<!-- REFERÊNCIAS -->
+<section id="referencias" style="background:rgba(17,24,39,.5)">
+<div class="container">
+<div class="section-label">06 — Referências</div>
+<div class="section-title">15 Perfis de Referência</div>
+<div class="section-subtitle">Análise dos melhores perfis do mundo em marketing digital. O que fazem bem e o que podemos adaptar.</div>
+
+<div class="ref-grid">
+
+<div class="ref-card highlight">
+<div class="ref-top">
+<div><div class="ref-name">Alex Hormozi</div><div class="ref-handle">@hormozi</div></div>
+<div class="ref-followers">~3.2M</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Hooks absurdamente fortes nos primeiros 1-2 segundos</li>
+<li>Conteúdo contra-intuitivo que gera debate e saves</li>
+<li>Reels curtos (30-60s) tipo conselho de amigo rico</li>
+<li>Consistência brutal — posta todo dia</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Série '60 segundos de funil' com frameworks proprietários</li>
+<li>Hooks contra-intuitivos: 'Pare de usar funil SE...'</li>
+<li>Frameworks nomeados (Método Full Funnel, Funil 3C)</li>
+</ul></div>
+</div>
+
+<div class="ref-card highlight">
+<div class="ref-top">
+<div><div class="ref-name">Russell Brunson</div><div class="ref-handle">@russellbrunson</div></div>
+<div class="ref-followers">~1.3M</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Storytelling poderoso — cada post tem narrativa com moral</li>
+<li>Frameworks clássicos (Secret Formula, Hook-Story-Offer)</li>
+<li>Bastidores de eventos presenciais</li>
+<li>Educa usando metáforas simples</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Carrosséis 'Anatomia do Funil Perfeito' com diagramas</li>
+<li>Storytelling de clientes Full Funnel que escalaram</li>
+<li>Framework visual proprietário que as pessoas salvam</li>
+</ul></div>
+</div>
+
+<div class="ref-card">
+<div class="ref-top">
+<div><div class="ref-name">Neil Patel</div><div class="ref-handle">@neilpatel</div></div>
+<div class="ref-followers">~450K</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Carrosséis data-driven com estatísticas</li>
+<li>Títulos numéricos: '7 Hacks', '5 Ways to...'</li>
+<li>Dados proprietários como prova de autoridade</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Carrosséis data-driven com dados reais de clientes</li>
+<li>Formato numérico nos títulos</li>
+<li>Identidade visual ultra-consistente</li>
+</ul></div>
+</div>
+
+<div class="ref-card">
+<div class="ref-top">
+<div><div class="ref-name">Grant Cardone</div><div class="ref-handle">@grantcardone</div></div>
+<div class="ref-followers">~5.2M</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Volume insano: 5-10 stories/dia, 2-3 posts/dia</li>
+<li>Polarização intencional que gera debate</li>
+<li>Lives diárias criando comunidade e FOMO</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Volume de stories mostrando dia a dia</li>
+<li>Frases de impacto: 'Você não tem problema de leads, tem de funil'</li>
+<li>Lives semanais sobre GHL/automação</li>
+</ul></div>
+</div>
+
+<div class="ref-card">
+<div class="ref-top">
+<div><div class="ref-name">Frank Kern</div><div class="ref-handle">@frankkern</div></div>
+<div class="ref-followers">~109K</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Autenticidade radical — parece conversa com amigo</li>
+<li>Copy das legendas nível master</li>
+<li>Dá conteúdo premium de graça</li>
+<li>Simplicidade como diferencial</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Série 'Papo Reto de Funil' — Marco explicando casual</li>
+<li>Legendas com copy persuasiva e storytelling</li>
+<li>Autenticidade > Produção — menos Canva, mais câmera</li>
+</ul></div>
+</div>
+
+<div class="ref-card highlight">
+<div class="ref-top">
+<div><div class="ref-name">GoHighLevel</div><div class="ref-handle">@gohighlevel</div></div>
+<div class="ref-followers">~68K</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Feature releases como conteúdo</li>
+<li>Depoimentos de agências reais</li>
+<li>Educação com 'how-to' rápidos</li>
+<li>Community-driven: reposta conteúdo de usuários</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Reels 'Feature da Semana' do GHL</li>
+<li>Updates do GHL como pauta constante</li>
+<li>Posicionar como 'O GHL explicado em português'</li>
+</ul></div>
+</div>
+
+<div class="ref-card">
+<div class="ref-top">
+<div><div class="ref-name">Jason Wardrop</div><div class="ref-handle">@jason_wardrop</div></div>
+<div class="ref-followers">~9K</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Tutoriais práticos de GHL</li>
+<li>Mostra números reais de leads</li>
+<li>CTA para DM como funil de entrada</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Tutoriais em tela gravada passo a passo no GHL</li>
+<li>DM como CTA: 'Manda DM com FUNIL'</li>
+<li>Cortar webinários em micro-conteúdos</li>
+</ul></div>
+</div>
+
+<div class="ref-card">
+<div class="ref-top">
+<div><div class="ref-name">Amy Porterfield</div><div class="ref-handle">@amyporterfield</div></div>
+<div class="ref-followers">~380K</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Branding visual impecável e reconhecível</li>
+<li>Tom empático e encorajador</li>
+<li>Quizzes e lead magnets como CTA</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Template fixo ultra-consistente para todos os formatos</li>
+<li>Quizzes no CTA: 'Descubra qual funil é ideal pra você'</li>
+<li>Funil de conteúdo: post → webinário → trial</li>
+</ul></div>
+</div>
+
+<div class="ref-card">
+<div class="ref-top">
+<div><div class="ref-name">Leandro Ladeira</div><div class="ref-handle">@leaborges</div></div>
+<div class="ref-followers">~500K</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Humor como ferramenta de educação</li>
+<li>Desconstrução de gurus</li>
+<li>Linguagem ultra-coloquial BR</li>
+<li>Polêmica saudável que gera compartilhamento</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Humor BR nos Reels: 'Quando o cliente diz que automação não funciona'</li>
+<li>Formato sketch/meme pra explicar features do GHL</li>
+<li>Linguagem irreverente (combina com a vibe do Marco)</li>
+</ul></div>
+</div>
+
+<div class="ref-card">
+<div class="ref-top">
+<div><div class="ref-name">Erico Rocha</div><div class="ref-handle">@aborges</div></div>
+<div class="ref-followers">~1.8M</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Método proprietário ultra-forte</li>
+<li>Conteúdo que gera FOMO</li>
+<li>Depoimentos constantes como prova social</li>
+<li>Eventos como content machine</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Cases de clientes como conteúdo principal</li>
+<li>Criar 'Método Full Funnel' com nome forte</li>
+<li>Depoimentos em vídeo como Reels</li>
+</ul></div>
+</div>
+
+<div class="ref-card">
+<div class="ref-top">
+<div><div class="ref-name">Pedro Sobral</div><div class="ref-handle">@pedrosobral</div></div>
+<div class="ref-followers">~1.2M</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Educação prática: tela do Ads Manager, dados reais</li>
+<li>Volume absurdo + consistência</li>
+<li>Comunidade forte (Comunidade Sobral)</li>
+<li>Fala pra iniciante sem elitismo</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Screen recordings do GHL em ação com resultados</li>
+<li>Série 'Full Funnel Responde' com dúvidas</li>
+<li>Conteúdo prático > teórico</li>
+</ul></div>
+</div>
+
+<div class="ref-card">
+<div class="ref-top">
+<div><div class="ref-name">Priscila Zillo</div><div class="ref-handle">@priscilazillo</div></div>
+<div class="ref-followers">~400K</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Clareza didática excepcional</li>
+<li>Conteúdo estratégico (posicionamento, pricing)</li>
+<li>Mix pessoal + profissional</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Carrosséis passo a passo de automações</li>
+<li>Tom didático acessível pra não-tech</li>
+<li>Templates 'salvei-e-apliquei' que geram saves</li>
+</ul></div>
+</div>
+
+<div class="ref-card">
+<div class="ref-top">
+<div><div class="ref-name">DigitalMarketer</div><div class="ref-handle">@digitalmarketer</div></div>
+<div class="ref-followers">~120K</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Frameworks visuais que geram SAVES massivos</li>
+<li>Infográficos que simplificam conceitos</li>
+<li>Conteúdo 'template' pronto pra usar</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Infográficos 'Mapa do Funil Full Funnel'</li>
+<li>Templates prontos de automação</li>
+<li>Checklists e frameworks baixáveis</li>
+</ul></div>
+</div>
+
+<div class="ref-card">
+<div class="ref-top">
+<div><div class="ref-name">Funnelytics</div><div class="ref-handle">@funnelytics</div></div>
+<div class="ref-followers">~25K</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Diagramas de funil instantaneamente reconhecíveis</li>
+<li>Nicho ultra-específico: só mapear e otimizar funis</li>
+<li>Visual-first: o diagrama É o conteúdo</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>DIAGRAMAS DE FUNIL como identidade visual</li>
+<li>Mapear funis reais de clientes</li>
+<li>Série 'Funil da Semana': mapear tipo diferente toda semana</li>
+</ul></div>
+</div>
+
+<div class="ref-card">
+<div class="ref-top">
+<div><div class="ref-name">Tiago Tessmann</div><div class="ref-handle">@tiagotessmann</div></div>
+<div class="ref-followers">~600K</div>
+</div>
+<div class="ref-good"><div class="ref-good-title">O que faz bem</div><ul style="list-style:none">
+<li>Conteúdo prático com print de campanhas reais</li>
+<li>Edição profissional mas não overproduced</li>
+<li>Fala de ferramentas de forma acessível</li>
+</ul></div>
+<div class="ref-steal"><div class="ref-steal-title">O que adaptar</div><ul>
+<li>Dashboards reais do GHL com resultados</li>
+<li>Edição moderna sem exageros</li>
+<li>Print de resultados como prova social</li>
+</ul></div>
+</div>
+
+</div>
+
+<!-- TOP INSIGHTS -->
+<h3 style="font-size:1.3rem;font-weight:800;margin:3rem 0 .5rem">🔥 Top 10 Insights Estratégicos</h3>
+<p style="color:#94a3b8;margin-bottom:1.5rem;font-size:.9rem">As descobertas mais importantes da análise dos 15 perfis de referência.</p>
+
+<div class="insights-grid">
+
+<div class="insight-card"><div class="insight-num">01</div><div class="insight-title">Frameworks Proprietários São Rei</div><div class="insight-detail">Hormozi tem 'Value Equation', Brunson tem 'Hook-Story-Offer', Erico tem 'Fórmula de Lançamento'. Full Funnel PRECISA de um framework nomeado e visual — vira propriedade intelectual que as pessoas salvam e associam à marca.</div></div>
+
+<div class="insight-card"><div class="insight-num">02</div><div class="insight-title">Diagramas de Funil = Identidade Visual Perfeita</div><div class="insight-detail">Ninguém no Brasil está fazendo diagramas de funil bonitos e educativos no Instagram. Funnelytics faz em inglês. Full Funnel pode DOMINAR esse formato em PT-BR.</div></div>
+
+<div class="insight-card"><div class="insight-num">03</div><div class="insight-title">Screen Recordings Geram Trust</div><div class="insight-detail">Mostrar a TELA do software com resultados reais é mais poderoso que qualquer design. Full Funnel deve postar Reels gravando o GHL mostrando automações rodando e leads entrando.</div></div>
+
+<div class="insight-card"><div class="insight-num">04</div><div class="insight-title">Humor + Educação = Viralidade (BR)</div><div class="insight-detail">Leandro Ladeira prova que humor brasileiro conecta brutalmente. Reels tipo sketch: 'Quando o cliente fala que email marketing morreu'. Humor BR + nicho tech = oceano azul.</div></div>
+
+<div class="insight-card"><div class="insight-num">05</div><div class="insight-title">Consistência > Perfeição</div><div class="insight-detail">Os que crescem mais rápido não são os mais bonitos — são os mais consistentes. Calendário mínimo: 1 post/dia + 5 stories/dia.</div></div>
+
+<div class="insight-card"><div class="insight-num">06</div><div class="insight-title">Cases de Clientes São Ouro</div><div class="insight-detail">Erico e Brunson usam depoimentos como 80% da prova social. Vídeos curtos de clientes falando resultados transformados em Reels = conteúdo mais poderoso.</div></div>
+
+<div class="insight-card"><div class="insight-num">07</div><div class="insight-title">DM Como Funil de Entrada</div><div class="insight-detail">'Manda DM com FUNIL e eu te mando o template gratuito' — alimenta o CRM. Irônico e perfeito, porque a Full Funnel É o CRM.</div></div>
+
+<div class="insight-card"><div class="insight-num">08</div><div class="insight-title">Cores Consistentes = Reconhecimento</div><div class="insight-detail">Neil Patel = laranja. Hormozi = preto+amarelo. Full Funnel precisa TRAVAR a paleta e usar em TODOS os posts. Reconhecível sem ler o nome.</div></div>
+
+<div class="insight-card"><div class="insight-num">09</div><div class="insight-title">Posicionar Como 'O GHL em Português'</div><div class="insight-detail">Não existe no Brasil um perfil forte referência em GoHighLevel. Full Funnel pode ser A autoridade GHL no Brasil — o Sobral do GHL. Nicho claro, concorrência fraca.</div></div>
+
+<div class="insight-card"><div class="insight-num">10</div><div class="insight-title">Mix: 40% Reels + 30% Carrosséis + 20% Stories + 10% Estáticos</div><div class="insight-detail">Reels para alcance (discovery), carrosséis para saves/autoridade, stories para conexão diária, estáticos para marcos. Priorizar Reels curtos (30-60s) com hooks fortes.</div></div>
+
+</div>
+
+</div>
+</section>
+
+<!-- HASHTAGS -->
+<section id="hashtags">
+<div class="container">
+<div class="section-label">07 — Estratégia de Hashtags</div>
+<div class="section-title">3 Tiers de Hashtags</div>
+<div class="section-subtitle">10-15 por post. Variar combinações para evitar sombreamento do algoritmo. Sempre no final da legenda.</div>
+
+<div class="hashtag-tiers">
+
+<div class="hashtag-tier" style="border-top:3px solid var(--ff-secondary)">
+<div class="tier-label" style="color:var(--ff-secondary)">🏷️ Tier 1 — Branded</div>
+<div class="tier-desc">Hashtags da marca. Sempre incluir 1-2 em todo post.</div>
+<div class="tag-cloud">
+<span class="hashtag">#fullfunnel</span>
+<span class="hashtag">#fullfunnelbrasil</span>
+<span class="hashtag">#plataformafullfunnel</span>
+<span class="hashtag">#automacaofullfunnel</span>
+</div>
+</div>
+
+<div class="hashtag-tier" style="border-top:3px solid var(--ff-primary)">
+<div class="tier-label" style="color:var(--ff-primary)">🎯 Tier 2 — Nicho</div>
+<div class="tier-desc">Hashtags do nicho de marketing digital. Incluir 4-6 relevantes ao conteúdo.</div>
+<div class="tag-cloud">
+<span class="hashtag">#marketingdigital</span>
+<span class="hashtag">#funildevendas</span>
+<span class="hashtag">#automacaodemarketing</span>
+<span class="hashtag">#whatsappmarketing</span>
+<span class="hashtag">#emailmarketing</span>
+<span class="hashtag">#trafegopago</span>
+<span class="hashtag">#copywriting</span>
+<span class="hashtag">#vendasonline</span>
+<span class="hashtag">#infoproduto</span>
+<span class="hashtag">#agenciadigital</span>
+<span class="hashtag">#gohighlevelbrasil</span>
+<span class="hashtag">#ghlbrasil</span>
+<span class="hashtag">#crmvendas</span>
+<span class="hashtag">#gestaodeleads</span>
+</div>
+</div>
+
+<div class="hashtag-tier" style="border-top:3px solid var(--ff-accent)">
+<div class="tier-label" style="color:var(--ff-accent)">🌐 Tier 3 — Alcance</div>
+<div class="tier-desc">Hashtags de alcance maior. Incluir 3-5 para expandir descoberta.</div>
+<div class="tag-cloud">
+<span class="hashtag">#empreendedorismo</span>
+<span class="hashtag">#empreendedordigital</span>
+<span class="hashtag">#negociosonline</span>
+<span class="hashtag">#sucessofinanceiro</span>
+<span class="hashtag">#marketing</span>
+<span class="hashtag">#vendas</span>
+<span class="hashtag">#crescimento</span>
+<span class="hashtag">#produtividade</span>
+<span class="hashtag">#dicasdenegocios</span>
+<span class="hashtag">#escalonar</span>
+<span class="hashtag">#lifestyleempreendedor</span>
+</div>
+</div>
+
+</div>
+
+<div style="margin-top:2.5rem;background:var(--ff-card);border:1px solid var(--ff-card-border);border-radius:14px;padding:2rem">
+<h4 style="font-size:1rem;margin-bottom:1rem">📌 Regras de Uso</h4>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem">
+<div style="font-size:.85rem;color:#94a3b8;line-height:1.5">
+<strong style="color:var(--ff-white)">Posicionamento:</strong> Sempre no final da legenda, separadas por linha em branco do texto principal.
+</div>
+<div style="font-size:.85rem;color:#94a3b8;line-height:1.5">
+<strong style="color:var(--ff-white)">Rotação:</strong> Variar combinações entre posts para evitar sombreamento do algoritmo do Instagram.
+</div>
+<div style="font-size:.85rem;color:#94a3b8;line-height:1.5">
+<strong style="color:var(--ff-white)">Quantidade:</strong> 10-15 por post. Mix de branded (1-2) + nicho (4-6) + alcance (3-5).
+</div>
+<div style="font-size:.85rem;color:#94a3b8;line-height:1.5">
+<strong style="color:var(--ff-white)">Emojis na legenda:</strong> 1-3 por post, com intenção. Favoritos: 🚀 ⚡ 📊 🎯 💡 ✅ 🔥
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- COMPETITIVE GAP -->
+<section style="background:linear-gradient(135deg,#0F3285 0%,#1F2937 100%)">
+<div class="container" style="text-align:center;padding:3rem 0">
+<div style="font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ff-secondary);margin-bottom:1rem">Oportunidade Identificada</div>
+<h2 style="font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;max-width:700px;margin:0 auto 1.5rem">NÃO EXISTE no Brasil um perfil forte de Instagram focado em GoHighLevel + Automação de Marketing</h2>
+<p style="color:rgba(255,255,255,.7);max-width:600px;margin:0 auto;font-size:1rem;line-height:1.6">Os grandes falam de tráfego e lançamento, mas ninguém domina o nicho de funis automatizados + CRM. Esse é o oceano azul do @fullfunneloficial.</p>
+</div>
+</section>
+
+<footer>
+<p>Full Funnel — Instagram Brand Book v1.0 · Abril 2026</p>
+<p style="margin-top:.3rem;color:#334155">Gerado automaticamente a partir dos dados de marca, calendário e pesquisa de referências.</p>
+</footer>
+
+</body>
+</html>
