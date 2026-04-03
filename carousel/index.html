@@ -400,9 +400,234 @@
     position: absolute;
     z-index: 0;
   }
+
+  /* ==================== MOBILE HEADER ==================== */
+  .mobile-header {
+    display: none;
+  }
+
+  /* ==================== SLIDE COUNTER (mobile) ==================== */
+  .slide-counter {
+    display: none;
+  }
+
+  /* ==================== RESPONSIVE — MOBILE ==================== */
+  @media (max-width: 768px) {
+    body {
+      padding: 16px;
+    }
+    h1.page-title {
+      display: none;
+    }
+    .mobile-header {
+      display: block;
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 12px 0;
+    }
+    .mobile-header .mobile-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .mobile-header .mobile-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Stack vertically */
+    .carousel-scroll {
+      flex-direction: column;
+      overflow-x: visible;
+      scroll-snap-type: none;
+      gap: 16px;
+      padding: 0 0 20px;
+    }
+    .slide-wrapper {
+      width: 100%;
+      position: relative;
+    }
+
+    /* Scale slides to fit screen */
+    .slide {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      border-radius: 12px;
+    }
+
+    /* Slide counter badge */
+    .slide-counter {
+      display: block;
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 20;
+      letter-spacing: 0.5px;
+    }
+
+    /* ---- SLIDE 1 mobile ---- */
+    .slide-1 {
+      padding: 32px 24px;
+    }
+    .slide-1::before {
+      width: 250px; height: 250px; top: -100px; right: -100px;
+    }
+    .slide-1::after {
+      width: 200px; height: 200px; bottom: -80px; left: -80px;
+    }
+    .slide-1 .top-label {
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-bottom: 24px;
+    }
+    .slide-1 .headline {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+    .slide-1 .divider-line {
+      width: 50px;
+      height: 3px;
+      margin: 20px 0;
+    }
+    .slide-1 .subtitle {
+      font-size: 18px;
+    }
+    .slide-1 .swipe-hint {
+      display: none;
+    }
+    .slide-1 .logo-mark {
+      bottom: 20px;
+      right: 24px;
+      gap: 8px;
+    }
+    .slide-1 .logo-mark .logo-icon {
+      width: 28px; height: 28px;
+    }
+    .slide-1 .logo-mark .logo-text {
+      font-size: 13px;
+    }
+
+    /* ---- CONTENT SLIDES (2-6) mobile ---- */
+    .slide-content {
+      padding: 28px 24px 24px;
+    }
+    .slide-content .slide-number {
+      font-size: 72px;
+      top: 16px;
+      right: 20px;
+    }
+    .slide-content .content-top {
+      margin-top: 24px;
+    }
+    .slide-content .icon-circle {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 16px;
+    }
+    .slide-content .icon-circle svg {
+      width: 22px;
+      height: 22px;
+    }
+    .slide-content .slide-tag {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+    .slide-content .slide-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .slide-content .slide-copy {
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .slide-content .content-bottom {
+      margin-top: auto;
+    }
+    .slide-content .page-dot {
+      width: 6px;
+      height: 6px;
+    }
+    .slide-content .page-dot.active {
+      width: 20px;
+    }
+    .slide-content .page-indicator {
+      gap: 5px;
+    }
+
+    /* Logo in content slides mobile */
+    .slide-content .logo-mark {
+      bottom: 16px;
+      right: 20px;
+      gap: 6px;
+    }
+    .slide-content .logo-mark .logo-icon {
+      width: 24px; height: 24px;
+    }
+    .slide-content .logo-mark .logo-text {
+      font-size: 11px;
+    }
+
+    /* ---- SLIDE 7 CTA mobile ---- */
+    .slide-7 {
+      padding: 32px 24px;
+    }
+    .slide-7::before {
+      width: 300px; height: 300px;
+    }
+    .slide-7 .logo-mark-center {
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .slide-7 .logo-mark-center .logo-icon {
+      width: 36px; height: 36px;
+    }
+    .slide-7 .logo-mark-center .logo-text {
+      font-size: 20px;
+    }
+    .slide-7 .cta-question {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+    .slide-7 .cta-brand {
+      font-size: 16px;
+      margin-bottom: 28px;
+    }
+    .slide-7 .cta-button {
+      font-size: 16px;
+      padding: 16px 32px;
+      border-radius: 12px;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .slide-7 .cta-button svg {
+      width: 18px; height: 18px;
+    }
+    .slide-7 .cta-sub {
+      font-size: 14px;
+    }
+  }
 </style>
 </head>
 <body>
+
+<div class="mobile-header">
+  <div class="mobile-title">Full Funnel — Primeiro Carrossel</div>
+  <div class="mobile-subtitle">Deslize para ver todos os slides ↓</div>
+</div>
 
 <h1 class="page-title">Instagram Carousel — Full Funnel — Preview (scroll horizontal)</h1>
 
@@ -410,6 +635,7 @@
 
 <!-- ==================== SLIDE 1 — HOOK ==================== -->
 <div class="slide-wrapper">
+<div class="slide-counter">1/7</div>
 <div class="slide slide-1" id="slide-1">
   <div class="top-label">Full Funnel</div>
   <div class="headline">5 formas de usar <span>IA</span> pra vender mais</div>
@@ -434,6 +660,7 @@
 
 <!-- ==================== SLIDE 2 — Resposta instantânea ==================== -->
 <div class="slide-wrapper">
+<div class="slide-counter">2/7</div>
 <div class="slide slide-content" id="slide-2">
   <div class="slide-number">01</div>
   <div class="content-top">
@@ -469,6 +696,7 @@
 
 <!-- ==================== SLIDE 3 — Qualificação automática ==================== -->
 <div class="slide-wrapper">
+<div class="slide-counter">3/7</div>
 <div class="slide slide-content" id="slide-3">
   <div class="slide-number">02</div>
   <div class="content-top">
@@ -504,6 +732,7 @@
 
 <!-- ==================== SLIDE 4 — Follow-up ==================== -->
 <div class="slide-wrapper">
+<div class="slide-counter">4/7</div>
 <div class="slide slide-content" id="slide-4">
   <div class="slide-number">03</div>
   <div class="content-top">
@@ -539,6 +768,7 @@
 
 <!-- ==================== SLIDE 5 — Crie funis ==================== -->
 <div class="slide-wrapper">
+<div class="slide-counter">5/7</div>
 <div class="slide slide-content" id="slide-5">
   <div class="slide-number">04</div>
   <div class="content-top">
@@ -574,6 +804,7 @@
 
 <!-- ==================== SLIDE 6 — Atendimento que parece gente ==================== -->
 <div class="slide-wrapper">
+<div class="slide-counter">6/7</div>
 <div class="slide slide-content" id="slide-6">
   <div class="slide-number">05</div>
   <div class="content-top">
@@ -609,6 +840,7 @@
 
 <!-- ==================== SLIDE 7 — CTA ==================== -->
 <div class="slide-wrapper">
+<div class="slide-counter">7/7</div>
 <div class="slide slide-7" id="slide-7">
   <div class="logo-mark-center">
     <svg class="logo-icon" viewBox="0 0 64 64" fill="none">
