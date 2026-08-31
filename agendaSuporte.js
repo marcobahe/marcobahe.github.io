@@ -32,9 +32,9 @@
   const LABEL = "Agende uma call de Suporte";
 
   // Dados do embed FullFunnel
-  const BOOKING_ID       = "zivoYfVcIU3qJwjIezcw";
-  const BOOKING_SRC      = `https://link.fullfunnel.app/widget/booking/${BOOKING_ID}`;
-  const EMBED_SCRIPT_SRC = "https://link.fullfunnel.app/js/form_embed.js";
+  const BOOKING_ID       = "IsYcmtk3nhIwdknvkZRA";
+  const BOOKING_SRC      = `https://links.fullfunnel.app/widget/booking/${BOOKING_ID}`;
+  const EMBED_SCRIPT_SRC = "https://links.fullfunnel.app/js/form_embed.js";
 
   // Layout e limites
   const MIN_SCALE = 0.72;
@@ -171,7 +171,7 @@
     if (!heightListener) {
       heightListener = (ev) => {
         try {
-          if (!String(ev.origin).includes("link.fullfunnel.app")) return;
+          if (!String(ev.origin).includes("links.fullfunnel.app")) return;
           
           const d = ev.data || {};
           let h = null;
